@@ -19,7 +19,7 @@ namespace Ajuma.Class
         public static void Connect()
         {
             //Thiết lập giá trị cho chuỗi kết nối
-            connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\Ajuma_proj\Ajuma\Ajuma\Database\Ajuma_MỚI .mdf"";Integrated Security=True;Connect Timeout=30";
+            connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Workspace\TTCN\Code\Database\new_ajuma.mdf;Integrated Security=True;Connect Timeout=30";
             //connString = "";
             Conn = new SqlConnection();                 //Cấp phát đối tượng
             Conn.ConnectionString = connString;         //Kết nối

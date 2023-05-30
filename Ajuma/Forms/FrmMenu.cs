@@ -153,7 +153,7 @@ namespace Ajuma
 
         private void mnumausac_Click(object sender, EventArgs e)
         {
-            Forms.FrmMauSac f = new FrmMauSac();
+            Forms.FrmNgheSi f = new FrmNgheSi();
             f.StartPosition = FormStartPosition.CenterScreen;
             f.Show();
         }
@@ -162,7 +162,7 @@ namespace Ajuma
 
         private void mnunuocsanxuat_Click(object sender, EventArgs e)
         {
-            Forms.FrmNuocSanXuat f = new FrmNuocSanXuat();
+            Forms.FrmAlbum f = new FrmAlbum();
             f.StartPosition = FormStartPosition.CenterScreen;
             f.Show();
         }
@@ -184,11 +184,9 @@ namespace Ajuma
 
         }
 
-        private void dashBoardToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuchatlieu_Click(object sender, EventArgs e)
         {
-            Forms.Dashboard f = new Dashboard();
-            f.StartPosition = FormStartPosition.CenterScreen;
-            f.Show();
+
         }
     }
 }

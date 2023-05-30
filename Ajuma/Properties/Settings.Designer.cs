@@ -46,16 +46,5 @@ namespace Ajuma.Properties {
                 this["MatKhau"] = value;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"|DataDirectory|\\Ajuma_MỚI .m" +
-            "df\";Integrated Security=True;Connect Timeout=30")]
-        public string Ajuma_MỚI_ConnectionString {
-            get {
-                return ((string)(this["Ajuma_MỚI_ConnectionString"]));
-            }
-        }
     }
 }
