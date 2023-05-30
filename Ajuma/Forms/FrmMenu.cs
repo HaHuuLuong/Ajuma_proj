@@ -188,5 +188,13 @@ namespace Ajuma
         {
 
         }
+
+        private void dashBoardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FrmDashboard f = new FrmDashboard();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+
+        }
     }
 }
