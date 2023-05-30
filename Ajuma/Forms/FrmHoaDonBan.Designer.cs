@@ -44,8 +44,6 @@
             this.txttongtien = new System.Windows.Forms.TextBox();
             this.txtthanhtien = new System.Windows.Forms.TextBox();
             this.txtgiaban = new System.Windows.Forms.TextBox();
-            this.txtkhuyenmai = new System.Windows.Forms.TextBox();
-            this.txttensanpham = new System.Windows.Forms.TextBox();
             this.txtsoluong = new System.Windows.Forms.TextBox();
             this.cbomasanpham = new System.Windows.Forms.ComboBox();
             this.lblbangchu = new System.Windows.Forms.Label();
@@ -53,8 +51,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupThongtinchung = new System.Windows.Forms.GroupBox();
@@ -72,6 +68,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblText = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.txttensanpham = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtkhuyenmai = new System.Windows.Forms.TextBox();
             this.groupSp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.groupThongtinchung.SuspendLayout();
@@ -121,7 +121,7 @@
             this.btnin.Image = global::Ajuma.Properties.Resources.Aha_Soft_Universal_Shop_Print;
             this.btnin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnin.Location = new System.Drawing.Point(296, 314);
-            this.btnin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnin.Margin = new System.Windows.Forms.Padding(4);
             this.btnin.Name = "btnin";
             this.btnin.Size = new System.Drawing.Size(153, 41);
             this.btnin.TabIndex = 18;
@@ -280,21 +280,6 @@
             this.txtgiaban.Size = new System.Drawing.Size(100, 22);
             this.txtgiaban.TabIndex = 18;
             // 
-            // txtkhuyenmai
-            // 
-            this.txtkhuyenmai.Location = new System.Drawing.Point(536, 78);
-            this.txtkhuyenmai.Name = "txtkhuyenmai";
-            this.txtkhuyenmai.Size = new System.Drawing.Size(100, 22);
-            this.txtkhuyenmai.TabIndex = 17;
-            this.txtkhuyenmai.TextChanged += new System.EventHandler(this.txtkhuyenmai_TextChanged);
-            // 
-            // txttensanpham
-            // 
-            this.txttensanpham.Location = new System.Drawing.Point(536, 42);
-            this.txttensanpham.Name = "txttensanpham";
-            this.txttensanpham.Size = new System.Drawing.Size(100, 22);
-            this.txttensanpham.TabIndex = 16;
-            // 
             // txtsoluong
             // 
             this.txtsoluong.Location = new System.Drawing.Point(163, 79);
@@ -360,24 +345,6 @@
             this.label12.Size = new System.Drawing.Size(54, 16);
             this.label12.TabIndex = 4;
             this.label12.Text = "Giá bán";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(413, 84);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(91, 16);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "Khuyến mại %";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(413, 47);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 16);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Tên sản phẩm";
             // 
             // label9
             // 
@@ -540,6 +507,39 @@
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // txttensanpham
+            // 
+            this.txttensanpham.Location = new System.Drawing.Point(536, 42);
+            this.txttensanpham.Name = "txttensanpham";
+            this.txttensanpham.Size = new System.Drawing.Size(100, 22);
+            this.txttensanpham.TabIndex = 16;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(413, 47);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(93, 16);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Tên sản phẩm";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(413, 84);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(91, 16);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Khuyến mại %";
+            // 
+            // txtkhuyenmai
+            // 
+            this.txtkhuyenmai.Location = new System.Drawing.Point(536, 78);
+            this.txtkhuyenmai.Name = "txtkhuyenmai";
+            this.txtkhuyenmai.Size = new System.Drawing.Size(100, 22);
+            this.txtkhuyenmai.TabIndex = 17;
+            this.txtkhuyenmai.TextChanged += new System.EventHandler(this.txtkhuyenmai_TextChanged);
+            // 
             // FrmHoaDonBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -569,8 +569,6 @@
         private System.Windows.Forms.TextBox txttongtien;
         private System.Windows.Forms.TextBox txtthanhtien;
         private System.Windows.Forms.TextBox txtgiaban;
-        private System.Windows.Forms.TextBox txtkhuyenmai;
-        private System.Windows.Forms.TextBox txttensanpham;
         private System.Windows.Forms.TextBox txtsoluong;
         private System.Windows.Forms.ComboBox cbomasanpham;
         private System.Windows.Forms.Label lblbangchu;
@@ -578,8 +576,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupThongtinchung;
@@ -607,5 +603,9 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnin;
+        private System.Windows.Forms.TextBox txttensanpham;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtkhuyenmai;
+        private System.Windows.Forms.Label label11;
     }
 }

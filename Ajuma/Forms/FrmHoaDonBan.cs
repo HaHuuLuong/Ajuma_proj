@@ -20,9 +20,9 @@ namespace Ajuma.Forms
             InitializeComponent();
         }
         DataTable tblHDB;
-        
-        
-        
+
+
+
         private void ResetValues()
         {
             txtmahoadonban.Text = "";
@@ -41,7 +41,7 @@ namespace Ajuma.Forms
             txtdiachikhachhang.Text = "";
         }
 
-       
+
         private void ResetValuesHang()
         {
             cbomasanpham.Text = "";
@@ -50,36 +50,36 @@ namespace Ajuma.Forms
             txtthanhtien.Text = "0";
         }
 
-        
+
         private void DelHang(string Mahoadon, string Mahang)
         {
             Double s, sl, SLcon;
             string sql;
-            sql = "SELECT SoLuong FROM tblChiTietHoaDonBan WHERE MaHoaDonBan = N'" + Mahoadon + "' AND MaSanPham = N'" + Mahang + "'";
+            sql = "SELECT soluong FROM ChiTietDonDatHang WHERE madondathang = N'" + Mahoadon + "' AND masanpham = N'" + Mahang + "'";
             s = Convert.ToDouble(Functions.GetFieldValues(sql));
-            sql = "DELETE tblChiTietHoaDonBan WHERE MaHoaDonBan =N'" + Mahoadon + "' AND MaSanPham = N'" + Mahang + "'";
+            sql = "DELETE ChiTietDonDatHang WHERE madondathang =N'" + Mahoadon + "' AND masanpham = N'" + Mahang + "'";
             Functions.RunSqlDel(sql);
             // Cập nhật lại số lượng cho các mặt hàng
-            sql = "SELECT SoLuong FROM tblSanPham WHERE MaSanPham = N'" + Mahang + "'";
+            sql = "SELECT soluongkho FROM SanPham WHERE masanpham = N'" + Mahang + "'";
             sl = Convert.ToDouble(Functions.GetFieldValues(sql));
             SLcon = sl + s;
-            sql = "UPDATE tblSanPham SET SoLuong =" + SLcon + " WHERE MaSanPham= N'" + Mahang + "'";
+            sql = "UPDATE SanPham SET soluongkho =" + SLcon + " WHERE masanpham= N'" + Mahang + "'";
             Functions.RunSql(sql);
         }
         private void DelUpdateTongtien(string Mahoadon, double Thanhtien)
         {
             Double Tong, Tongmoi;
             string sql;
-            sql = "SELECT TongTien FROM tblHoaDonBan WHERE MaHoaDonBan = N'" + Mahoadon + "'";
+            sql = "SELECT tongtien FROM DonDatHang WHERE madondathang = N'" + Mahoadon + "'";
             Tong = Convert.ToDouble(Functions.GetFieldValues(sql));
             Tongmoi = Tong - Thanhtien;
-            sql = "UPDATE tblHoaDonBan SET TongTien =" + Tongmoi + " WHERE MaHoaDonBan = N'" + Mahoadon + "'";
+            sql = "UPDATE DonDatHang SET tongtien =" + Tongmoi + " WHERE madondathang = N'" + Mahoadon + "'";
             Functions.RunSql(sql);
             txttongtien.Text = Tongmoi.ToString();
             lblbangchu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChu(Tongmoi.ToString());
         }
-     
-     
+
+
         private void groupSp_Enter(object sender, EventArgs e)
         {
 
@@ -99,13 +99,13 @@ namespace Ajuma.Forms
             txttongtien.ReadOnly = true;
             txtkhuyenmai.Text = "0";
             txttongtien.Text = "0";
-            Functions.FillCombo("SELECT MaKhachHang FROM tblKhachHang", cbomakhachhang, "MaKhachHang", "MaKhachHang");
+            Functions.FillCombo("SELECT makhach FROM KhachHang", cbomakhachhang, "makhach", "makhach");
             cbomakhachhang.SelectedIndex = -1;
-            Functions.FillCombo("SELECT MaNhanVien FROM tblNhanvien", cbomanhanvien, "MaNhanVien", "MaNhanVien");
+            Functions.FillCombo("SELECT manhanvien FROM NhanVien", cbomanhanvien, "manhanvien", "manhanvien");
             cbomanhanvien.SelectedIndex = -1;
-            Functions.FillCombo("SELECT MaSanPham FROM tblSanPham", cbomasanpham, "MaSanPham", "MaSanPham");
+            Functions.FillCombo("SELECT masanpham FROM SanPham", cbomasanpham, "masanpham", "masanpham");
             cbomasanpham.SelectedIndex = -1;
-            Functions.FillCombo("SELECT MaHoaDonBan FROM tblChiTietHoaDonBan", cbomahoadonban, "MaHoaDonBan", "MaHoaDonBan");
+            Functions.FillCombo("SELECT madondathang FROM ChiTietDonDatHang", cbomahoadonban, "madondathang", "madondathang");
             cbomahoadonban.SelectedIndex = -1;
             if (txtmahoadonban.Text != "")
             {
@@ -123,7 +123,7 @@ namespace Ajuma.Forms
         private void Load_DataGridViewChitiet()
         {
             string sql;
-            sql = "SELECT b.MaSanPham, b.TenSanPham, a.SoLuong, b.GiaBan, a.KhuyenMai, a.ThanhTien FROM tblChiTietHoaDonBan AS a JOIN tblSanPham AS b ON a.MaSanPham=b.MaSanPham WHERE a.MaHoaDonBan = N'" + txtmahoadonban.Text + "'";
+            sql = "SELECT b.masanpham, b.tensanpham, a.soluong, b.dongiaban, a.giamgia, a.thanhtien FROM ChiTietDonDatHang AS a JOIN SanPham AS b ON a.masanpham=b.masanpham WHERE a.madondathang = N'" + txtmahoadonban.Text + "'";
             tblHDB = Functions.GetDataToTable(sql);
             DataGridView.DataSource = tblHDB;
             DataGridView.Columns[0].HeaderText = "Mã sản phẩm";
@@ -144,15 +144,15 @@ namespace Ajuma.Forms
         private void ThongtinHD()
         {
             string str;
-            str = "SELECT NgayBan FROM tblHoaDonBan WHERE MaHoaDonBan = N'" + txtmahoadonban.Text + "'";
+            str = "SELECT ngaydathang FROM DonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'";
             txtngayban.Text = Functions.GetFieldValues(str);
-            str = "SELECT MaNhanVien FROM tblHoaDonBan WHERE MaHoaDonBan = N'" + txtmahoadonban.Text + "'";
+            str = "SELECT manhanvien FROM DonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'";
             cbomanhanvien.Text = Functions.GetFieldValues(str);
 
-            str = "SELECT MaKhachHang FROM tblHoaDonBan WHERE MaHoaDonBan = N'" + txtmahoadonban.Text + "'";
+            str = "SELECT makhach FROM DonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'";
             cbomakhachhang.Text = Functions.GetFieldValues(str);
 
-            str = "SELECT TongTien FROM tblHoaDonBan WHERE MaHoaDonBan = N'" + txtmahoadonban.Text + "'";
+            str = "SELECT tongtien FROM DonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'";
             txttongtien.Text = Functions.GetFieldValues(str);
 
 
@@ -177,7 +177,7 @@ namespace Ajuma.Forms
         {
             string sql;
             double sl, SLcon, tong, Tongmoi;
-            sql = "SELECT MaHoaDonBan FROM tblHoaDonBan WHERE MaHoaDonBan=N'" + txtmahoadonban.Text + "'";
+            sql = "SELECT madondathang FROM DonDatHang WHERE madondathang=N'" + txtmahoadonban.Text + "'";
             if (!Functions.CheckKey(sql))
             {
                 // Mã hóa đơn chưa có, tiến hành lưu các thông tin chung
@@ -200,7 +200,7 @@ namespace Ajuma.Forms
                     cbomakhachhang.Focus();
                     return;
                 }
-                sql = "INSERT INTO tblHoaDonBan(MaHoaDonBan, Ngayban, MaNhanVien, MaKhachHang, TongTien) " +
+                sql = "INSERT INTO DonDatHang(madondathang, ngaydathang, manhanvien, makhach, tongtien) " +
                     "VALUES(N'" + txtmahoadonban.Text.Trim() + "', '" +
                         Functions.ConvertDateTime(txtngayban.Text.Trim()) + "',N'" + cbomanhanvien.SelectedValue + "',N'" +
                         cbomakhachhang.SelectedValue + "'," + txttongtien.Text + ")";
@@ -227,7 +227,7 @@ namespace Ajuma.Forms
                 txtkhuyenmai.Focus();
                 return;
             }
-            sql = "SELECT MaSanPham FROM tblChiTietHoaDonBan WHERE MaSanPham=N'" + cbomasanpham.SelectedValue + "' AND mahoadonban = N'" + txtmahoadonban.Text.Trim() + "'";
+            sql = "SELECT masanpham FROM ChiTietDonDatHang WHERE masanpham=N'" + cbomasanpham.SelectedValue + "' AND madondathang = N'" + txtmahoadonban.Text.Trim() + "'";
             if (Functions.CheckKey(sql))
             {
                 MessageBox.Show("Mã hàng này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -236,7 +236,7 @@ namespace Ajuma.Forms
                 return;
             }
             // Kiểm tra xem số lượng hàng trong kho còn đủ để cung cấp không?
-            sl = Convert.ToDouble(Functions.GetFieldValues("SELECT SoLuong FROM tblSanPham WHERE MaSanPham = N'" + cbomasanpham.SelectedValue + "'"));
+            sl = Convert.ToDouble(Functions.GetFieldValues("SELECT soluongkho FROM SanPham WHERE masanpham = N'" + cbomasanpham.SelectedValue + "'"));
             if (Convert.ToDouble(txtsoluong.Text) > sl)
             {
                 MessageBox.Show("Số lượng mặt hàng này chỉ còn " + sl, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -244,20 +244,20 @@ namespace Ajuma.Forms
                 txtsoluong.Focus();
                 return;
             }
-            sql = "INSERT INTO tblChiTietHoaDonBan(MaHoaDonBan,MaSanPham, SoLuong, KhuyenMai, ThanhTien) VALUES(N'" + txtmahoadonban.Text.Trim() + "', N'" + cbomasanpham.SelectedValue + "'," + txtsoluong.Text + "," + txtkhuyenmai.Text + "," + txtthanhtien.Text + ")";
+            sql = "INSERT INTO ChiTietDonDatHang(madondathang,masanpham, soluong, giamgia, thanhtien) VALUES(N'" + txtmahoadonban.Text.Trim() + "', N'" + cbomasanpham.SelectedValue + "'," + txtsoluong.Text + "," + txtkhuyenmai.Text + "," + txtthanhtien.Text + ")";
 
             Functions.RunSql(sql);
             Load_DataGridViewChitiet();
             // Cập nhật lại số lượng của mặt hàng vào bảng tblsanpham
             SLcon = sl - Convert.ToDouble(txtsoluong.Text);
-            sql = "UPDATE tblSanPham SET SoLuong =" + SLcon + " WHERE MaSanPham= N'" + cbomasanpham.SelectedValue + "'";
+            sql = "UPDATE SanPham SET soluongkho =" + SLcon + " WHERE masanpham= N'" + cbomasanpham.SelectedValue + "'";
             Functions.RunSql(sql);
             // Cập nhật lại tổng tiền cho hóa đơn bán
             /*decimal oldAmount;
             bool succes = Decimal.TryParse(txtthanhtien.Text, NumberStyles.Any, info, out oldAmount);*/
-            tong = Convert.ToDouble(Functions.GetFieldValues("SELECT TongTien FROM tblHoaDonBan WHERE MaHoaDonBan = N'" + txtmahoadonban.Text + "'"));
+            tong = Convert.ToDouble(Functions.GetFieldValues("SELECT tongtien FROM DonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'"));
             Tongmoi = tong + Convert.ToDouble(txtthanhtien.Text);
-            sql = "UPDATE tblHoaDonBan SET TongTien =" + Tongmoi + " WHERE MaHoaDonBan = N'" + txtmahoadonban.Text + "'";
+            sql = "UPDATE DonDatHang SET tongtien =" + Tongmoi + " WHERE madondathang = N'" + txtmahoadonban.Text + "'";
             Functions.RunSql(sql);
             txttongtien.Text = Tongmoi.ToString();
             lblbangchu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChu(Tongmoi.ToString());
@@ -288,7 +288,7 @@ namespace Ajuma.Forms
                 string sql;
                 int n = 0;
                 int i;
-                sql = "SELECT MaSanPham FROM tblChiTietHoaDonBan WHERE MaHoaDonBan = N'" + txtmahoadonban.Text + "'";
+                sql = "SELECT masanpham FROM ChiTietDonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'";
                 SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -301,7 +301,7 @@ namespace Ajuma.Forms
                 for (i = 0; i <= n - 1; i++)
                     DelHang(txtmahoadonban.Text, Mahang[i]);
                 //Xóa hóa đơn
-                sql = "DELETE tblHoaDonBan WHERE MaHoaDonBan =N'" + txtmahoadonban.Text + "'";
+                sql = "DELETE DonDatHang WHERE madondathang =N'" + txtmahoadonban.Text + "'";
                 Functions.RunSqlDel(sql);
                 ResetValues();
                 Load_DataGridViewChitiet();
@@ -338,14 +338,14 @@ namespace Ajuma.Forms
                 return;
             }
             string sql;
-            sql = "UPDATE tblHoaDonBan SET NgayBan = N'" + Functions.ConvertDateTime(txtngayban.Text) + "', manhanvien = N'" + cbomanhanvien.SelectedValue.ToString() + "' WHERE mahoadonban = N'" + txtmahoadonban.Text + "'";
+            sql = "UPDATE DonDatHang SET ngaydathang = N'" + Functions.ConvertDateTime(txtngayban.Text) + "', manhanvien = N'" + cbomanhanvien.SelectedValue.ToString() + "' WHERE madondathang = N'" + txtmahoadonban.Text + "'";
             Functions.RunSql(sql);
             double sl;
-            sl = Convert.ToDouble(Functions.GetFieldValues("SELECT SoLuong FROM tblSanPham WHERE MaSanPham = N'" + cbomasanpham.Text + "'"));
+            sl = Convert.ToDouble(Functions.GetFieldValues("SELECT soluongkho FROM SanPham WHERE masanpham = N'" + cbomasanpham.Text + "'"));
             // MessageBox.Show(Functions.GetFieldValues("SELECT soluong FROM tblsanpham WHERE masanpham = N'" + cbomasanpham.Text + "'"));
             //xử lý lại tổng số sản phẩm (tính cả hàng có trong tblsanpham vs tblchitiethoadonban) vì sửa nên phải cộng số lượng lại để ra số lượng ban đầu
             double sl1, sl2;
-            sl1 = Convert.ToDouble(Functions.GetFieldValues("SELECT SoLuong FROM tblChiTietHoaDonBan WHERE MaSanPham = N'" + cbomasanpham.Text + "'AND MaHoaDonBan = N'" + txtmahoadonban.Text + "'"));
+            sl1 = Convert.ToDouble(Functions.GetFieldValues("SELECT soluong FROM ChiTietDonDatHang WHERE masanpham = N'" + cbomasanpham.Text + "'AND madondathang = N'" + txtmahoadonban.Text + "'"));
             //  MessageBox.Show(Functions.GetFieldValues("SELECT soluong FROM tblchitiethoadonban WHERE masanpham = N'" + cbomasanpham.Text + "'AND mahoadonban = N'" + txtmahoadonban.Text + "'"));
 
             sl2 = sl1 + sl;
@@ -363,20 +363,20 @@ namespace Ajuma.Forms
             slmoi = Convert.ToDouble(txtsoluong.Text);
             SLcon = sl2 - slmoi;
 
-            sql = "UPDATE tblChiTietHoaDonBan SET MaSanPham = N'" + cbomasanpham.Text + "', SoLuong = " + Convert.ToSingle(txtsoluong.Text) + ", khuyenmai = " + Convert.ToSingle(txtkhuyenmai.Text) + ", ThanhTien = " + Convert.ToSingle(txtthanhtien.Text) + " WHERE MaSanPham = N'" + cbomasanpham.Text + "'AND MaHoaDonBan = N'" + txtmahoadonban.Text + "'";
+            sql = "UPDATE ChiTietDonDatHang SET masanpham = N'" + cbomasanpham.Text + "', soluong = " + Convert.ToSingle(txtsoluong.Text) + ", giamgia = " + Convert.ToSingle(txtkhuyenmai.Text) + ", thanhtien = " + Convert.ToSingle(txtthanhtien.Text) + " WHERE masanpham = N'" + cbomasanpham.Text + "'AND madondathang = N'" + txtmahoadonban.Text + "'";
             Functions.RunSql(sql);
 
 
             // Cập nhật lại số lượng của mặt hàng vào bảng tblsanpham
-            sql = "UPDATE tblSanPham SET SoLuong =" + SLcon + " WHERE MaSanPham= N'" + cbomasanpham.Text + "'";
+            sql = "UPDATE SanPham SET soluongkho =" + SLcon + " WHERE masanpham= N'" + cbomasanpham.Text + "'";
             //MessageBox.Show(SLcon.ToString());
             Functions.RunSql(sql);
             // Cập nhật lại tổng tiền cho hóa đơn bán            
             string thanhtien;
-            thanhtien = "SELECT SUM(ThanhTien) FROM tblChiTietHoaDonBan WHERE MaHoaDonBan = N'" + txtmahoadonban.Text + "'  GROUP BY MaHoaDonBan";
+            thanhtien = "SELECT SUM(thanhtien) FROM ChiTietDonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'  GROUP BY madondathang";
             string tt;
             tt = Functions.GetFieldValues(thanhtien);
-            sql = "UPDATE tblHoaDonBan SET TongTien =" + Convert.ToSingle(tt) + " WHERE MaHoaDonBan = N'" + txtmahoadonban.Text + "'";
+            sql = "UPDATE DonDatHang SET tongtien =" + Convert.ToSingle(tt) + " WHERE madondathang = N'" + txtmahoadonban.Text + "'";
             Functions.RunSql(sql);
             txttongtien.Text = tt.ToString();
             //tt = Convert.ToDouble(txttongtien.Text);
@@ -453,11 +453,11 @@ namespace Ajuma.Forms
                 return;
             }
             string ma;
-            ma = DataGridView.CurrentRow.Cells["MaSanPham"].Value.ToString();
-            cbomasanpham.Text = Functions.GetFieldValues("SELECT MaSanPham FROM tblChiTietHoaDonBan WHERE MaSanPham = N'" + ma + "'");
-            txtsoluong.Text = DataGridView.CurrentRow.Cells["SoLuong"].Value.ToString();
-            txtkhuyenmai.Text = DataGridView.CurrentRow.Cells["KhuyenMai"].Value.ToString();
-            string s = "SELECT TenNhanVien FROM tblNhanvien WHERE MaNhanVien = N'" + cbomanhanvien.Text + "'";
+            ma = DataGridView.CurrentRow.Cells["masanpham"].Value.ToString();
+            cbomasanpham.Text = Functions.GetFieldValues("SELECT masanpham FROM ChiTietDonDatHang WHERE masanpham = N'" + ma + "'");
+            txtsoluong.Text = DataGridView.CurrentRow.Cells["soluong"].Value.ToString();
+            txtkhuyenmai.Text = DataGridView.CurrentRow.Cells["giamgia"].Value.ToString();
+            string s = "SELECT tennhanvien FROM NhanVien WHERE manhanvien = N'" + cbomanhanvien.Text + "'";
             txttennhanvien.Text = Functions.GetFieldValues(s);
             btnboqua.Enabled = true;
         }
@@ -468,7 +468,7 @@ namespace Ajuma.Forms
             if (cbomanhanvien.Text == "")
                 txttennhanvien.Text = "";
             // Khi kich chon Ma nhan vien thi ten nhan vien se tu dong hien ra
-            str = "Select TenNhanVien from tblNhanvien where MaNhanVien =N'" + cbomanhanvien.SelectedValue + "'";
+            str = "Select tennhanvien from NhanVien where manhanvien =N'" + cbomanhanvien.SelectedValue + "'";
             txttennhanvien.Text = Functions.GetFieldValues(str);
         }
 
@@ -481,7 +481,7 @@ namespace Ajuma.Forms
             }
             //Khi kich chon Ma khach thi  dia chi se tu dong hien ra
 
-            str = "Select DiaChi from tblKhachHang where MaKhachHang = N'" + cbomakhachhang.SelectedValue + "'";
+            str = "Select diachichitiet from KhachHang where makhach = N'" + cbomakhachhang.SelectedValue + "'";
             txtdiachikhachhang.Text = Functions.GetFieldValues(str);
         }
 
@@ -494,9 +494,9 @@ namespace Ajuma.Forms
                 txtgiaban.Text = "";
             }
             // Khi kich chon Ma hang thi ten hang va gia ban se tu dong hien ra
-            str = "SELECT TenSanPham FROM tblSanPham WHERE MaSanPham =N'" + cbomasanpham.SelectedValue + "'";
+            str = "SELECT tensanpham FROM SanPham WHERE masanpham =N'" + cbomasanpham.SelectedValue + "'";
             txttensanpham.Text = Functions.GetFieldValues(str);
-            str = "SELECT GiaBan FROM tblSanPham WHERE MaSanPham =N'" + cbomasanpham.SelectedValue + "'";
+            str = "SELECT dongiaban FROM SanPham WHERE masanpham =N'" + cbomasanpham.SelectedValue + "'";
             txtgiaban.Text = Functions.GetFieldValues(str);
         }
 
@@ -542,7 +542,7 @@ namespace Ajuma.Forms
 
         private void cbomahoadonban_DropDown(object sender, EventArgs e)
         {
-            Functions.FillCombo("SELECT MaHoaDonBan FROM tblHoaDonBan", cbomahoadonban, "MaHoaDonBan", "MaHoaDonBan");
+            Functions.FillCombo("SELECT madondathang FROM DonDatHang", cbomahoadonban, "madondathang", "madondathang");
             cbomahoadonban.SelectedIndex = -1;
         }
 
@@ -611,7 +611,7 @@ namespace Ajuma.Forms
             exRange.Range["C2:E2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange.Range["C2:E2"].Value = "HÓA ĐƠN BÁN";
             // Biểu diễn thông tin chung của hóa đơn bán
-            sql = "SELECT a.MaHoaDonBan, a.NgayBan, a.TongTien, b.TenKhach, b.DiaChi, b.SoDienthoai, c.TenNhanVien FROM tblHoaDonBan AS a, tblKhachHang AS b, tblNhanvien AS c WHERE a.MaHoaDonBan = N'" + txtmahoadonban.Text + "' AND a.MakhachHang = b.MakhachHang AND a.MaNhanVien = c.MaNhanVien";
+            sql = "SELECT a.madondathang, a.ngaydathang, a.tongtien, b.tenkhach, b.diachichitiet, b.sdt, c.tennhanvien FROM DonDatHang AS a, KhachHang AS b, NhanVien AS c WHERE a.madondathang = N'" + txtmahoadonban.Text + "' AND a.makhach = b.makhach AND a.manhanvien = c.manhanvien";
             tblThongtinHD = Functions.GetDataToTable(sql);
             exRange.Range["B6:C9"].Font.Size = 12;
             exRange.Range["B6:C9"].Font.Name = "Times new roman";
@@ -628,9 +628,9 @@ namespace Ajuma.Forms
             exRange.Range["C9:E9"].MergeCells = true;
             exRange.Range["C9:E9"].Value = tblThongtinHD.Rows[0][5].ToString();
             //Lấy thông tin các mặt hàng
-            sql = "SELECT b.TenSanPham, a.SoLuong, b.GiaBan, a.KhuyenMai, a.ThanhTien " +
-                  "FROM tblChiTietHoaDonBan AS a , tblSanPham AS b WHERE a.MaHoaDonBan = N'" +
-                  txtmahoadonban.Text + "' AND a.MaSanPham = b.MaSanPham";
+            sql = "SELECT b.tensanpham, a.soluong, b.dongiaban, a.giamgia, a.thanhtien " +
+                  "FROM ChiTietDonDatHang AS a , SanPham AS b WHERE a.madondathang = N'" +
+                  txtmahoadonban.Text + "' AND a.masanpham = b.masanpham";
             tblThongtinHang = Functions.GetDataToTable(sql);
             //Tạo dòng tiêu đề bảng
             exRange.Range["A11:F11"].Font.Bold = true;
