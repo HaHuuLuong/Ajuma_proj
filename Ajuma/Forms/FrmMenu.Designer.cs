@@ -142,28 +142,28 @@
             this.mnuNhanvien.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuque});
             this.mnuNhanvien.Name = "mnuNhanvien";
-            this.mnuNhanvien.Size = new System.Drawing.Size(187, 26);
+            this.mnuNhanvien.Size = new System.Drawing.Size(224, 26);
             this.mnuNhanvien.Text = "Nhân viên";
             this.mnuNhanvien.Click += new System.EventHandler(this.mnuNhanvien_Click);
             // 
             // mnuque
             // 
             this.mnuque.Name = "mnuque";
-            this.mnuque.Size = new System.Drawing.Size(120, 26);
-            this.mnuque.Text = "Quê";
+            this.mnuque.Size = new System.Drawing.Size(224, 26);
+            this.mnuque.Text = "Chức vụ";
             this.mnuque.Click += new System.EventHandler(this.mnuque_Click);
             // 
             // mnuKhachhang
             // 
             this.mnuKhachhang.Name = "mnuKhachhang";
-            this.mnuKhachhang.Size = new System.Drawing.Size(187, 26);
+            this.mnuKhachhang.Size = new System.Drawing.Size(224, 26);
             this.mnuKhachhang.Text = "Khách hàng";
             this.mnuKhachhang.Click += new System.EventHandler(this.mnuKhachhang_Click);
             // 
             // mnuNhacungcap
             // 
             this.mnuNhacungcap.Name = "mnuNhacungcap";
-            this.mnuNhacungcap.Size = new System.Drawing.Size(187, 26);
+            this.mnuNhacungcap.Size = new System.Drawing.Size(224, 26);
             this.mnuNhacungcap.Text = "Nhà cung cấp";
             this.mnuNhacungcap.Click += new System.EventHandler(this.mnuNhacungcap_Click);
             // 

@@ -1,6 +1,6 @@
 ﻿namespace Ajuma.Forms
 {
-    partial class FrmQue
+    partial class FrmChucvu
     {
         /// <summary>
         /// Required designer variable.
@@ -44,24 +44,27 @@
             // 
             // txttenque
             // 
-            this.txttenque.Location = new System.Drawing.Point(306, 158);
+            this.txttenque.Location = new System.Drawing.Point(272, 126);
+            this.txttenque.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txttenque.Name = "txttenque";
-            this.txttenque.Size = new System.Drawing.Size(134, 26);
+            this.txttenque.Size = new System.Drawing.Size(120, 22);
             this.txttenque.TabIndex = 21;
             // 
             // txtmaque
             // 
-            this.txtmaque.Location = new System.Drawing.Point(306, 95);
+            this.txtmaque.Location = new System.Drawing.Point(272, 76);
+            this.txtmaque.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtmaque.Name = "txtmaque";
-            this.txtmaque.Size = new System.Drawing.Size(134, 26);
+            this.txtmaque.Size = new System.Drawing.Size(120, 22);
             this.txtmaque.TabIndex = 20;
             // 
             // btnboqua
             // 
             this.btnboqua.BackColor = System.Drawing.SystemColors.Info;
-            this.btnboqua.Location = new System.Drawing.Point(684, 195);
+            this.btnboqua.Location = new System.Drawing.Point(608, 156);
+            this.btnboqua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnboqua.Name = "btnboqua";
-            this.btnboqua.Size = new System.Drawing.Size(87, 53);
+            this.btnboqua.Size = new System.Drawing.Size(77, 42);
             this.btnboqua.TabIndex = 19;
             this.btnboqua.Text = "Bỏ qua";
             this.btnboqua.UseVisualStyleBackColor = false;
@@ -70,9 +73,10 @@
             // btnluu
             // 
             this.btnluu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnluu.Location = new System.Drawing.Point(684, 268);
+            this.btnluu.Location = new System.Drawing.Point(608, 214);
+            this.btnluu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnluu.Name = "btnluu";
-            this.btnluu.Size = new System.Drawing.Size(87, 51);
+            this.btnluu.Size = new System.Drawing.Size(77, 41);
             this.btnluu.TabIndex = 18;
             this.btnluu.Text = "Lưu";
             this.btnluu.UseVisualStyleBackColor = false;
@@ -81,9 +85,10 @@
             // btndong
             // 
             this.btndong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btndong.Location = new System.Drawing.Point(684, 334);
+            this.btndong.Location = new System.Drawing.Point(608, 267);
+            this.btndong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btndong.Name = "btndong";
-            this.btndong.Size = new System.Drawing.Size(87, 58);
+            this.btndong.Size = new System.Drawing.Size(77, 46);
             this.btndong.TabIndex = 17;
             this.btndong.Text = "Đóng";
             this.btndong.UseVisualStyleBackColor = false;
@@ -92,9 +97,10 @@
             // btnxoa
             // 
             this.btnxoa.BackColor = System.Drawing.Color.Red;
-            this.btnxoa.Location = new System.Drawing.Point(564, 334);
+            this.btnxoa.Location = new System.Drawing.Point(501, 267);
+            this.btnxoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnxoa.Name = "btnxoa";
-            this.btnxoa.Size = new System.Drawing.Size(97, 58);
+            this.btnxoa.Size = new System.Drawing.Size(86, 46);
             this.btnxoa.TabIndex = 16;
             this.btnxoa.Text = "Xoá";
             this.btnxoa.UseVisualStyleBackColor = false;
@@ -104,9 +110,10 @@
             // 
             this.btnsua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnsua.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnsua.Location = new System.Drawing.Point(564, 268);
+            this.btnsua.Location = new System.Drawing.Point(501, 214);
+            this.btnsua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnsua.Name = "btnsua";
-            this.btnsua.Size = new System.Drawing.Size(97, 51);
+            this.btnsua.Size = new System.Drawing.Size(86, 41);
             this.btnsua.TabIndex = 15;
             this.btnsua.Text = "Sửa";
             this.btnsua.UseVisualStyleBackColor = false;
@@ -116,9 +123,10 @@
             // 
             this.btnthem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnthem.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnthem.Location = new System.Drawing.Point(564, 195);
+            this.btnthem.Location = new System.Drawing.Point(501, 156);
+            this.btnthem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnthem.Name = "btnthem";
-            this.btnthem.Size = new System.Drawing.Size(90, 53);
+            this.btnthem.Size = new System.Drawing.Size(80, 42);
             this.btnthem.TabIndex = 14;
             this.btnthem.Text = "Thêm";
             this.btnthem.UseVisualStyleBackColor = false;
@@ -127,11 +135,12 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(49, 214);
+            this.dataGridView.Location = new System.Drawing.Point(44, 171);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(490, 178);
+            this.dataGridView.Size = new System.Drawing.Size(436, 142);
             this.dataGridView.TabIndex = 13;
             this.dataGridView.Click += new System.EventHandler(this.dataGridView_Click);
             // 
@@ -139,28 +148,29 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(208, 159);
+            this.label2.Location = new System.Drawing.Point(185, 127);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 25);
+            this.label2.Size = new System.Drawing.Size(77, 20);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Tên quê";
+            this.label2.Text = "Chức vụ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(208, 95);
+            this.label1.Location = new System.Drawing.Point(156, 76);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 25);
+            this.label1.Size = new System.Drawing.Size(105, 20);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Mã quê";
+            this.label1.Text = "Mã chức vụ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // FrmQue
+            // FrmChucvu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(873, 514);
+            this.ClientSize = new System.Drawing.Size(776, 411);
             this.Controls.Add(this.txttenque);
             this.Controls.Add(this.txtmaque);
             this.Controls.Add(this.btnboqua);
@@ -172,9 +182,10 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "FrmQue";
-            this.Text = "FrmQue";
-            this.Load += new System.EventHandler(this.FrmQue_Load);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "FrmChucvu";
+            this.Text = "FrmChucVu";
+            this.Load += new System.EventHandler(this.FrmChucvu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

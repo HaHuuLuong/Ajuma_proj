@@ -51,8 +51,18 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -143,11 +153,11 @@
     <Compile Include="Forms\FrmNuocSanXuat.Designer.cs">
       <DependentUpon>FrmNuocSanXuat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmQue.cs">
+    <Compile Include="Forms\FrmChucvu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmQue.Designer.cs">
-      <DependentUpon>FrmQue.cs</DependentUpon>
+    <Compile Include="Forms\FrmChucvu.Designer.cs">
+      <DependentUpon>FrmChucvu.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmSanPham.cs">
       <SubType>Form</SubType>
@@ -175,6 +185,66 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relationship Diagram\Album.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\ChiTietDonDatHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\ChiTietDonNhapHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\ChucVu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\DonDatHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\DonNhapHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\KhachHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\NgheSi.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\NhaCungCap.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\NhanVien.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\QuanHuyen.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\SanPham.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\TheLoai.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\TinhThanh.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Relationship Diagram\XaPhuong.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\FrmBaoCaoDoanhThu.resx">
       <DependentUpon>FrmBaoCaoDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,8 +284,8 @@
     <EmbeddedResource Include="Forms\FrmNuocSanXuat.resx">
       <DependentUpon>FrmNuocSanXuat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmQue.resx">
-      <DependentUpon>FrmQue.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmChucvu.resx">
+      <DependentUpon>FrmChucvu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSanPham.resx">
       <DependentUpon>FrmSanPham.cs</DependentUpon>
@@ -235,6 +305,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -266,6 +337,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Relationship Diagram\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Relationship Diagram\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
     <None Include="Resources\Aha-Soft-Universal-Shop-Print.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +433,19 @@
     <Content Include="Images\3.jpg" />
     <Content Include="Images\4.jpg" />
     <Content Include="Images\5.jpg" />
+    <Content Include="Relationship Diagram\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Relationship Diagram\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

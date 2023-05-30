@@ -12,14 +12,14 @@ using Ajuma.Class;
 namespace Ajuma.Forms
 {
     
-    public partial class FrmQue : Form
+    public partial class FrmChucvu : Form
     {
-        public FrmQue()
+        public FrmChucvu()
         {
             InitializeComponent();
         }
         DataTable tblQ;
-        private void FrmQue_Load(object sender, EventArgs e)
+        private void FrmChucvu_Load(object sender, EventArgs e)
         {
 
 
@@ -32,11 +32,11 @@ namespace Ajuma.Forms
         private void Load_DataGridView()
         {
             string sql;
-            sql = "SELECT MaQue, TenQue FROM tblQue";
+            sql = "SELECT machucvu, tenchucvu FROM ChucVu";
             tblQ = Functions.GetDataToTable(sql);
             dataGridView.DataSource = tblQ;
-            dataGridView.Columns[0].HeaderText = "Mã quê";
-            dataGridView.Columns[1].HeaderText = "Tên quê";
+            dataGridView.Columns[0].HeaderText = "Mã chức vụ";
+            dataGridView.Columns[1].HeaderText = "Chức vụ";
 
         }
         private void ResetValues()
@@ -58,8 +58,8 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            txtmaque.Text = dataGridView.CurrentRow.Cells["MaQue"].Value.ToString();
-            txttenque.Text = dataGridView.CurrentRow.Cells["TenQue"].Value.ToString();
+            txtmaque.Text = dataGridView.CurrentRow.Cells["machucvu"].Value.ToString();
+            txttenque.Text = dataGridView.CurrentRow.Cells["tenchucvu"].Value.ToString();
             btnsua.Enabled = true;
             btnxoa.Enabled = true;
             btnboqua.Enabled = true;
@@ -82,18 +82,18 @@ namespace Ajuma.Forms
             string sql;
             if (txtmaque.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Bạn phải nhập mã quê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn phải nhập mã chức vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtmaque.Focus();
                 return;
             }
             if (txttenque.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Bạn phải nhập tên quê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn phải nhập tên chức vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txttenque.Focus();
                 return;
             }
 
-            sql = "SELECT MaQue FROM tblQue WHERE MaQue=N'" + txtmaque.Text.Trim() + "'";
+            sql = "SELECT machucvu FROM ChucVu WHERE machucvu=N'" + txtmaque.Text.Trim() + "'";
             if (Functions.CheckKey(sql))
             {
                 MessageBox.Show("Mã quê này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -102,7 +102,7 @@ namespace Ajuma.Forms
                 return;
             }
 
-            sql = "INSERT INTO tblque(MaQue,TenQue) VALUES(N'" + txtmaque.Text + "',N'" + txttenque.Text + "')";
+            sql = "INSERT INTO ChucVu(machucvu, tenchucvu) VALUES(N'" + txtmaque.Text + "',N'" + txttenque.Text + "')";
             Functions.RunSql(sql);
 
             Load_DataGridView();
@@ -135,7 +135,7 @@ namespace Ajuma.Forms
                 return;
             }
 
-            sql = "UPDATE tblQue SET TenQue=N'" + txttenque.Text.ToString() + "' WHERE MaQue=N'" + txtmaque.Text + "'";
+            sql = "UPDATE ChucVu SET tenchucvu=N'" + txttenque.Text.ToString() + "' WHERE machucvu=N'" + txtmaque.Text + "'";
             Functions.RunSql(sql);
 
 
@@ -159,7 +159,7 @@ namespace Ajuma.Forms
             }
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                sql = "DELETE tblQue WHERE MaQue=N'" + txtmaque.Text + "'";
+                sql = "DELETE ChucVu WHERE machucvu=N'" + txtmaque.Text + "'";
 
                 Functions.RunSqlDel(sql);
 
@@ -182,6 +182,11 @@ namespace Ajuma.Forms
         {
 
             this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
