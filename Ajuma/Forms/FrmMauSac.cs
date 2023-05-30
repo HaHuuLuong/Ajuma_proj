@@ -10,15 +10,16 @@ using System.Windows.Forms;
 
 namespace Ajuma.Forms
 {
-    public partial class FrmNgheSi : Form
+    public partial class FrmMauSac : Form
     {
-        public FrmNgheSi()
+        public FrmMauSac()
         {
             InitializeComponent();
         }
         DataTable tbldd;
-        private void FrmNgheSi_Load(object sender, EventArgs e)
+        private void FrmMauSac_Load(object sender, EventArgs e)
         {
+            txtmamau.Enabled = false;
             btnLuu.Enabled = false;
             btnBoqua.Enabled = false;
             Load_DataGridView();
@@ -26,17 +27,13 @@ namespace Ajuma.Forms
         private void Load_DataGridView()
         {
             string sql;
-            sql = "SELECT manghesi, tennghesi, gioithieu, anh FROM NgheSi";
+            sql = "SELECT mamau,tenmau FROM tblmausac";
             tbldd = Class.Functions.GetDataToTable(sql);
             DataGridView.DataSource = tbldd;
-            DataGridView.Columns[0].HeaderText = "Mã nghệ sĩ";
-            DataGridView.Columns[1].HeaderText = "Tên nghệ sĩ";
-            DataGridView.Columns[2].HeaderText = "Giới thiệu";
-            DataGridView.Columns[3].HeaderText = "Ảnh minh họa";
+            DataGridView.Columns[0].HeaderText = "Mã màu";
+            DataGridView.Columns[1].HeaderText = "Tên màu";
             DataGridView.Columns[0].Width = 200;
             DataGridView.Columns[1].Width = 200;
-            DataGridView.Columns[2].Width = 200;
-            DataGridView.Columns[3].Width = 200;
             // Không cho phép thêm mới dữ liệu trực tiếp trên lưới
             DataGridView.AllowUserToAddRows = false;
             // Không cho phép sửa dữ liệu trực tiếp trên lưới
@@ -45,11 +42,12 @@ namespace Ajuma.Forms
 
         private void DataGridView_Click(object sender, EventArgs e)
         {
-            txtMaNgheSi.Enabled = false;
+            txtmamau.Enabled = false;
+            txttenmau.Enabled = true;
             if (btnThem.Enabled == false)
             {
                 MessageBox.Show("Đang ở chế độ thêm mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtMaNgheSi.Focus();
+                txtmamau.Focus();
                 return;
             }
             if (tbldd.Rows.Count == 0)
@@ -57,19 +55,8 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            txtMaNgheSi.Text = DataGridView.CurrentRow.Cells["manghesi"].Value.ToString();
-            txtNgheSi.Text = DataGridView.CurrentRow.Cells["tennghesi"].Value.ToString();
-            txtGioiThieu.Text = DataGridView.CurrentRow.Cells["gioithieu"].Value.ToString();
-            txtAnh.Text = DataGridView.CurrentRow.Cells["anh"].Value.ToString();
-            if (txtAnh.Text.Trim() == "")
-            {
-                picAnh.Image = Image.FromFile("D:/Github/Ajuma_proj/Ajuma/Images/no_image.png");
-            }
-            else
-            {
-                picAnh.Image = Image.FromFile(txtAnh.Text.ToString());
-            }    
-            
+            txtmamau.Text = DataGridView.CurrentRow.Cells["MaMau"].Value.ToString();
+            txttenmau.Text = DataGridView.CurrentRow.Cells["TenMau"].Value.ToString();
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
             btnBoqua.Enabled = true;
@@ -84,21 +71,16 @@ namespace Ajuma.Forms
             btnLuu.Enabled = true;
             btnThem.Enabled = false;
             ResetValues();
-            txtMaNgheSi.Focus();
+            txtmamau.Focus();
         }
 
         private void ResetValues()
         {
 
-            txtNgheSi.Enabled = true;
-            txtMaNgheSi.Enabled = true;
-            txtGioiThieu.Enabled = true;
-            txtAnh.Enabled = true;
-            txtMaNgheSi.Text = "";
-            txtNgheSi.Text = "";
-            txtGioiThieu.Text = "";
-            txtAnh.Text = "";
-            picAnh.Image = null;
+            txttenmau.Enabled = true;
+            txtmamau.Enabled = true;
+            txtmamau.Text = "";
+            txttenmau.Text = "";
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -106,31 +88,31 @@ namespace Ajuma.Forms
             string sql;
 
 
-            if (txtMaNgheSi.Text.Trim().Length == 0)
+            if (txtmamau.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Bạn phải nhập mã nghệ sĩ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMaNgheSi.Focus();
+                MessageBox.Show("Bạn phải nhập mã màu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtmamau.Focus();
                 return;
             }
-            if (txtNgheSi.Text.Trim().Length == 0)
+            if (txttenmau.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Bạn phải nhập tên nghệ sĩ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtNgheSi.Focus();
+                MessageBox.Show("Bạn phải nhập tên màu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txttenmau.Focus();
                 return;
             }
 
-            sql = "SELECT manghesi FROM NgheSi WHERE manghesi=N'" + txtMaNgheSi.Text.Trim() + "'";
+            sql = "SELECT MaMau FROM tblMauSac WHERE MaMau=N'" + txtmamau.Text.Trim() + "'";
             if (Class.Functions.CheckKey(sql))
             {
-                MessageBox.Show("Mã nghệ sĩ này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMaNgheSi.Focus();
-                txtMaNgheSi.Text = "";
+                MessageBox.Show("Mã màu này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtmamau.Focus();
+                txtmamau.Text = "";
                 return;
             }
 
 
 
-            sql = "INSERT INTO NgheSi(manghesi, tennghesi, gioithieu, anh) VALUES(N'" + txtMaNgheSi.Text + "',N'" + txtNgheSi.Text + "',N'" + txtGioiThieu.Text + "',N'" + txtAnh.Text + "')";
+            sql = "INSERT INTO tblMauSac(MaMau,TenMau) VALUES(N'" + txtmamau.Text + "',N'" + txttenmau.Text + "')";
             Class.Functions.RunSql(sql);
 
 
@@ -151,20 +133,20 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (txtMaNgheSi.Text == "")
+            if (txtmamau.Text == "")
             {
                 MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            if (txtNgheSi.Text.Trim().Length == 0)
+            if (txttenmau.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập tên mau", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtNgheSi.Focus();
+                txttenmau.Focus();
                 return;
             }
 
-            sql = "UPDATE NgheSi SET tennghesi=N'" + txtNgheSi.Text.ToString() + "', gioithieu=N'"+txtGioiThieu.Text.ToString()+"', anh=N'"+txtAnh.Text.ToString()+"' WHERE manghesi=N'" + txtMaNgheSi.Text + "'";
+            sql = "UPDATE tblMauSac SET TenMau=N'" + txttenmau.Text.ToString() + "' WHERE MaMau=N'" + txtmamau.Text + "'";
             Class.Functions.RunSql(sql);
             Load_DataGridView();
             ResetValues();
@@ -179,7 +161,7 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (txtMaNgheSi.Text == "")
+            if (txtmamau.Text == "")
             {
                 MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -187,7 +169,7 @@ namespace Ajuma.Forms
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
 
-                sql = "DELETE NgheSi WHERE manghesi=N'" + txtMaNgheSi.Text + "'";
+                sql = "DELETE tblMauSac WHERE MaMau=N'" + txtmamau.Text + "'";
                 Class.Functions.RunSqlDel(sql);
                 Load_DataGridView();
                 ResetValues();
@@ -207,26 +189,6 @@ namespace Ajuma.Forms
         private void btnDong_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

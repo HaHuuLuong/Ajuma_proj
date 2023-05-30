@@ -38,13 +38,13 @@ namespace Ajuma.Forms
         private void Load_DataGridView()
         {
             string sql;
-            sql = "SELECT manhacungcap, tennhacungcap, sodienthoai, linkweb FROM NhaCungCap";
+            sql = "SELECT MaNhaCungCap, TenNhaCungCap, DiaChi, sodienthoai FROM tblNhaCungCap";
             tblNCC = Functions.GetDataToTable(sql);
             dataGridView.DataSource = tblNCC;
             dataGridView.Columns[0].HeaderText = "Mã nhà cung cấp";
             dataGridView.Columns[1].HeaderText = "Tên nhà cung cấp";
-            dataGridView.Columns[2].HeaderText = "Số điện thoại";
-            dataGridView.Columns[3].HeaderText = "Website";
+            dataGridView.Columns[2].HeaderText = "Địa chỉ";
+            dataGridView.Columns[3].HeaderText = "Số điện thoại";
 
         }
 
@@ -63,8 +63,8 @@ namespace Ajuma.Forms
             }
             txtmancc.Text = dataGridView.CurrentRow.Cells["manhacungcap"].Value.ToString();
             txttenncc.Text = dataGridView.CurrentRow.Cells["tennhacungcap"].Value.ToString();
+            txtdiachi.Text = dataGridView.CurrentRow.Cells["diachi"].Value.ToString();
             msksđt.Text = dataGridView.CurrentRow.Cells["sodienthoai"].Value.ToString();
-            txtdiachi.Text = dataGridView.CurrentRow.Cells["linkweb"].Value.ToString();
             btnsua.Enabled = true;
             btnxoa.Enabled = true;
             btnboqua.Enabled = true;
@@ -99,17 +99,17 @@ namespace Ajuma.Forms
             }
             if (txtdiachi.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Bạn phải nhập website", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn phải nhập địa chỉ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtdiachi.Focus();
                 return;
             }
-            if (!msksđt.MaskFull)
+            if (msksđt.Text == "(   )    -")
             {
                 MessageBox.Show("Bạn phải nhập số điện thoại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 msksđt.Focus();
                 return;
             }
-            sql = "SELECT manhacungcap FROM NhaCungCap WHERE manhacungcap =N'" + txtmancc.Text.Trim() + "'";
+            sql = "SELECT Manhacungcap FROM tblnhacungcap WHERE manhacungcap =N'" + txtmancc.Text.Trim() + "'";
             if (Functions.CheckKey(sql))
             {
                 MessageBox.Show("Mã nhà cung cấp này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -117,7 +117,7 @@ namespace Ajuma.Forms
                 txtmancc.Text = "";
                 return;
             }
-            sql = "INSERT INTO NhaCungCap VALUES (N'" + txtmancc.Text.Trim() + "',N'" + txttenncc.Text.Trim() + "', '" + msksđt.Text + "', N'" + txtdiachi.Text.Trim() + "')";
+            sql = "INSERT INTO tblnhacungcap VALUES (N'" + txtmancc.Text.Trim() + "',N'" + txttenncc.Text.Trim() + "',N'" + txtdiachi.Text.Trim() + "','" + msksđt.Text + "')";
             Functions.RunSql(sql);
             Load_DataGridView();
             ResetValues();
@@ -151,17 +151,17 @@ namespace Ajuma.Forms
             }
             if (txtdiachi.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Bạn phải nhập Website", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn phải nhập địa chỉ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtdiachi.Focus();
                 return;
             }
-            if (!msksđt.MaskFull)
+            if (msksđt.Text == "(   )    -")
             {
                 MessageBox.Show("Bạn phải nhập số điện thoại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 msksđt.Focus();
                 return;
             }
-            sql = "UPDATE NhaCungCap SET  tennhacungcap=N'" + txttenncc.Text.Trim().ToString() + "', sodienthoai='" + msksđt.Text.ToString() + "', linkweb=N'" + txtdiachi.Text.Trim().ToString() + "' WHERE Manhacungcap = N'" + txtmancc.Text + "'";
+            sql = "UPDATE tblnhacungcap SET  Tennhacungcap=N'" + txttenncc.Text.Trim().ToString() + "', Diachi=N'" + txtdiachi.Text.Trim().ToString() + "', sodienthoai='" + msksđt.Text.ToString() + "' WHERE Manhacungcap = N'" + txtmancc.Text + "'";
             Functions.RunSql(sql);
             Load_DataGridView();
             ResetValues();
@@ -183,7 +183,7 @@ namespace Ajuma.Forms
             }
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                sql = "DELETE NhaCungCap WHERE manhacungcap=N'" + txtmancc.Text + "'";
+                sql = "DELETE tblnhacungcap WHERE Manhacungcap=N'" + txtmancc.Text + "'";
                 Functions.RunSqlDel(sql);
                 Load_DataGridView();
                 ResetValues();
