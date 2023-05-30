@@ -23,30 +23,47 @@ namespace Ajuma.Forms
         {
             /*this.BackColor = Color.Red;
             this.TransparencyKey = Color.Red;*/
-            txtmakhach.Enabled = false;
+            txtMaKhach.Enabled = false;
             btnluu.Enabled = false;
             btnboqua.Enabled = false;
+            Functions.FillCombo("SELECT matinhthanh, tentinhthanh FROM TinhThanh", cboTinhThanh, "matinhthanh", "tentinhthanh");
+            Functions.FillCombo("SELECT maquanhuyen, tenquanhuyen FROM QuanHuyen", cboQuanHuyen, "maquanhuyen", "tenquanhuyen");
+            Functions.FillCombo("SELECT maxaphuong, tenxaphuong FROM XaPhuong", cboXaPhuong, "maxaphuong", "tenxaphuong");
+            cboQuanHuyen.SelectedIndex = -1;
+            cboXaPhuong.Text = "";
+            cboTinhThanh.SelectedIndex = -1;
+            cboTinhThanh.Enabled = false;
+            cboXaPhuong.Enabled = false;
+            cboQuanHuyen.Enabled = false;
             Load_DataGridView();
             ResetValues();
         }
         private void ResetValues()
         {
-            txtmakhach.Text = "";
-            txtdiachi.Text = "";
-            txttenkhach.Text = "";
-            msksđt.Text = "";
+            txtMaKhach.Text = "";
+            txtTenKhach.Text = "";
+            mskSDT.Clear();
+            txtDiaChiChiTiet.Text = "";
+            cboXaPhuong.Text = "";
+            cboQuanHuyen.Text = "";
+            cboTinhThanh.Text = "";
+            mskNgaySinh.Clear();
+            txtFacebook.Text = "";
 
         }
         private void Load_DataGridView()
         {
             string sql;
-            sql = "SELECT MaKhachHang, TenKhach, DiaChi, SoDienThoai FROM tblKhachHang";
+            sql = "SELECT makhach, tenkhach, sdt, diachichitiet, maxaphuong, ngaysinh, linkfacebook FROM KhachHang";
             tblK = Functions.GetDataToTable(sql);
             dataGridView.DataSource = tblK;
             dataGridView.Columns[0].HeaderText = "Mã khách hàng";
             dataGridView.Columns[1].HeaderText = "Tên Khách";
-            dataGridView.Columns[2].HeaderText = "Địa chỉ";
-            dataGridView.Columns[3].HeaderText = "Số Điện Thoại";
+            dataGridView.Columns[2].HeaderText = "Số điện thoại";
+            dataGridView.Columns[3].HeaderText = "Địa chỉ chi tiết";
+            dataGridView.Columns[4].HeaderText = "Mã xã phường";
+            dataGridView.Columns[5].HeaderText = "Ngày sinh";
+            dataGridView.Columns[6].HeaderText = "Link Facebook";
 
         }
 
@@ -60,8 +77,11 @@ namespace Ajuma.Forms
             btnluu.Enabled = true;
             btnthem.Enabled = false;
             ResetValues();
-            txtmakhach.Enabled = true;
-            txtmakhach.Focus();
+            txtMaKhach.Enabled = true;
+            txtMaKhach.Focus();
+            cboTinhThanh.Enabled = true;
+            cboQuanHuyen.Enabled = true;
+            cboXaPhuong.Enabled = true;
         }
 
         private void dataGridView_Click(object sender, EventArgs e)
@@ -70,7 +90,7 @@ namespace Ajuma.Forms
             if (btnthem.Enabled == false)
             {
                 MessageBox.Show("Đang ở chế độ thêm mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtmakhach.Focus();
+                txtMaKhach.Focus();
                 return;
             }
             if (tblK.Rows.Count == 0)
@@ -78,10 +98,30 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            txtmakhach.Text = dataGridView.CurrentRow.Cells["MaKhachHang"].Value.ToString();
-            txtdiachi.Text = dataGridView.CurrentRow.Cells["DiaChi"].Value.ToString();
-            txttenkhach.Text = dataGridView.CurrentRow.Cells["TenKhach"].Value.ToString();
-            msksđt.Text = dataGridView.CurrentRow.Cells["SoDienThoai"].Value.ToString();
+            txtMaKhach.Text = dataGridView.CurrentRow.Cells["makhach"].Value.ToString();
+            txtTenKhach.Text = dataGridView.CurrentRow.Cells["tenkhach"].Value.ToString();
+            mskSDT.Text = dataGridView.CurrentRow.Cells["sdt"].Value.ToString();
+            txtDiaChiChiTiet.Text = dataGridView.CurrentRow.Cells["diachichitiet"].Value.ToString();
+
+            cboTinhThanh.Enabled = true;
+            cboQuanHuyen.Enabled = true;
+            cboXaPhuong.Enabled = true;
+            string maxaphuong = dataGridView.CurrentRow.Cells["maxaphuong"].Value.ToString();
+            string sql_convert = "SELECT tenxaphuong FROM XaPhuong WHERE maxaphuong = N'" + maxaphuong + "'";
+            cboXaPhuong.Text = Functions.GetFieldValues(sql_convert);
+
+            sql_convert = "SELECT a.tenquanhuyen FROM QuanHuyen AS a JOIN XaPhuong AS b ON a.maquanhuyen = b.maquanhuyen WHERE b.maxaphuong = '" + maxaphuong + "'";
+            cboQuanHuyen.Text = Functions.GetFieldValues(sql_convert);
+
+            sql_convert = "SELECT a.maquanhuyen FROM QuanHuyen AS a JOIN XaPhuong AS b ON a.maquanhuyen = b.maquanhuyen WHERE b.maxaphuong = '" + maxaphuong + "'";
+            string maquanhuyen = Functions.GetFieldValues(sql_convert);
+
+            sql_convert = "SELECT a.tentinhthanh FROM TinhThanh AS a JOIN QuanHuyen AS b ON a.matinhthanh = b.matinhthanh WHERE b.maquanhuyen = '" + maquanhuyen + "'";
+            cboTinhThanh.Text = Functions.GetFieldValues(sql_convert);
+
+            mskNgaySinh.Text = dataGridView.CurrentRow.Cells["ngaysinh"].Value.ToString();
+            txtFacebook.Text = dataGridView.CurrentRow.Cells["linkfacebook"].Value.ToString();
+
             btnsua.Enabled = true;
             btnxoa.Enabled = true;
             btnboqua.Enabled = true;
@@ -90,40 +130,46 @@ namespace Ajuma.Forms
         private void btnluu_Click(object sender, EventArgs e)
         {
             string sql;
-            if (txtmakhach.Text == "")
+            if (txtMaKhach.Text == "")
             {
-                MessageBox.Show("Bạn phải nhập mã khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtmakhach.Focus();
+                MessageBox.Show("Bạn phải nhập mã khách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMaKhach.Focus();
                 return;
             }
-            if (txtdiachi.Text == "")
+            if (txtDiaChiChiTiet.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập địa chỉ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtdiachi.Focus();
+                txtDiaChiChiTiet.Focus();
                 return;
             }
-            if (txttenkhach.Text == "")
+            if (txtTenKhach.Text == "")
             {
 
                 MessageBox.Show("Bạn phải nhập tên khách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txttenkhach.Focus();
+                txtTenKhach.Focus();
                 return;
             }
-            if (msksđt.Text == "(   )    -")
+            if (!mskSDT.MaskFull)
             {
                 MessageBox.Show("Bạn phải nhập số điện thoại ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                msksđt.Focus();
+                mskSDT.Focus();
                 return;
             }
-            sql = "SELECT Makhachhang FROM tblkhachhang WHERE Makhachhang=N'" + txtmakhach.Text.Trim() + "'";
+            if (cboXaPhuong.Text == "")
+            {
+                MessageBox.Show("Bạn phải chọn địa chỉ Xã/Phường, Quận/Huyện và Tỉnh/Thành", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            sql = "SELECT makhach FROM KhachHang WHERE makhach=N'" + txtMaKhach.Text.Trim() + "'";
             if (Functions.CheckKey(sql))
             {
                 MessageBox.Show("Mã khách hàng này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtmakhach.Focus();
-                txtmakhach.Text = "";
+                txtMaKhach.Focus();
+                txtMaKhach.Text = "";
                 return;
             }
-            sql = "INSERT INTO tblkhachhang VALUES(N'" + txtmakhach.Text.Trim() + "',N'" + txttenkhach.Text.Trim() + "', N'" + txtdiachi.Text.Trim() + "','" + msksđt.Text + "')";
+            string sql_convert = "SELECT c.maxaphuong FROM TinhThanh a JOIN QuanHuyen b ON a.matinhthanh = b.matinhthanh JOIN XaPhuong c ON b.maquanhuyen = c.maquanhuyen WHERE a.tentinhthanh = N'" + cboTinhThanh.Text + "' AND b.tenquanhuyen=N'" + cboQuanHuyen.Text + "' AND c.tenxaphuong = N'" + cboXaPhuong.Text + "'";
+            sql = "INSERT INTO KhachHang VALUES(N'" + txtMaKhach.Text.Trim() + "',N'" + txtTenKhach.Text.Trim() + "', '"+mskSDT.Text+"', N'" + txtDiaChiChiTiet.Text.Trim() + "', N'"+Functions.GetFieldValues(sql_convert)+"', N'"+Functions.ConvertDateTime(mskNgaySinh.Text)+"',N'" + txtFacebook.Text+ "')";
             Functions.RunSql(sql);
             Load_DataGridView();
             ResetValues();
@@ -132,7 +178,7 @@ namespace Ajuma.Forms
             btnsua.Enabled = true;
             btnboqua.Enabled = false;
             btnluu.Enabled = false;
-            txtmakhach.Enabled = false;
+            txtMaKhach.Enabled = false;
         }
 
         private void btnsua_Click(object sender, EventArgs e)
@@ -143,31 +189,37 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (txtmakhach.Text == "")
+            if (txtMaKhach.Text == "")
             {
                 MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (txtdiachi.Text.Trim().Length == 0)
+            if (txtDiaChiChiTiet.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập địa chỉ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtdiachi.Focus();
+                txtDiaChiChiTiet.Focus();
                 return;
             }
-            if (txttenkhach.Text == "")
+            if (txtTenKhach.Text == "")
             {
 
                 MessageBox.Show("Bạn phải nhập tên khách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txttenkhach.Focus();
+                txtTenKhach.Focus();
                 return;
             }
-            if (msksđt.Text == "(   )    -")
+            if (!mskSDT.MaskFull)
             {
                 MessageBox.Show("Bạn phải nhập số điện thoại ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                msksđt.Focus();
+                mskSDT.Focus();
                 return;
             }
-            sql = "update tblKhachHang set TenKhach=N'" + txttenkhach.Text.Trim().ToString() + "',diachi = N'" + txtdiachi.Text.Trim().ToString() + "',SoDienThoai =  N'" + msksđt.Text + "' where MaKhachHang = N'" + txtmakhach.Text + "'";
+            if (cboXaPhuong.Text == "")
+            {
+                MessageBox.Show("Bạn phải chọn địa chỉ Xã/Phường, Quận/Huyện và Tỉnh/Thành", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string sql_convert = "SELECT c.maxaphuong FROM TinhThanh a JOIN QuanHuyen b ON a.matinhthanh = b.matinhthanh JOIN XaPhuong c ON b.maquanhuyen = c.maquanhuyen WHERE a.tentinhthanh = N'" + cboTinhThanh.Text + "' AND b.tenquanhuyen=N'" + cboQuanHuyen.Text + "' AND c.tenxaphuong = N'" + cboXaPhuong.Text + "'";
+            sql = "update KhachHang set tenkhach=N'" + txtTenKhach.Text.Trim().ToString() + "', sdt = N'"+mskSDT.Text+"',diachichitiet = N'" + txtDiaChiChiTiet.Text.Trim().ToString() + "', maxaphuong = N'"+Functions.GetFieldValues(sql_convert)+"', ngaysinh = N'"+Functions.ConvertDateTime(mskNgaySinh.Text)+"', linkfacebook = N'"+txtFacebook.Text+"' where makhach = N'" + txtMaKhach.Text + "'";
             Functions.RunSql(sql);
             Load_DataGridView();
             ResetValues();
@@ -182,14 +234,14 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (txtmakhach.Text == "")
+            if (txtMaKhach.Text == "")
             {
                 MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                sql = "DELETE tblkhachhang WHERE Makhachhang = N'" + txtmakhach.Text + "'";
+                sql = "DELETE KhachHang WHERE makhach = N'" + txtMaKhach.Text + "'";
                 Functions.RunSqlDel(sql);
                 Load_DataGridView();
                 ResetValues();
@@ -204,12 +256,71 @@ namespace Ajuma.Forms
             btnxoa.Enabled = true;
             btnsua.Enabled = true;
             btnluu.Enabled = false;
-            txtmakhach.Enabled = false;
+            txtMaKhach.Enabled = false;
         }
 
         private void btndong_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txttenkhach_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboTinhThanh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sql = "SELECT b.maquanhuyen, b.tenquanhuyen FROM TinhThanh AS a JOIN QuanHuyen AS b ON a.matinhthanh = b.matinhthanh WHERE a.tentinhthanh = N'"+cboTinhThanh.Text+"'";
+            Functions.FillCombo(sql, cboQuanHuyen, "maquanhuyen", "tenquanhuyen");
+        }
+
+        private void cboXaPhuong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void cboQuanHuyen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sql = 
+                "SELECT c.maxaphuong, c.tenxaphuong " +
+                "FROM TinhThanh AS a JOIN QuanHuyen AS b " +
+                "ON a.matinhthanh = b.matinhthanh " +
+                "JOIN XaPhuong AS c " +
+                "ON b.maquanhuyen = c.maquanhuyen " +
+                "WHERE a.tentinhthanh = N'" + cboTinhThanh.Text + "'" +
+                "AND b.tenquanhuyen = N'" + cboQuanHuyen.Text + "'";
+            Functions.FillCombo(sql, cboXaPhuong, "maxaphuong", "tenxaphuong");
         }
     }
 }
