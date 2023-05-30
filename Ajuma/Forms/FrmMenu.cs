@@ -101,7 +101,7 @@ namespace Ajuma
 
         private void mnuque_Click(object sender, EventArgs e)
         {
-            FrmQue f = new FrmQue();
+            FrmChucvu f = new FrmChucvu();
             f.StartPosition = FormStartPosition.CenterScreen;
             f.Show();
 

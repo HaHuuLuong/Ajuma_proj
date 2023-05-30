@@ -19,7 +19,7 @@ namespace Ajuma.Class
         public static void Connect()
         {
             //Thiết lập giá trị cho chuỗi kết nối
-            connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\Ajuma_proj\Ajuma\Ajuma\Database\Ajuma_MỚI .mdf"";Integrated Security=True;Connect Timeout=30";
+            connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Workspace\TTCN\Code\Database\new_ajuma.mdf;Integrated Security=True;Connect Timeout=30";
             //connString = "";
             Conn = new SqlConnection();                 //Cấp phát đối tượng
             Conn.ConnectionString = connString;         //Kết nối
@@ -86,9 +86,9 @@ namespace Ajuma.Class
             {
                 cmd.ExecuteNonQuery();
             }
-            catch (System.Exception)
+            catch (System.Exception del)
             {
-                MessageBox.Show("Dữ liệu đang được dùng, không thể xóa...", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Dữ liệu đang được dùng, không thể xóa..." + "\t\n \t\n Mã lỗi chi tiết: " + del.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             cmd.Dispose();
             cmd = null;

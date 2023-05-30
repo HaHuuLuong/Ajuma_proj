@@ -34,7 +34,7 @@ namespace Ajuma.Forms
         private void Load_Dgrid()
         {
             string sql;
-            sql = "SELECT MaLoai, TenLoai FROM tblTheLoai";
+            sql = "SELECT matheloai, tentheloai FROM TheLoai";
             tbldd = Class.Functions.GetDataToTable(sql);
             DataGridView.DataSource = tbldd;
             DataGridView.Columns[0].HeaderText = "Mã loại";
@@ -62,8 +62,8 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            txtmaloai.Text = DataGridView.CurrentRow.Cells["maloai"].Value.ToString();
-            txttenloai.Text = DataGridView.CurrentRow.Cells["tenloai"].Value.ToString();
+            txtmaloai.Text = DataGridView.CurrentRow.Cells["matheloai"].Value.ToString();
+            txttenloai.Text = DataGridView.CurrentRow.Cells["tentheloai"].Value.ToString();
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
             btnBoqua.Enabled = true;
@@ -106,7 +106,7 @@ namespace Ajuma.Forms
                 return;
             }
 
-            sql = "SELECT MaLoai FROM tblTheLoai WHERE MaLoai=N'" + txtmaloai.Text.Trim() + "'";
+            sql = "SELECT matheloai FROM TheLoai WHERE matheloai=N'" + txtmaloai.Text.Trim() + "'";
             if (Functions.CheckKey(sql))
             {
                 MessageBox.Show("Mã loại này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -115,7 +115,7 @@ namespace Ajuma.Forms
                 return;
             }
 
-            sql = "INSERT INTO tblTheLoai(MaLoai,TenLoai) VALUES(N'" + txtmaloai.Text + "',N'" + txttenloai.Text + "')";
+            sql = "INSERT INTO TheLoai(matheloai,tentheloai) VALUES(N'" + txtmaloai.Text + "',N'" + txttenloai.Text + "')";
             Functions.RunSql(sql);
             Load_Dgrid();
             ResetValues();
@@ -142,7 +142,7 @@ namespace Ajuma.Forms
                 return;
             }
 
-            sql = "UPDATE tblTheLoai SET TenLoai=N'" + txttenloai.Text.ToString() + "' WHERE MaLoai=N'" + txtmaloai.Text + "'";
+            sql = "UPDATE TheLoai SET tentheloai=N'" + txttenloai.Text.ToString() + "' WHERE matheloai=N'" + txtmaloai.Text + "'";
             Functions.RunSql(sql);
 
             Load_Dgrid();
@@ -166,7 +166,7 @@ namespace Ajuma.Forms
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
 
-                sql = "DELETE tblTheLoai WHERE MaLoai=N'" + txtmaloai.Text + "'";
+                sql = "DELETE TheLoai WHERE matheloai=N'" + txtmaloai.Text + "'";
                 Functions.RunSqlDel(sql);
                 Load_Dgrid();
                 ResetValues();
