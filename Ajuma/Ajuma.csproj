@@ -135,11 +135,11 @@
     <Compile Include="Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmMauSac.cs">
+    <Compile Include="Forms\FrmNgheSi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmMauSac.Designer.cs">
-      <DependentUpon>FrmMauSac.cs</DependentUpon>
+    <Compile Include="Forms\FrmNgheSi.Designer.cs">
+      <DependentUpon>FrmNgheSi.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmMenu.cs">
       <SubType>Form</SubType>
@@ -147,11 +147,11 @@
     <Compile Include="Forms\FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmNuocSanXuat.cs">
+    <Compile Include="Forms\FrmAlbum.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmNuocSanXuat.Designer.cs">
-      <DependentUpon>FrmNuocSanXuat.cs</DependentUpon>
+    <Compile Include="Forms\FrmAlbum.Designer.cs">
+      <DependentUpon>FrmAlbum.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmChucvu.cs">
       <SubType>Form</SubType>
@@ -275,14 +275,14 @@
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmMauSac.resx">
-      <DependentUpon>FrmMauSac.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmNgheSi.resx">
+      <DependentUpon>FrmNgheSi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMenu.resx">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmNuocSanXuat.resx">
-      <DependentUpon>FrmNuocSanXuat.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmAlbum.resx">
+      <DependentUpon>FrmAlbum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmChucvu.resx">
       <DependentUpon>FrmChucvu.cs</DependentUpon>
