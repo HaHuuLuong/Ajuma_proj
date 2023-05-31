@@ -41,9 +41,9 @@ namespace Ajuma.Forms
             dtgvTimsp.Columns[4].HeaderText = "Số lượng";
             dtgvTimsp.Columns[5].HeaderText = "Hình ảnh";
             dtgvTimsp.Columns[6].HeaderText = "Mã loại";
-            dtgvTimsp.Columns[7].HeaderText = "Mã nước";
-            dtgvTimsp.Columns[8].HeaderText = "Mã chất liệu";
-            dtgvTimsp.Columns[9].HeaderText = "Mã màu";
+            dtgvTimsp.Columns[7].HeaderText = "Mã album";
+            dtgvTimsp.Columns[8].HeaderText = "Mã nha cung cap";
+            dtgvTimsp.Columns[9].HeaderText = "Trang thai";
             dtgvTimsp.Columns[0].Width = 150;
             dtgvTimsp.Columns[1].Width = 100;
             dtgvTimsp.Columns[2].Width = 80;
@@ -60,9 +60,9 @@ namespace Ajuma.Forms
 
         private void FrmTimKiemSanPham_Load(object sender, EventArgs e)
         {
-            Class.Functions.FillCombo("SELECT MaLoai, TenLoai FROM tblTheLoai", comboBoxmaloai, "MaLoai", "MaLoai");
+            Class.Functions.FillCombo("SELECT matheloai, tentheloai FROM TheLoai", comboBoxmaloai, "matheloai", "matheloai");
             comboBoxmaloai.SelectedIndex = -1;
-            Class.Functions.FillCombo("SELECT MaChatLieu, TenChatLieu FROM tblChatLieu", comboBoxmachatlieu, "MaChatLieu", "MaChatLieu");
+            Class.Functions.FillCombo("SELECT maalbum, tenalbum FROM Album", comboBoxmachatlieu, "maalbum", "maalbum");
             comboBoxmachatlieu.SelectedIndex = -1;
             ResetValues();
             dtgvTimsp.DataSource = null;
@@ -77,13 +77,13 @@ namespace Ajuma.Forms
                 MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "Yeu cau ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            sql = "select * from tblSanPham where 1=1";
+            sql = "select * from SanPham where 1=1";
             if (comboBoxmaloai.Text != "")
-                sql = sql + " and MaLoai like N'%" + comboBoxmaloai.Text + "%'";
+                sql = sql + " and matheloai like N'%" + comboBoxmaloai.Text + "%'";
             if (comboBoxmachatlieu.Text != "")
-                sql = sql + " and MaChatLieu like N'%" + comboBoxmachatlieu.Text + "%'";
+                sql = sql + " and maalbum like N'%" + comboBoxmachatlieu.Text + "%'";
             if (textBoxsoluong.Text != "")
-                sql = sql + " and SoLuong = " + textBoxsoluong.Text + "";
+                sql = sql + " and soluongkho = " + textBoxsoluong.Text + "";
             tblTSP = Class.Functions.GetDataToTable(sql);
             if (tblTSP.Rows.Count == 0)
             {
@@ -112,12 +112,12 @@ namespace Ajuma.Forms
             string MaSp;
             if (MessageBox.Show("Bạn có muốn hiển thị thông tin chi tiết?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                MaSp = dtgvTimsp.CurrentRow.Cells["MaSanPham"].Value.ToString();
+                MaSp = dtgvTimsp.CurrentRow.Cells["masanpham"].Value.ToString();
                // string 
                 FrmSanPham frm = new FrmSanPham();
-                frm.txtMasanpham.Text = MaSp;
+                frm.txtmasanpham.Text = MaSp;
                 string a;
-                a = "SELECT MaSanPham, TenSanPham, GiaNhap, GiaBan, SoLuong, HinhAnh, MaLoai, MaNuoc, MaChatLieu, MaMau FROM tblSanPham where MaSanPham=N'" + frm.txtMasanpham.Text + "' ";
+                a = "SELECT masanpham, tensanpham, dongianhap, dongiaban, soluongkho, anh, matheloai, maalbum, manhacungcap, trangthai FROM SanPham where masanpham=N'" + frm.txtmasanpham.Text + "' ";
                 frm.sql = a;
                 
                 frm.StartPosition = FormStartPosition.CenterScreen;

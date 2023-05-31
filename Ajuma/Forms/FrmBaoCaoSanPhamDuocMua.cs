@@ -21,9 +21,9 @@ namespace Ajuma.Forms
         DataTable tblds;
         private void FrmBaoCaoSanPhamDuocMua_Load(object sender, EventArgs e)
         {
-            Functions.FillCombo("SELECT MaKhachHang FROM tblKhachHang", cbomakhachhang, "MaKhachHang", "MaKhachHang");
-            cbomakhachhang.SelectedIndex = -1;
-            Functions.FillCombo("SELECT MaNhanVien FROM tblNhanVien", cbomanhanvien, "MaNhanVien", "MaNhanVien");
+            Functions.FillCombo("SELECT makhach FROM KhachHang", cbomakhach, "makhach", "makhach");
+            cbomakhach.SelectedIndex = -1;
+            Functions.FillCombo("SELECT manhanvien FROM NhanVien", cbomanhanvien, "manhanvien", "manhanvien");
             cbomanhanvien.SelectedIndex = -1;
             btntimlai.Enabled = false;
             btninbaocao.Enabled = false;
@@ -33,22 +33,22 @@ namespace Ajuma.Forms
         }
         private void ResetValues()
         {
-            cbomakhachhang.Text = "";
+            cbomakhach.Text = "";
             cbomanhanvien.Text = "";
             txttongtienbaocao.Text = "0";
-            cbomakhachhang.Focus();
+            cbomakhach.Focus();
         }
 
         private void btnhienthi_Click(object sender, EventArgs e)
         {
             string sql;
-            sql = "SELECT a.MaHoaDonBan, a.MaSanPham, b.MaKhachHang, b.MaNhanVien, b.NgayBan, a.SoLuong, c.GiaBan, a.KhuyenMai, a.ThanhTien FROM tblChiTietHoaDonBan AS a JOIN tblHoaDonBan AS b ON a.MaHoaDonBan = b.MaHoaDonBan JOIN tblSanPham AS c ON a.MaSanPham = c.MaSanPham WHERE b.MaKhachHang =N'" + cbomakhachhang.Text + "' AND b.MaNhanVien = N'" + cbomanhanvien.Text + "'";
+            sql = "SELECT a.madondathang, a.masanpham, b.makhach, b.manhanvien, b.ngaydathang, a.soluong, c.dongiaban, a.giamgia, a.thanhtien FROM ChiTietDonDatHang AS a JOIN DonDatHang AS b ON a.madondathang = b.madondathang JOIN SanPham AS c ON a.masanpham = c.masanpham WHERE b.makhach =N'" + cbomakhach.Text + "' AND b.manhanvien = N'" + cbomanhanvien.Text + "'";
             //MessageBox.Show(sql);
             tblds = Functions.GetDataToTable(sql);
-            if (cbomakhachhang.Text == "")
+            if (cbomakhach.Text == "")
             {
                 MessageBox.Show("Bạn chưa chọn mã khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cbomakhachhang.Focus();
+                cbomakhach.Focus();
                 return;
             }
             else if (cbomanhanvien.Text == "")
@@ -142,7 +142,7 @@ namespace Ajuma.Forms
             exRange.Range["B1:B1"].ColumnWidth = 30;
             exRange.Range["A1:B1"].MergeCells = true;
             exRange.Range["A1:B1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A1:B1"].Value = "Cửa hàng bán đồ da MIS";
+            exRange.Range["A1:B1"].Value = "Shop AJUMA";
             exRange.Range["A2:B2"].MergeCells = true;
             exRange.Range["A2:B2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange.Range["A2:B2"].Value = "Đống Đa - Hà Nội";
@@ -159,7 +159,7 @@ namespace Ajuma.Forms
             exRange.Range["C2:F2"].Value = "Bảng báo cáo các sản phẩm được mua";
 
             // Biểu diễn thông tin chung của hóa đơn bán nên rows[0][...]
-            sql = "SELECT b.MaHoaDonBan, c.MaKhachHang, c.DiaChi, b.TongTien, b.NgayBan, a.TenNhanVien, a.MaNhanVien FROM  tblHoaDonBan AS b JOIN tblKhachHang AS c ON b.MaKhachHang = c.MaKhachHang JOIN tblNhanvien AS a ON b.MaNhanVien = a.MaNhanVien WHERE b.MaKhachHang =N'" + cbomakhachhang.Text + "' AND b.MaNhanVien = N'" + cbomanhanvien.Text + "'";
+            sql = "SELECT b.madondathang, c.makhach, c.linkweb, b.tongtien, b.ngaydathang, a.tennhanvien, a.manhanvien FROM  DonDatHang AS b JOIN KhachHang AS c ON b.makhach = c.makhach JOIN NhanVien AS a ON b.manhanvien = a.manhanvien WHERE b.makhach =N'" + cbomakhach.Text + "' AND b.manhanvien = N'" + cbomanhanvien.Text + "'";
             //              Rows[0][0]     Rows[0][1]  Rows[0][2] Rows[0][3]  Rows[0][4]  Rows[0][5]     Rows[0][6]
             tblThongtinHD = Functions.GetDataToTable(sql);
             exRange.Range["B6:C9"].Font.Size = 12;
@@ -172,13 +172,13 @@ namespace Ajuma.Forms
 
             exRange.Range["B7:B7"].Value = "Mã khách hàng:";
             exRange.Range["C7:E7"].MergeCells = true;
-            exRange.Range["C7:E7"].Value = tblThongtinHD.Rows[0][1].ToString(); //makhachhang
+            exRange.Range["C7:E7"].Value = tblThongtinHD.Rows[0][1].ToString(); //makhach
 
             exRange.Range["B8:B8"].Value = "Địa chỉ:";
             exRange.Range["C8:E8"].MergeCells = true;
             exRange.Range["C8:E8"].Value = tblThongtinHD.Rows[0][2].ToString(); //diachikhachhang
             //thông tin chi tiết hóa đơn bán
-            sql = "SELECT a. MaHoaDonBan, a.MaSanPham, a.SoLuong, b.GiaBan, a.KhuyenMai, a.ThanhTien FROM tblChiTietHoaDonBan AS a  JOIN tblSanPham AS b ON a.MaSanPham = b.MaSanPham JOIN tblHoaDonBan AS c ON a.MaHoaDonBan = c.MaHoaDonBan WHERE c.MaKhachHang = N'" + cbomakhachhang.Text + "' AND c.MaNhanVien = N'" + cbomanhanvien.Text + "'";
+            sql = "SELECT a. madondathang, a.masanpham, a.soluong, b.dongiaban, a.giamgia, a.thanhtien FROM ChiTietDonDatHang AS a  JOIN SanPham AS b ON a.masanpham = b.masanpham JOIN DonDatHang AS c ON a.madondathang = c.madondathang WHERE c.makhach = N'" + cbomakhach.Text + "' AND c.manhanvien = N'" + cbomanhanvien.Text + "'";
             //             Rows[0][0]  Rows[0][1] Rows[0][2] Rows[0][3]   Rows[0][4] Rows[0][5] ~~ na ná trong dòng đầu của datagridview
             //             Rows[1][0]  Rows[1][1] Rows[1][2] Rows[1][3]   Rows[1][4] Rows[0][5] ~~ na ná trong dòng t2 của datagridview
             //             Rows[...][...]  Rows[...][...] Rows[...][...] Rows[...][...]   Rows[...][...]
@@ -237,9 +237,9 @@ namespace Ajuma.Forms
             string mahd;
             if (MessageBox.Show("Bạn có muốn hiển thị thông tin chi tiết?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                mahd = DataGridView.CurrentRow.Cells["MaHoaDonBan"].Value.ToString();
+                mahd = DataGridView.CurrentRow.Cells["madondathang"].Value.ToString();
                 FrmHoaDonBan frm = new FrmHoaDonBan();
-                frm.txtmahoadonban.Text = mahd;
+                frm.txtmadondathang.Text = mahd;
                 frm.StartPosition = FormStartPosition.CenterScreen;
                 frm.ShowDialog();
             }

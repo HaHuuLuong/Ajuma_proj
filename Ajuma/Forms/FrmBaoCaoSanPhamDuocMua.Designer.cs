@@ -38,7 +38,7 @@
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbomanhanvien = new System.Windows.Forms.ComboBox();
-            this.cbomakhachhang = new System.Windows.Forms.ComboBox();
+            this.cbomakhach = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -145,7 +145,7 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Lime;
             this.groupBox1.Controls.Add(this.cbomanhanvien);
-            this.groupBox1.Controls.Add(this.cbomakhachhang);
+            this.groupBox1.Controls.Add(this.cbomakhach);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(284, 155);
@@ -166,14 +166,14 @@
             this.cbomanhanvien.Size = new System.Drawing.Size(136, 28);
             this.cbomanhanvien.TabIndex = 6;
             // 
-            // cbomakhachhang
+            // cbomakhach
             // 
-            this.cbomakhachhang.FormattingEnabled = true;
-            this.cbomakhachhang.Location = new System.Drawing.Point(166, 60);
-            this.cbomakhachhang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbomakhachhang.Name = "cbomakhachhang";
-            this.cbomakhachhang.Size = new System.Drawing.Size(136, 28);
-            this.cbomakhachhang.TabIndex = 5;
+            this.cbomakhach.FormattingEnabled = true;
+            this.cbomakhach.Location = new System.Drawing.Point(166, 60);
+            this.cbomakhach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbomakhach.Name = "cbomakhach";
+            this.cbomakhach.Size = new System.Drawing.Size(136, 28);
+            this.cbomakhach.TabIndex = 5;
             // 
             // label2
             // 
@@ -243,7 +243,7 @@
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbomanhanvien;
-        private System.Windows.Forms.ComboBox cbomakhachhang;
+        private System.Windows.Forms.ComboBox cbomakhach;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;

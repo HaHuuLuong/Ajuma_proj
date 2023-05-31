@@ -49,7 +49,7 @@ namespace Ajuma.Forms
 
         private void buttonbatdau_Click(object sender, EventArgs e)
         {
-            Class.Functions.FillCombo("SELECT MaNhanVien FROM tblNhanVien", comboBoxmanhanvien, "MaNhanVien", "MaNhanVien");
+            Class.Functions.FillCombo("SELECT manhanvien FROM NhanVien", comboBoxmanhanvien, "manhanvien", "manhanvien");
             comboBoxmanhanvien.SelectedIndex = -1;
             comboBoxmanhanvien.Enabled = true;
             textBoxthang.Enabled = true;
@@ -76,7 +76,7 @@ namespace Ajuma.Forms
         private void buttonhienthij_Click(object sender, EventArgs e)
         {
             string sql;
-            sql = "SELECT a.MaNhanVien, a.TenNhanVien, b.MaHoaDonBan, b.NgayBan, b.TongTien FROM tblNhanVien AS a JOIN tblHoaDonBan AS b ON a.MaNhanVien = b.MaNhanVien WHERE a.MaNhanVien = N'" + comboBoxmanhanvien.Text + "' AND month(b.NgayBan) = N'" + textBoxthang.Text + "'";
+            sql = "SELECT a.manhanvien, a.tennhanvien, b.madondathang, b.ngaydathang, b.tongtien FROM NhanVien AS a JOIN DonDatHang AS b ON a.manhanvien = b.manhanvien WHERE a.manhanvien = N'" + comboBoxmanhanvien.Text + "' AND month(b.ngaydathang) = N'" + textBoxthang.Text + "'";
             tblbcdt = Class.Functions.GetDataToTable(sql);
             dtgvbcdt.DataSource = tblbcdt;
             if (comboBoxmanhanvien.Text == "")
@@ -105,7 +105,7 @@ namespace Ajuma.Forms
             {
                 MessageBox.Show("Có " + tblbcdt.Rows.Count + " bản ghi thỏa mãn điều kiện!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Load_DataGridView();
-                sql = "SELECT sum(TongTien) FROM tblHoaDonBan WHERE MaNhanVien = N'" + comboBoxmanhanvien.Text + "' AND month(NgayBan) = N'" + textBoxthang.Text + "'";
+                sql = "SELECT sum(tongtien) FROM DonDatHang WHERE manhanvien = N'" + comboBoxmanhanvien.Text + "' AND month(ngaydathang) = N'" + textBoxthang.Text + "'";
                 string s = Class.Functions.GetFieldValues(sql);
                 textBoxdoanhthu.Text = s;
                 labelbangchu.Text = "Bằng chữ: " + Class.Functions.ChuyenSoSangChu(s);
@@ -139,7 +139,7 @@ namespace Ajuma.Forms
             exRange.Range["B1:B1"].ColumnWidth = 30;
             exRange.Range["A1:B1"].MergeCells = true;
             exRange.Range["A1:B1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A1:B1"].Value = "Cửa hàng bán đồ da MIS";
+            exRange.Range["A1:B1"].Value = "Shop AJUMA";
 
             exRange.Range["A2:B2"].MergeCells = true;
             exRange.Range["A2:B2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
@@ -147,7 +147,7 @@ namespace Ajuma.Forms
 
             exRange.Range["A3:B3"].MergeCells = true;
             exRange.Range["A3:B3"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A3:B3"].Value = "Điện thoại: (08)9999-9999";
+            exRange.Range["A3:B3"].Value = "Điện thoại: (08)349230429";
 
             exRange.Range["C6:F6"].Font.Size = 18;
             exRange.Range["C6:F6"].Font.Name = "Times new roman";
@@ -157,7 +157,7 @@ namespace Ajuma.Forms
             exRange.Range["C6:F6"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange.Range["C6:F6"].Value = "Bảng báo cáo doanh thu";
 
-            sql = "SELECT a.MaNhanVien, a.TenNhanVien, b.MaHoaDonBan, b.NgayBan, b.TongTien FROM tblNhanVien a JOIN tblHoaDonBan b ON a.MaNhanVien = b.MaNhanVien WHERE a.MaNhanVien = N'" + comboBoxmanhanvien.Text + "' and month(b.NgayBan) = '" + textBoxthang.Text + "'";
+            sql = "SELECT a.manhanvien, a.tennhanvien, b.madondathang, b.ngaydathang, b.tongtien FROM NhanVien a JOIN DonDatHang b ON a.manhanvien = b.manhanvien WHERE a.manhanvien = N'" + comboBoxmanhanvien.Text + "' and month(b.ngaydathang) = '" + textBoxthang.Text + "'";
 
             tblInbcdt = Class.Functions.GetDataToTable(sql);
             //Tạo dòng tiêu đề bảng
@@ -225,9 +225,9 @@ namespace Ajuma.Forms
             string mahd;
             if (MessageBox.Show("Bạn có muốn hiển thị thông tin chi tiết?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                mahd = dtgvbcdt.CurrentRow.Cells["MaHoaDonBan"].Value.ToString();
+                mahd = dtgvbcdt.CurrentRow.Cells["madondathang"].Value.ToString();
                 FrmHoaDonBan frm = new FrmHoaDonBan();
-                frm.txtmahoadonban.Text = mahd;
+                frm.txtmadondathang.Text = mahd;
                 frm.StartPosition = FormStartPosition.CenterScreen;
                 frm.ShowDialog();
             }

@@ -44,7 +44,7 @@
             this.textBoxgiaban = new System.Windows.Forms.TextBox();
             this.textBoxsoluong = new System.Windows.Forms.TextBox();
             this.textBoxtensp = new System.Windows.Forms.TextBox();
-            this.txtMasanpham = new System.Windows.Forms.TextBox();
+            this.txtmasanpham = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -248,13 +248,13 @@
             this.textBoxtensp.Size = new System.Drawing.Size(102, 22);
             this.textBoxtensp.TabIndex = 41;
             // 
-            // txtMasanpham
+            // txtmasanpham
             // 
-            this.txtMasanpham.Location = new System.Drawing.Point(131, 46);
-            this.txtMasanpham.Margin = new System.Windows.Forms.Padding(2);
-            this.txtMasanpham.Name = "txtMasanpham";
-            this.txtMasanpham.Size = new System.Drawing.Size(102, 22);
-            this.txtMasanpham.TabIndex = 40;
+            this.txtmasanpham.Location = new System.Drawing.Point(131, 46);
+            this.txtmasanpham.Margin = new System.Windows.Forms.Padding(2);
+            this.txtmasanpham.Name = "txtmasanpham";
+            this.txtmasanpham.Size = new System.Drawing.Size(102, 22);
+            this.txtmasanpham.TabIndex = 40;
             // 
             // label10
             // 
@@ -389,7 +389,7 @@
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.comboBoxmaloai);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.txtMasanpham);
+            this.panel1.Controls.Add(this.txtmasanpham);
             this.panel1.Controls.Add(this.comboBoxmancc);
             this.panel1.Controls.Add(this.textBoxsoluong);
             this.panel1.Controls.Add(this.comboBoxmaalbum);
@@ -551,7 +551,7 @@
         private System.Windows.Forms.TextBox textBoxgiaban;
         private System.Windows.Forms.TextBox textBoxsoluong;
         private System.Windows.Forms.TextBox textBoxtensp;
-        public System.Windows.Forms.TextBox txtMasanpham;
+        public System.Windows.Forms.TextBox txtmasanpham;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;

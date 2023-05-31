@@ -25,8 +25,8 @@ namespace Ajuma.Forms
 
         private void ResetValues()
         {
-            txtmahoadonban.Text = "";
-            txtngayban.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtmadondathang.Text = "";
+            txtngaydathang.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtsoluong.Text = "";
             txtkhuyenmai.Text = "0";
             txtthanhtien.Text = "0";
@@ -34,7 +34,7 @@ namespace Ajuma.Forms
             txttensanpham.Text = "";
             txtgiaban.Text = "";
             cbomanhanvien.Text = "";
-            cbomakhachhang.Text = "";
+            cbomakhach.Text = "";
             txttongtien.Text = "0";
             lblbangchu.Text = "Bằng chữ: ";
             cbomasanpham.Text = "";
@@ -90,7 +90,7 @@ namespace Ajuma.Forms
             btnthemmoi.Enabled = true;
             btnluu.Enabled = false;
             btnhuy.Enabled = false;
-            txtmahoadonban.ReadOnly = true;
+            txtmadondathang.ReadOnly = true;
             txttennhanvien.ReadOnly = true;
             txtdiachikhachhang.ReadOnly = true;
             txttensanpham.ReadOnly = true;
@@ -99,15 +99,15 @@ namespace Ajuma.Forms
             txttongtien.ReadOnly = true;
             txtkhuyenmai.Text = "0";
             txttongtien.Text = "0";
-            Functions.FillCombo("SELECT makhach FROM KhachHang", cbomakhachhang, "makhach", "makhach");
-            cbomakhachhang.SelectedIndex = -1;
+            Functions.FillCombo("SELECT makhach FROM KhachHang", cbomakhach, "makhach", "makhach");
+            cbomakhach.SelectedIndex = -1;
             Functions.FillCombo("SELECT manhanvien FROM NhanVien", cbomanhanvien, "manhanvien", "manhanvien");
             cbomanhanvien.SelectedIndex = -1;
             Functions.FillCombo("SELECT masanpham FROM SanPham", cbomasanpham, "masanpham", "masanpham");
             cbomasanpham.SelectedIndex = -1;
-            Functions.FillCombo("SELECT madondathang FROM ChiTietDonDatHang", cbomahoadonban, "madondathang", "madondathang");
-            cbomahoadonban.SelectedIndex = -1;
-            if (txtmahoadonban.Text != "")
+            Functions.FillCombo("SELECT madondathang FROM DonDatHang", cbomadondathang, "madondathang", "madondathang");
+            cbomadondathang.SelectedIndex = -1;
+            if (txtmadondathang.Text != "")
             {
                 ThongtinHD();
                 btnhuy.Enabled = true;
@@ -123,7 +123,7 @@ namespace Ajuma.Forms
         private void Load_DataGridViewChitiet()
         {
             string sql;
-            sql = "SELECT b.masanpham, b.tensanpham, a.soluong, b.dongiaban, a.giamgia, a.thanhtien FROM ChiTietDonDatHang AS a JOIN SanPham AS b ON a.masanpham=b.masanpham WHERE a.madondathang = N'" + txtmahoadonban.Text + "'";
+            sql = "SELECT a.masanpham, b.tensanpham, a.soluong, b.dongiaban, a.giamgia, a.thanhtien FROM ChiTietDonDatHang AS a JOIN SanPham AS b ON a.masanpham=b.masanpham WHERE a.madondathang = N'" + txtmadondathang.Text + "'";
             tblHDB = Functions.GetDataToTable(sql);
             DataGridView.DataSource = tblHDB;
             DataGridView.Columns[0].HeaderText = "Mã sản phẩm";
@@ -144,15 +144,15 @@ namespace Ajuma.Forms
         private void ThongtinHD()
         {
             string str;
-            str = "SELECT ngaydathang FROM DonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'";
-            txtngayban.Text = Functions.GetFieldValues(str);
-            str = "SELECT manhanvien FROM DonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'";
+            str = "SELECT ngaydathang FROM DonDatHang WHERE madondathang = N'" + txtmadondathang.Text + "'";
+            txtngaydathang.Text = Functions.GetFieldValues(str);
+            str = "SELECT manhanvien FROM DonDatHang WHERE madondathang = N'" + txtmadondathang.Text + "'";
             cbomanhanvien.Text = Functions.GetFieldValues(str);
 
-            str = "SELECT makhach FROM DonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'";
-            cbomakhachhang.Text = Functions.GetFieldValues(str);
+            str = "SELECT makhach FROM DonDatHang WHERE madondathang = N'" + txtmadondathang.Text + "'";
+            cbomakhach.Text = Functions.GetFieldValues(str);
 
-            str = "SELECT tongtien FROM DonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'";
+            str = "SELECT tongtien FROM DonDatHang WHERE madondathang = N'" + txtmadondathang.Text + "'";
             txttongtien.Text = Functions.GetFieldValues(str);
 
 
@@ -167,9 +167,9 @@ namespace Ajuma.Forms
             btnluu.Enabled = true;
             btnthemmoi.Enabled = false;
             cbomasanpham.Enabled = true;
-            cbomakhachhang.Enabled = true;
+            cbomakhach.Enabled = true;
             ResetValues();
-            txtmahoadonban.Text = Functions.CreateKey("HDB");
+            txtmadondathang.Text = Functions.CreateKey("HDB");
             Load_DataGridViewChitiet();
         }
 
@@ -177,15 +177,15 @@ namespace Ajuma.Forms
         {
             string sql;
             double sl, SLcon, tong, Tongmoi;
-            sql = "SELECT madondathang FROM DonDatHang WHERE madondathang=N'" + txtmahoadonban.Text + "'";
+            sql = "SELECT madondathang FROM DonDatHang WHERE madondathang=N'" + txtmadondathang.Text + "'";
             if (!Functions.CheckKey(sql))
             {
                 // Mã hóa đơn chưa có, tiến hành lưu các thông tin chung
                 // Mã HDBan được sinh tự động do đó không có trường hợp trùng khóa
-                if (txtngayban.Text.Length == 0)
+                if (txtngaydathang.Text.Length == 0)
                 {
                     MessageBox.Show("Bạn phải nhập ngày bán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtngayban.Focus();
+                    txtngaydathang.Focus();
                     return;
                 }
                 if (cbomanhanvien.Text.Length == 0)
@@ -194,16 +194,16 @@ namespace Ajuma.Forms
                     cbomanhanvien.Focus();
                     return;
                 }
-                if (cbomakhachhang.Text.Length == 0)
+                if (cbomakhach.Text.Length == 0)
                 {
                     MessageBox.Show("Bạn phải nhập khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    cbomakhachhang.Focus();
+                    cbomakhach.Focus();
                     return;
                 }
                 sql = "INSERT INTO DonDatHang(madondathang, ngaydathang, manhanvien, makhach, tongtien) " +
-                    "VALUES(N'" + txtmahoadonban.Text.Trim() + "', '" +
-                        Functions.ConvertDateTime(txtngayban.Text.Trim()) + "',N'" + cbomanhanvien.SelectedValue + "',N'" +
-                        cbomakhachhang.SelectedValue + "'," + txttongtien.Text + ")";
+                    "VALUES(N'" + txtmadondathang.Text.Trim() + "', '" +
+                        Functions.ConvertDateTime(txtngaydathang.Text.Trim()) + "',N'" + cbomanhanvien.SelectedValue + "',N'" +
+                        cbomakhach.SelectedValue + "'," + txttongtien.Text + ")";
                 Functions.RunSql(sql);
             }
 
@@ -227,7 +227,7 @@ namespace Ajuma.Forms
                 txtkhuyenmai.Focus();
                 return;
             }
-            sql = "SELECT masanpham FROM ChiTietDonDatHang WHERE masanpham=N'" + cbomasanpham.SelectedValue + "' AND madondathang = N'" + txtmahoadonban.Text.Trim() + "'";
+            sql = "SELECT masanpham FROM ChiTietDonDatHang WHERE masanpham=N'" + cbomasanpham.SelectedValue + "' AND madondathang = N'" + txtmadondathang.Text.Trim() + "'";
             if (Functions.CheckKey(sql))
             {
                 MessageBox.Show("Mã hàng này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -244,20 +244,20 @@ namespace Ajuma.Forms
                 txtsoluong.Focus();
                 return;
             }
-            sql = "INSERT INTO ChiTietDonDatHang(madondathang,masanpham, soluong, giamgia, thanhtien) VALUES(N'" + txtmahoadonban.Text.Trim() + "', N'" + cbomasanpham.SelectedValue + "'," + txtsoluong.Text + "," + txtkhuyenmai.Text + "," + txtthanhtien.Text + ")";
+            sql = "INSERT INTO ChiTietDonDatHang(madondathang,masanpham, soluong, giamgia, thanhtien) VALUES(N'" + txtmadondathang.Text.Trim() + "', N'" + cbomasanpham.SelectedValue + "'," + txtsoluong.Text + "," + txtkhuyenmai.Text + "," + txtthanhtien.Text + ")";
 
             Functions.RunSql(sql);
             Load_DataGridViewChitiet();
-            // Cập nhật lại số lượng của mặt hàng vào bảng tblsanpham
+            // Cập nhật lại số lượng của mặt hàng vào bảng SanPham
             SLcon = sl - Convert.ToDouble(txtsoluong.Text);
             sql = "UPDATE SanPham SET soluongkho =" + SLcon + " WHERE masanpham= N'" + cbomasanpham.SelectedValue + "'";
             Functions.RunSql(sql);
             // Cập nhật lại tổng tiền cho hóa đơn bán
             /*decimal oldAmount;
             bool succes = Decimal.TryParse(txtthanhtien.Text, NumberStyles.Any, info, out oldAmount);*/
-            tong = Convert.ToDouble(Functions.GetFieldValues("SELECT tongtien FROM DonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'"));
+            tong = Convert.ToDouble(Functions.GetFieldValues("SELECT tongtien FROM DonDatHang WHERE madondathang = N'" + txtmadondathang.Text + "'"));
             Tongmoi = tong + Convert.ToDouble(txtthanhtien.Text);
-            sql = "UPDATE DonDatHang SET tongtien =" + Tongmoi + " WHERE madondathang = N'" + txtmahoadonban.Text + "'";
+            sql = "UPDATE DonDatHang SET tongtien =" + Tongmoi + " WHERE madondathang = N'" + txtmadondathang.Text + "'";
             Functions.RunSql(sql);
             txttongtien.Text = Tongmoi.ToString();
             lblbangchu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChu(Tongmoi.ToString());
@@ -275,8 +275,8 @@ namespace Ajuma.Forms
             btnhuy.Enabled = true;
             btnsua.Enabled = true;
             btnluu.Enabled = true;
-            txtmahoadonban.Enabled = false;
-            txtngayban.Text = "";
+            txtmadondathang.Enabled = false;
+            txtngaydathang.Text = "";
             DataGridView.DataSource = null;
         }
 
@@ -288,7 +288,7 @@ namespace Ajuma.Forms
                 string sql;
                 int n = 0;
                 int i;
-                sql = "SELECT masanpham FROM ChiTietDonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'";
+                sql = "SELECT masanpham FROM ChiTietDonDatHang WHERE madondathang = N'" + txtmadondathang.Text + "'";
                 SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -299,16 +299,16 @@ namespace Ajuma.Forms
                 reader.Close();
                 //Xóa danh sách các mặt hàng của hóa đơn
                 for (i = 0; i <= n - 1; i++)
-                    DelHang(txtmahoadonban.Text, Mahang[i]);
+                    DelHang(txtmadondathang.Text, Mahang[i]);
                 //Xóa hóa đơn
-                sql = "DELETE DonDatHang WHERE madondathang =N'" + txtmahoadonban.Text + "'";
+                sql = "DELETE DonDatHang WHERE madondathang =N'" + txtmadondathang.Text + "'";
                 Functions.RunSqlDel(sql);
                 ResetValues();
                 Load_DataGridViewChitiet();
                 btnhuy.Enabled = false;
                 txttensanpham.Text = "";
                 txttennhanvien.Text = "";
-                txtngayban.Text = "";
+                txtngaydathang.Text = "";
                 txtgiaban.Text = "";
                 txtdiachikhachhang.Text = "";
 
@@ -322,7 +322,7 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không có dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (txtmahoadonban.Text == "")
+            if (txtmadondathang.Text == "")
             {
                 MessageBox.Show("Bạn chưa chọn bảng ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -338,15 +338,15 @@ namespace Ajuma.Forms
                 return;
             }
             string sql;
-            sql = "UPDATE DonDatHang SET ngaydathang = N'" + Functions.ConvertDateTime(txtngayban.Text) + "', manhanvien = N'" + cbomanhanvien.SelectedValue.ToString() + "' WHERE madondathang = N'" + txtmahoadonban.Text + "'";
+            sql = "UPDATE DonDatHang SET ngaydathang = N'" + Functions.ConvertDateTime(txtngaydathang.Text) + "', manhanvien = N'" + cbomanhanvien.SelectedValue.ToString() + "' WHERE madondathang = N'" + txtmadondathang.Text + "'";
             Functions.RunSql(sql);
             double sl;
             sl = Convert.ToDouble(Functions.GetFieldValues("SELECT soluongkho FROM SanPham WHERE masanpham = N'" + cbomasanpham.Text + "'"));
-            // MessageBox.Show(Functions.GetFieldValues("SELECT soluong FROM tblsanpham WHERE masanpham = N'" + cbomasanpham.Text + "'"));
-            //xử lý lại tổng số sản phẩm (tính cả hàng có trong tblsanpham vs tblchitiethoadonban) vì sửa nên phải cộng số lượng lại để ra số lượng ban đầu
+            // MessageBox.Show(Functions.GetFieldValues("SELECT soluong FROM SanPham WHERE masanpham = N'" + cbomasanpham.Text + "'"));
+            //xử lý lại tổng số sản phẩm (tính cả hàng có trong SanPham vs ChiTietDonDatHang) vì sửa nên phải cộng số lượng lại để ra số lượng ban đầu
             double sl1, sl2;
-            sl1 = Convert.ToDouble(Functions.GetFieldValues("SELECT soluong FROM ChiTietDonDatHang WHERE masanpham = N'" + cbomasanpham.Text + "'AND madondathang = N'" + txtmahoadonban.Text + "'"));
-            //  MessageBox.Show(Functions.GetFieldValues("SELECT soluong FROM tblchitiethoadonban WHERE masanpham = N'" + cbomasanpham.Text + "'AND mahoadonban = N'" + txtmahoadonban.Text + "'"));
+            sl1 = Convert.ToDouble(Functions.GetFieldValues("SELECT soluong FROM ChiTietDonDatHang WHERE masanpham = N'" + cbomasanpham.Text + "'AND madondathang = N'" + txtmadondathang.Text + "'"));
+            //  MessageBox.Show(Functions.GetFieldValues("SELECT soluong FROM ChiTietDonDatHang WHERE masanpham = N'" + cbomasanpham.Text + "'AND madondathang = N'" + txtmadondathang.Text + "'"));
 
             sl2 = sl1 + sl;
 
@@ -363,20 +363,20 @@ namespace Ajuma.Forms
             slmoi = Convert.ToDouble(txtsoluong.Text);
             SLcon = sl2 - slmoi;
 
-            sql = "UPDATE ChiTietDonDatHang SET masanpham = N'" + cbomasanpham.Text + "', soluong = " + Convert.ToSingle(txtsoluong.Text) + ", giamgia = " + Convert.ToSingle(txtkhuyenmai.Text) + ", thanhtien = " + Convert.ToSingle(txtthanhtien.Text) + " WHERE masanpham = N'" + cbomasanpham.Text + "'AND madondathang = N'" + txtmahoadonban.Text + "'";
+            sql = "UPDATE ChiTietDonDatHang SET masanpham = N'" + cbomasanpham.Text + "', soluong = " + Convert.ToSingle(txtsoluong.Text) + ", giamgia = " + Convert.ToSingle(txtkhuyenmai.Text) + ", thanhtien = " + Convert.ToSingle(txtthanhtien.Text) + " WHERE masanpham = N'" + cbomasanpham.Text + "'AND madondathang = N'" + txtmadondathang.Text + "'";
             Functions.RunSql(sql);
 
 
-            // Cập nhật lại số lượng của mặt hàng vào bảng tblsanpham
+            // Cập nhật lại số lượng của mặt hàng vào bảng SanPham
             sql = "UPDATE SanPham SET soluongkho =" + SLcon + " WHERE masanpham= N'" + cbomasanpham.Text + "'";
             //MessageBox.Show(SLcon.ToString());
             Functions.RunSql(sql);
             // Cập nhật lại tổng tiền cho hóa đơn bán            
             string thanhtien;
-            thanhtien = "SELECT SUM(thanhtien) FROM ChiTietDonDatHang WHERE madondathang = N'" + txtmahoadonban.Text + "'  GROUP BY madondathang";
+            thanhtien = "SELECT SUM(thanhtien) FROM ChiTietDonDatHang WHERE madondathang = N'" + txtmadondathang.Text + "'  GROUP BY madondathang";
             string tt;
             tt = Functions.GetFieldValues(thanhtien);
-            sql = "UPDATE DonDatHang SET tongtien =" + Convert.ToSingle(tt) + " WHERE madondathang = N'" + txtmahoadonban.Text + "'";
+            sql = "UPDATE DonDatHang SET tongtien =" + Convert.ToSingle(tt) + " WHERE madondathang = N'" + txtmadondathang.Text + "'";
             Functions.RunSql(sql);
             txttongtien.Text = tt.ToString();
             //tt = Convert.ToDouble(txttongtien.Text);
@@ -406,11 +406,11 @@ namespace Ajuma.Forms
             if ((MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
             {
                 //Xóa hàng và cập nhật lại số lượng hàng 
-                mahang = DataGridView.CurrentRow.Cells["MaSanPham"].Value.ToString();
-                DelHang(txtmahoadonban.Text, mahang);
+                mahang = DataGridView.CurrentRow.Cells["masanpham"].Value.ToString();
+                DelHang(txtmadondathang.Text, mahang);
                 // Cập nhật lại tổng tiền cho hóa đơn bán
                 Thanhtien = Convert.ToDouble(DataGridView.CurrentRow.Cells["ThanhTien"].Value.ToString());
-                DelUpdateTongtien(txtmahoadonban.Text, Thanhtien);
+                DelUpdateTongtien(txtmadondathang.Text, Thanhtien);
                 Load_DataGridViewChitiet();
             }
         }
@@ -422,29 +422,29 @@ namespace Ajuma.Forms
 
         private void btntimkiem_Click(object sender, EventArgs e)
         {
-            if (cbomahoadonban.Text == "")
+            if (cbomadondathang.Text == "")
             {
                 MessageBox.Show("Bạn phải chọn một mã hóa đơn để tìm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cbomahoadonban.Focus();
+                cbomadondathang.Focus();
                 return;
             }
-            txtmahoadonban.Text = cbomahoadonban.Text;
+            txtmadondathang.Text = cbomadondathang.Text;
             ThongtinHD();
             Load_DataGridViewChitiet();
             btnhuy.Enabled = true;
             btnluu.Enabled = true;
-            cbomahoadonban.SelectedIndex = -1;
+            cbomadondathang.SelectedIndex = -1;
         }
 
         private void DataGridView_Click(object sender, EventArgs e)
         {
-            cbomakhachhang.Enabled = false;
+            cbomakhach.Enabled = false;
             groupThongtinchung.Enabled = false;
             cbomasanpham.Enabled = false;
             if (btnthemmoi.Enabled == false)
             {
                 MessageBox.Show("Đang ở chế độ thêm mới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtmahoadonban.Focus();
+                txtmadondathang.Focus();
                 return;
             }
             if (tblHDB.Rows.Count == 0)
@@ -472,16 +472,16 @@ namespace Ajuma.Forms
             txttennhanvien.Text = Functions.GetFieldValues(str);
         }
 
-        private void cbomakhachhang_TextChanged(object sender, EventArgs e)
+        private void cbomakhach_TextChanged(object sender, EventArgs e)
         {
             string str;
-            if (cbomakhachhang.Text == "")
+            if (cbomakhach.Text == "")
             {
                 txtdiachikhachhang.Text = "";
             }
             //Khi kich chon Ma khach thi  dia chi se tu dong hien ra
 
-            str = "Select diachichitiet from KhachHang where makhach = N'" + cbomakhachhang.SelectedValue + "'";
+            str = "Select diachichitiet from KhachHang where makhach = N'" + cbomakhach.SelectedValue + "'";
             txtdiachikhachhang.Text = Functions.GetFieldValues(str);
         }
 
@@ -540,10 +540,10 @@ namespace Ajuma.Forms
             txtthanhtien.Text = tt.ToString();
         }
 
-        private void cbomahoadonban_DropDown(object sender, EventArgs e)
+        private void cbomadondathang_DropDown(object sender, EventArgs e)
         {
-            Functions.FillCombo("SELECT madondathang FROM DonDatHang", cbomahoadonban, "madondathang", "madondathang");
-            cbomahoadonban.SelectedIndex = -1;
+            Functions.FillCombo("SELECT madondathang FROM DonDatHang", cbomadondathang, "madondathang", "madondathang");
+            cbomadondathang.SelectedIndex = -1;
         }
 
         private void txtsoluong_KeyPress(object sender, KeyPressEventArgs e)
@@ -592,7 +592,7 @@ namespace Ajuma.Forms
             exRange.Range["B1:B1"].ColumnWidth = 15;
             exRange.Range["A1:B1"].MergeCells = true;
             exRange.Range["A1:B1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A1:B1"].Value = "Shop We Run";
+            exRange.Range["A1:B1"].Value = "Shop AJUMA";
 
             exRange.Range["A2:B2"].MergeCells = true;
             exRange.Range["A2:B2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
@@ -611,7 +611,7 @@ namespace Ajuma.Forms
             exRange.Range["C2:E2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange.Range["C2:E2"].Value = "HÓA ĐƠN BÁN";
             // Biểu diễn thông tin chung của hóa đơn bán
-            sql = "SELECT a.madondathang, a.ngaydathang, a.tongtien, b.tenkhach, b.diachichitiet, b.sdt, c.tennhanvien FROM DonDatHang AS a, KhachHang AS b, NhanVien AS c WHERE a.madondathang = N'" + txtmahoadonban.Text + "' AND a.makhach = b.makhach AND a.manhanvien = c.manhanvien";
+            sql = "SELECT a.madondathang, a.ngaydathang, a.tongtien, b.tenkhach, b.diachichitiet, b.sdt, c.tennhanvien FROM DonDatHang AS a, KhachHang AS b, NhanVien AS c WHERE a.madondathang = N'" + txtmadondathang.Text + "' AND a.makhach = b.makhach AND a.manhanvien = c.manhanvien";
             tblThongtinHD = Functions.GetDataToTable(sql);
             exRange.Range["B6:C9"].Font.Size = 12;
             exRange.Range["B6:C9"].Font.Name = "Times new roman";
@@ -630,7 +630,7 @@ namespace Ajuma.Forms
             //Lấy thông tin các mặt hàng
             sql = "SELECT b.tensanpham, a.soluong, b.dongiaban, a.giamgia, a.thanhtien " +
                   "FROM ChiTietDonDatHang AS a , SanPham AS b WHERE a.madondathang = N'" +
-                  txtmahoadonban.Text + "' AND a.masanpham = b.masanpham";
+                  txtmadondathang.Text + "' AND a.masanpham = b.masanpham";
             tblThongtinHang = Functions.GetDataToTable(sql);
             //Tạo dòng tiêu đề bảng
             exRange.Range["A11:F11"].Font.Bold = true;
@@ -682,7 +682,7 @@ namespace Ajuma.Forms
 
         }
 
-        private void txtngayban_TextChanged(object sender, EventArgs e)
+        private void txtngaydathang_TextChanged(object sender, EventArgs e)
         {
 
         }

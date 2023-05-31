@@ -23,9 +23,9 @@ namespace Ajuma.Forms
         {
             /*this.BackColor = Color.Red;
             this.TransparencyKey = Color.Red;*/
-            Functions.FillCombo("SELECT MaSanPham, TenSanPham FROM tblSanPham", cbomasanpham, "MaSanPham", "MaSanPham");
+            Functions.FillCombo("SELECT masanpham, tensanpham FROM SanPham", cbomasanpham, "masanpham", "masanpham");
             cbomasanpham.SelectedIndex = -1;
-            Functions.FillCombo("SELECT MaNhaCungCap, TenNhaCungCap FROM tblNhaCungCap", cbomanhacungcap, "MaNhaCungCap", "MaNhaCungCap");
+            Functions.FillCombo("SELECT manhacungcap, tennhacungcap FROM NhaCungCap", cbomanhacungcap, "manhacungcap", "manhacungcap");
             cbomanhacungcap.SelectedIndex = -1;
             btntimlai.Enabled = false;
             txtsoluong.ReadOnly = true;
@@ -56,9 +56,9 @@ namespace Ajuma.Forms
                 MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "Yeu cau ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            sql = "SELECT a.MaHoaDonNhap, a.MaSanPham, b.MaNhaCungCap," +
-                " b.NgayNhap, a.SoLuong, a.DonGia ,a.KhuyenMai, a.ThanhTien " +
-                "FROM tblChiTietHoaDonNhap AS a JOIN tblHoaDonNhap AS b ON a.MaHoaDonNhap = b.MaHoaDonNhap " +
+            sql = "SELECT a.madonnhaphang, a.masanpham, b.manhacungcap," +
+                " b.ngaydat, a.soluongdat, a.dongia ,a.khuyenmai, a.thanhtien " +
+                "FROM ChiTietDonNhapHang AS a JOIN DonNhapHang AS b ON a.madonnhaphang = b.madonnhaphang " +
                 "WHERE 1=1";
 
             
@@ -68,7 +68,7 @@ namespace Ajuma.Forms
                 sql = sql + "AND manhacungcap Like N'%" + cbomanhacungcap.Text + "%'";
             if (txtngaynhap.Text != "")
             {
-                sql = sql + "AND ngaynhap = N'" + Functions.ConvertDateTime(txtngaynhap.Text) + "'";
+                sql = sql + "AND ngaydat = N'" + Functions.ConvertDateTime(txtngaynhap.Text) + "'";
             }
 
             tblTimkiemHDN = Functions.GetDataToTable(sql);
@@ -123,7 +123,7 @@ namespace Ajuma.Forms
             /*string mahd;
             if (MessageBox.Show("Bạn có muốn hiển thị thông tin chi tiết?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                mahd = DataGridView.CurrentRow.Cells["mahoadonnhap"].Value.ToString();
+                mahd = DataGridView.CurrentRow.Cells["madonnhaphang"].Value.ToString();
                 //Forms.FrmHoaDonNhap frm = new frmhdnhap();
                 frm.txtmahdnhap.Text = mahd;
                 frm.StartPosition = FormStartPosition.CenterScreen;
@@ -144,13 +144,13 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không có dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            txtdongia.Text = DataGridView.CurrentRow.Cells["DonGia"].Value.ToString();
-            txtkhuyenmai.Text = DataGridView.CurrentRow.Cells["KhuyenMai"].Value.ToString();
-            txtsoluong.Text = DataGridView.CurrentRow.Cells["SoLuong"].Value.ToString();
+            txtdongia.Text = DataGridView.CurrentRow.Cells["dongia"].Value.ToString();
+            txtkhuyenmai.Text = DataGridView.CurrentRow.Cells["khuyenmai"].Value.ToString();
+            txtsoluong.Text = DataGridView.CurrentRow.Cells["soluongdat"].Value.ToString();
             txttongtien.Text = tongtien().ToString();
-            txtngaynhap.Text = DataGridView.CurrentRow.Cells["NgayNhap"].Value.ToString();
-            cbomasanpham.Text = DataGridView.CurrentRow.Cells["MaSanPham"].Value.ToString();
-            cbomanhacungcap.Text = DataGridView.CurrentRow.Cells["MaNhaCungCap"].Value.ToString();
+            txtngaynhap.Text = DataGridView.CurrentRow.Cells["ngaydat"].Value.ToString();
+            cbomasanpham.Text = DataGridView.CurrentRow.Cells["masanpham"].Value.ToString();
+            cbomanhacungcap.Text = DataGridView.CurrentRow.Cells["manhacungcap"].Value.ToString();
         }
 
         private void label4_Click(object sender, EventArgs e)

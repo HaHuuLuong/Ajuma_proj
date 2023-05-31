@@ -27,7 +27,7 @@ namespace Ajuma.Forms
             btntimlai.Enabled = false;
             btnin.Enabled = false;
 
-            Class.Functions.FillCombo("SELECT MaSanPham, TenSanPham FROM tblSanPham", cbomsanpham, "MaSanPham", "TenSanPham");
+            Class.Functions.FillCombo("SELECT masanpham, tensanpham FROM SanPham", cbomsanpham, "masanpham", "tensanpham");
             cbomsanpham.SelectedIndex = -1;
         }
 
@@ -95,10 +95,10 @@ namespace Ajuma.Forms
             if (rdobtn1.Checked == true)
             {
 
-                sql = " SELECT tblHoaDonBan.MaHoaDonBan,tblChiTietHoaDonBan.MaSanPham, SoLuong, ThanhTien,KhuyenMai,NgayBan,MaNhanVien,MaKhachHang" +
-                     " FROM  tblHoaDonBan  join tblChiTietHoaDonBan on tblHoaDonBan.MaHoaDonBan = tblChiTietHoaDonBan.MaHoaDonBan WHERE 1 = 1 AND ( (MONTH(tblHoaDonBan.NgayBan)=1 ) OR (MONTH(tblHoaDonBan.NgayBan)=2) OR (MONTH(tblHoaDonBan.NgayBan)=3 ) )  ";
+                sql = " SELECT DonDatHang.madondathang,ChiTietDonDatHang.masanpham, soluong, thanhtien,giamgia,ngaydathang,manhanvien,makhach" +
+                     " FROM  DonDatHang  join ChiTietDonDatHang on DonDatHang.madondathang = ChiTietDonDatHang.madondathang WHERE 1 = 1 AND ( (MONTH(DonDatHang.ngaydathang)=1 ) OR (MONTH(DonDatHang.ngaydathang)=2) OR (MONTH(DonDatHang.ngaydathang)=3 ) )  ";
                 if (cbomsanpham.Text != "")
-                    sql = sql + " AND tblChiTietHoaDonBan.MaSanPham = N'" + cbomsanpham.SelectedValue + "'";
+                    sql = sql + " AND ChiTietDonDatHang.masanpham = N'" + cbomsanpham.SelectedValue + "'";
 
 
                 tblBCHDB = Class.Functions.GetDataToTable(sql);
@@ -127,10 +127,10 @@ namespace Ajuma.Forms
             }
             if (rdobtn2.Checked == true)
             {
-                sql = "SELECT tblHoaDonBan.MaHoaDonBan,tblChiTietHoaDonBan.MaSanPham, SoLuong, ThanhTien,KhuyenMai,NgayBan,MaNhanVien,MaKhachHang" +
-                     " FROM  tblHoaDonBan  join tblChiTietHoaDonBan on tblHoaDonBan.MaHoaDonBan = tblChiTietHoaDonBan.MaHoaDonBan WHERE 1 = 1 AND ( (MONTH(tblHoaDonBan.NgayBan)=4 )OR (MONTH(tblHoaDonBan.NgayBan)=5) OR (MONTH(tblHoaDonBan.NgayBan)=6 ) )";
+                sql = "SELECT DonDatHang.madondathang,ChiTietDonDatHang.masanpham, soluong, thanhtien,giamgia,ngaydathang,manhanvien,makhach" +
+                     " FROM  DonDatHang  join ChiTietDonDatHang on DonDatHang.madondathang = ChiTietDonDatHang.madondathang WHERE 1 = 1 AND ( (MONTH(DonDatHang.ngaydathang)=4 )OR (MONTH(DonDatHang.ngaydathang)=5) OR (MONTH(DonDatHang.ngaydathang)=6 ) )";
                 if (cbomsanpham.Text != "")
-                    sql = sql + "AND tblChiTietHoaDonBan.MaSanPham = N'" + cbomsanpham.SelectedValue + "'";
+                    sql = sql + "AND ChiTietDonDatHang.masanpham = N'" + cbomsanpham.SelectedValue + "'";
 
                 tblBCHDB = Class.Functions.GetDataToTable(sql);
 
@@ -158,10 +158,10 @@ namespace Ajuma.Forms
             if (rdobtn3.Checked == true)
             {
 
-                sql = "SELECT tblHoaDonBan.MaHoaDonBan,tblChiTietHoaDonBan.MaSanPham, SoLuong, ThanhTien,KhuyenMai,NgayBan,MaNhanVien,MaKhachHang" +
-                     " FROM  tblHoaDonBan  join tblChiTietHoaDonBan on tblHoaDonBan.MaHoaDonBan = tblChiTietHoaDonBan.MaHoaDonBan WHERE 1 = 1 AND( (MONTH(tblHoaDonBan.NgayBan)=7 )OR (MONTH(tblHoaDonBan.NgayBan)=8) OR (MONTH(tblHoaDonBan.NgayBan)=9 ) ) ";
+                sql = "SELECT DonDatHang.madondathang,ChiTietDonDatHang.masanpham, soluong, thanhtien,giamgia,ngaydathang,manhanvien,makhach" +
+                     " FROM  DonDatHang  join ChiTietDonDatHang on DonDatHang.madondathang = ChiTietDonDatHang.madondathang WHERE 1 = 1 AND( (MONTH(DonDatHang.ngaydathang)=7 )OR (MONTH(DonDatHang.ngaydathang)=8) OR (MONTH(DonDatHang.ngaydathang)=9 ) ) ";
                 if (cbomsanpham.Text != "")
-                    sql = sql + "AND tblChiTietHoaDonBan.MaSanPham = N'" + cbomsanpham.SelectedValue + "'";
+                    sql = sql + "AND ChiTietDonDatHang.masanpham = N'" + cbomsanpham.SelectedValue + "'";
 
                 tblBCHDB = Class.Functions.GetDataToTable(sql);
 
@@ -190,10 +190,10 @@ namespace Ajuma.Forms
             if (rdobtn4.Checked == true)
             {
 
-                sql = "SELECT tblHoaDonBan.MaHoaDonBan,tblChiTietHoaDonBan.MaSanPham, SoLuong, ThanhTien,KhuyenMai,NgayBan,MaNhanVien,MaKhachHang" +
-                     " FROM  tblHoaDonBan  join tblChiTietHoaDonBan on tblHoaDonBan.MaHoaDonBan = tblChiTietHoaDonBan.MaHoaDonBan WHERE 1 = 1 AND ( (MONTH(tblHoaDonBan.Ngayban)=10 )OR (MONTH(tblHoaDonBan.Ngayban)=11) OR (MONTH(tblHoaDonBan.Ngayban)=12 ) ) ";
+                sql = "SELECT DonDatHang.madondathang,ChiTietDonDatHang.masanpham, soluong, thanhtien,giamgia,ngaydathang,manhanvien,makhach" +
+                     " FROM  DonDatHang  join ChiTietDonDatHang on DonDatHang.madondathang = ChiTietDonDatHang.madondathang WHERE 1 = 1 AND ( (MONTH(DonDatHang.ngaydathang)=10 )OR (MONTH(DonDatHang.ngaydathang)=11) OR (MONTH(DonDatHang.ngaydathang)=12 ) ) ";
                 if (cbomsanpham.Text != "")
-                    sql = sql + "AND tblChiTietHoaDonBan.MaSanPham = N'" + cbomsanpham.SelectedValue + "'";
+                    sql = sql + "AND ChiTietDonDatHang.masanpham = N'" + cbomsanpham.SelectedValue + "'";
 
                 tblBCHDB = Class.Functions.GetDataToTable(sql);
 
@@ -255,7 +255,7 @@ namespace Ajuma.Forms
             exRange.Range["B1:B1"].ColumnWidth = 15;
             exRange.Range["A1:B1"].MergeCells = true;
             exRange.Range["A1:B1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A1:B1"].Value = "Cửa hàng giày thể thao We Run";
+            exRange.Range["A1:B1"].Value = "Shop AJUMA";
 
             exRange.Range["A2:B2"].MergeCells = true;
             exRange.Range["A2:B2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
@@ -291,11 +291,11 @@ namespace Ajuma.Forms
 
                 exRange.Range["C7:D7"].Value = " Quý 1";
 
-                sql = "SELECT tblHoaDonBan.MaHoaDonBan,tblChiTietHoaDonBan.MaSanPham, " +
-                    "SoLuong, ThanhTien,KhuyenMai,NgayBan,MaNhanVien,MaKhachHang" +
-                    " FROM  tblHoaDonBan  join tblChiTietHoaDonBan on tblHoaDonBan.MaHoaDonBan = tblChiTietHoaDonBan.MaHoaDonBan WHERE 1 = 1 AND ((MONTH(tblHoaDonBan.NgayBan)=1 )OR (MONTH(tblHoaDonBan.NgayBan)=2) OR (MONTH(tblHoaDonBan.NgayBan)=3 ) )";
+                sql = "SELECT DonDatHang.madondathang,ChiTietDonDatHang.masanpham, " +
+                    "soluong, thanhtien,giamgia,ngaydathang,manhanvien,makhach" +
+                    " FROM  DonDatHang  join ChiTietDonDatHang on DonDatHang.madondathang = ChiTietDonDatHang.madondathang WHERE 1 = 1 AND ((MONTH(DonDatHang.ngaydathang)=1 )OR (MONTH(DonDatHang.ngaydathang)=2) OR (MONTH(DonDatHang.ngaydathang)=3 ) )";
                 if (cbomsanpham.Text != "")
-                    sql = sql + "AND tblChiTietHoaDonBan.MaSanPham = N'" + cbomsanpham.SelectedValue + "'";
+                    sql = sql + "AND ChiTietDonDatHang.masanpham = N'" + cbomsanpham.SelectedValue + "'";
                 tblThongtinHD = Class.Functions.GetDataToTable(sql);
                 exRange.Range["A11:J11"].Font.Bold = true;
                 exRange.Range["A11:J11"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
@@ -337,11 +337,11 @@ namespace Ajuma.Forms
             if (rdobtn2.Checked == true)
             {
                 exRange.Range["C7:D7"].Value = " Quý 2  ";
-                sql = "SELECT tblHoaDonBan.MaHoaDonBan,tblChiTietHoaDonBan.MaSanPham, " +
-                    "SoLuong, ThanhTien,KhuyenMai,NgayBan,MaNhanVien,MaKhachHang" +
-                    " FROM  tblHoaDonBan  join tblChiTietHoaDonBan on tblHoaDonBan.MaHoaDonBan = tblChiTietHoaDonBan.MaHoaDonBan WHERE 1 = 1 AND ((MONTH(tblHoaDonBan.NgayBan)=4 )OR (MONTH(tblHoaDonBan.NgayBan)=5) OR (MONTH(tblHoaDonBan.NgayBan)=6) )";
+                sql = "SELECT DonDatHang.madondathang,ChiTietDonDatHang.masanpham, " +
+                    "soluong, thanhtien,giamgia,ngaydathang,manhanvien,makhach" +
+                    " FROM  DonDatHang  join ChiTietDonDatHang on DonDatHang.madondathang = ChiTietDonDatHang.madondathang WHERE 1 = 1 AND ((MONTH(DonDatHang.ngaydathang)=4 )OR (MONTH(DonDatHang.ngaydathang)=5) OR (MONTH(DonDatHang.ngaydathang)=6) )";
                 if (cbomsanpham.Text != "")
-                    sql = sql + "AND tblChiTietHoaDonBan.MaSanPham = N'" + cbomsanpham.SelectedValue + "'";
+                    sql = sql + "AND ChiTietDonDatHang.masanpham = N'" + cbomsanpham.SelectedValue + "'";
                 tblThongtinHD = Class.Functions.GetDataToTable(sql);
                 exRange.Range["A11:J11"].Font.Bold = true;
                 exRange.Range["A11:J11"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
@@ -381,11 +381,11 @@ namespace Ajuma.Forms
             if (rdobtn3.Checked == true)
             {
                 exRange.Range["C7:D7"].Value = " Quý 3 ";
-                sql = "SELECT tblHoaDonBan.MaHoaDonBan,tblChiTietHoaDonBan.MaSanPham, " +
-                    "SoLuong, ThanhTien,KhuyenMai,NgayBan,MaNhanVien,MaKhachHang" +
-                    " FROM  tblHoaDonBan  join tblChiTietHoaDonBan on tblHoaDonBan.MaHoaDonBan = tblChiTietHoaDonBan.MaHoaDonBan WHERE 1 = 1 AND ((MONTH(tblHoaDonBan.NgayBan)=7 )OR (MONTH(tblHoaDonBan.NgayBan)=8 ) OR (MONTH(tblHoaDonBan.NgayBan)=9 ) )";
+                sql = "SELECT DonDatHang.madondathang,ChiTietDonDatHang.masanpham, " +
+                    "soluong, thanhtien,giamgia,ngaydathang,manhanvien,makhach" +
+                    " FROM  DonDatHang  join ChiTietDonDatHang on DonDatHang.madondathang = ChiTietDonDatHang.madondathang WHERE 1 = 1 AND ((MONTH(DonDatHang.ngaydathang)=7 )OR (MONTH(DonDatHang.ngaydathang)=8 ) OR (MONTH(DonDatHang.ngaydathang)=9 ) )";
                 if (cbomsanpham.Text != "")
-                    sql = sql + "AND tblChiTietHoaDonBan.MaSanPham = N'" + cbomsanpham.SelectedValue + "'";
+                    sql = sql + "AND ChiTietDonDatHang.masanpham = N'" + cbomsanpham.SelectedValue + "'";
                 tblThongtinHD = Class.Functions.GetDataToTable(sql);
                 exRange.Range["A11:J11"].Font.Bold = true;
                 exRange.Range["A11:J11"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
@@ -425,11 +425,11 @@ namespace Ajuma.Forms
             if (rdobtn4.Checked == true)
             {
                 exRange.Range["C7:D7"].Value = " Quý 4 Năm ";
-                sql = "SELECT tblHoaDonBan.MaHoaDonBan,tblChiTietHoaDonBan.MaSanPham, " +
-                    "SoLuong, ThanhTien,KhuyenMai,NgayBan,MaNhanVien,MaKhachHang" +
-                    " FROM  tblHoaDonBan  join tblChiTietHoaDonBan on tblHoaDonBan.MaHoaDonBan = tblChiTietHoaDonBan.MaHoaDonBan WHERE 1 = 1 AND ((MONTH(tblHoaDonBan.NgayBan)=10 )OR (MONTH(tblHoaDonBan.NgayBan)=11 ) OR (MONTH(tblHoaDonBan.NgayBan)=12 ) )";
+                sql = "SELECT DonDatHang.madondathang,ChiTietDonDatHang.masanpham, " +
+                    "soluong, thanhtien,giamgia,ngaydathang,manhanvien,makhach" +
+                    " FROM  DonDatHang  join ChiTietDonDatHang on DonDatHang.madondathang = ChiTietDonDatHang.madondathang WHERE 1 = 1 AND ((MONTH(DonDatHang.ngaydathang)=10 )OR (MONTH(DonDatHang.ngaydathang)=11 ) OR (MONTH(DonDatHang.ngaydathang)=12 ) )";
                 if (cbomsanpham.Text != "")
-                    sql = sql + "AND tblChiTietHoaDonBan.MaSanPham = N'" + cbomsanpham.SelectedValue + "'";
+                    sql = sql + "AND ChiTietDonDatHang.masanpham = N'" + cbomsanpham.SelectedValue + "'";
 
                 tblThongtinHD = Class.Functions.GetDataToTable(sql);
                 exRange.Range["A11:J11"].Font.Bold = true;

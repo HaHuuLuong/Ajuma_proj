@@ -32,7 +32,7 @@
             this.groupSp = new System.Windows.Forms.GroupBox();
             this.btnin = new System.Windows.Forms.Button();
             this.btntimkiem = new System.Windows.Forms.Button();
-            this.cbomahoadonban = new System.Windows.Forms.ComboBox();
+            this.cbomadondathang = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.btnboqua = new System.Windows.Forms.Button();
             this.btnsua = new System.Windows.Forms.Button();
@@ -44,6 +44,8 @@
             this.txttongtien = new System.Windows.Forms.TextBox();
             this.txtthanhtien = new System.Windows.Forms.TextBox();
             this.txtgiaban = new System.Windows.Forms.TextBox();
+            this.txtkhuyenmai = new System.Windows.Forms.TextBox();
+            this.txttensanpham = new System.Windows.Forms.TextBox();
             this.txtsoluong = new System.Windows.Forms.TextBox();
             this.cbomasanpham = new System.Windows.Forms.ComboBox();
             this.lblbangchu = new System.Windows.Forms.Label();
@@ -51,14 +53,16 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupThongtinchung = new System.Windows.Forms.GroupBox();
-            this.txtngayban = new System.Windows.Forms.TextBox();
+            this.txtngaydathang = new System.Windows.Forms.TextBox();
             this.txtdiachikhachhang = new System.Windows.Forms.TextBox();
             this.txttennhanvien = new System.Windows.Forms.TextBox();
-            this.txtmahoadonban = new System.Windows.Forms.TextBox();
-            this.cbomakhachhang = new System.Windows.Forms.ComboBox();
+            this.txtmadondathang = new System.Windows.Forms.TextBox();
+            this.cbomakhach = new System.Windows.Forms.ComboBox();
             this.cbomanhanvien = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -68,10 +72,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblText = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.txttensanpham = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtkhuyenmai = new System.Windows.Forms.TextBox();
             this.groupSp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.groupThongtinchung.SuspendLayout();
@@ -82,7 +82,7 @@
             this.groupSp.BackColor = System.Drawing.Color.LightSkyBlue;
             this.groupSp.Controls.Add(this.btnin);
             this.groupSp.Controls.Add(this.btntimkiem);
-            this.groupSp.Controls.Add(this.cbomahoadonban);
+            this.groupSp.Controls.Add(this.cbomadondathang);
             this.groupSp.Controls.Add(this.label17);
             this.groupSp.Controls.Add(this.btnboqua);
             this.groupSp.Controls.Add(this.btnsua);
@@ -143,14 +143,14 @@
             this.btntimkiem.UseVisualStyleBackColor = true;
             this.btntimkiem.Click += new System.EventHandler(this.btntimkiem_Click);
             // 
-            // cbomahoadonban
+            // cbomadondathang
             // 
-            this.cbomahoadonban.FormattingEnabled = true;
-            this.cbomahoadonban.Location = new System.Drawing.Point(417, 371);
-            this.cbomahoadonban.Name = "cbomahoadonban";
-            this.cbomahoadonban.Size = new System.Drawing.Size(177, 24);
-            this.cbomahoadonban.TabIndex = 31;
-            this.cbomahoadonban.DropDown += new System.EventHandler(this.cbomahoadonban_DropDown);
+            this.cbomadondathang.FormattingEnabled = true;
+            this.cbomadondathang.Location = new System.Drawing.Point(417, 371);
+            this.cbomadondathang.Name = "cbomadondathang";
+            this.cbomadondathang.Size = new System.Drawing.Size(177, 24);
+            this.cbomadondathang.TabIndex = 31;
+            this.cbomadondathang.DropDown += new System.EventHandler(this.cbomadondathang_DropDown);
             // 
             // label17
             // 
@@ -280,6 +280,21 @@
             this.txtgiaban.Size = new System.Drawing.Size(100, 22);
             this.txtgiaban.TabIndex = 18;
             // 
+            // txtkhuyenmai
+            // 
+            this.txtkhuyenmai.Location = new System.Drawing.Point(536, 78);
+            this.txtkhuyenmai.Name = "txtkhuyenmai";
+            this.txtkhuyenmai.Size = new System.Drawing.Size(100, 22);
+            this.txtkhuyenmai.TabIndex = 17;
+            this.txtkhuyenmai.TextChanged += new System.EventHandler(this.txtkhuyenmai_TextChanged);
+            // 
+            // txttensanpham
+            // 
+            this.txttensanpham.Location = new System.Drawing.Point(536, 42);
+            this.txttensanpham.Name = "txttensanpham";
+            this.txttensanpham.Size = new System.Drawing.Size(100, 22);
+            this.txttensanpham.TabIndex = 16;
+            // 
             // txtsoluong
             // 
             this.txtsoluong.Location = new System.Drawing.Point(163, 79);
@@ -346,6 +361,24 @@
             this.label12.TabIndex = 4;
             this.label12.Text = "Giá bán";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(413, 84);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(91, 16);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Khuyến mại %";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(413, 47);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(93, 16);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Tên sản phẩm";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -367,11 +400,11 @@
             // groupThongtinchung
             // 
             this.groupThongtinchung.BackColor = System.Drawing.Color.Lime;
-            this.groupThongtinchung.Controls.Add(this.txtngayban);
+            this.groupThongtinchung.Controls.Add(this.txtngaydathang);
             this.groupThongtinchung.Controls.Add(this.txtdiachikhachhang);
             this.groupThongtinchung.Controls.Add(this.txttennhanvien);
-            this.groupThongtinchung.Controls.Add(this.txtmahoadonban);
-            this.groupThongtinchung.Controls.Add(this.cbomakhachhang);
+            this.groupThongtinchung.Controls.Add(this.txtmadondathang);
+            this.groupThongtinchung.Controls.Add(this.cbomakhach);
             this.groupThongtinchung.Controls.Add(this.cbomanhanvien);
             this.groupThongtinchung.Controls.Add(this.label7);
             this.groupThongtinchung.Controls.Add(this.label6);
@@ -388,13 +421,13 @@
             this.groupThongtinchung.Text = "Thông tin chung";
             this.groupThongtinchung.Enter += new System.EventHandler(this.groupThongtinchung_Enter);
             // 
-            // txtngayban
+            // txtngaydathang
             // 
-            this.txtngayban.Location = new System.Drawing.Point(165, 83);
-            this.txtngayban.Name = "txtngayban";
-            this.txtngayban.Size = new System.Drawing.Size(100, 22);
-            this.txtngayban.TabIndex = 12;
-            this.txtngayban.TextChanged += new System.EventHandler(this.txtngayban_TextChanged);
+            this.txtngaydathang.Location = new System.Drawing.Point(165, 83);
+            this.txtngaydathang.Name = "txtngaydathang";
+            this.txtngaydathang.Size = new System.Drawing.Size(100, 22);
+            this.txtngaydathang.TabIndex = 12;
+            this.txtngaydathang.TextChanged += new System.EventHandler(this.txtngaydathang_TextChanged);
             // 
             // txtdiachikhachhang
             // 
@@ -410,21 +443,21 @@
             this.txttennhanvien.Size = new System.Drawing.Size(121, 22);
             this.txttennhanvien.TabIndex = 10;
             // 
-            // txtmahoadonban
+            // txtmadondathang
             // 
-            this.txtmahoadonban.Location = new System.Drawing.Point(165, 39);
-            this.txtmahoadonban.Name = "txtmahoadonban";
-            this.txtmahoadonban.Size = new System.Drawing.Size(100, 22);
-            this.txtmahoadonban.TabIndex = 8;
+            this.txtmadondathang.Location = new System.Drawing.Point(165, 39);
+            this.txtmadondathang.Name = "txtmadondathang";
+            this.txtmadondathang.Size = new System.Drawing.Size(100, 22);
+            this.txtmadondathang.TabIndex = 8;
             // 
-            // cbomakhachhang
+            // cbomakhach
             // 
-            this.cbomakhachhang.FormattingEnabled = true;
-            this.cbomakhachhang.Location = new System.Drawing.Point(790, 37);
-            this.cbomakhachhang.Name = "cbomakhachhang";
-            this.cbomakhachhang.Size = new System.Drawing.Size(121, 24);
-            this.cbomakhachhang.TabIndex = 7;
-            this.cbomakhachhang.TextChanged += new System.EventHandler(this.cbomakhachhang_TextChanged);
+            this.cbomakhach.FormattingEnabled = true;
+            this.cbomakhach.Location = new System.Drawing.Point(790, 37);
+            this.cbomakhach.Name = "cbomakhach";
+            this.cbomakhach.Size = new System.Drawing.Size(121, 24);
+            this.cbomakhach.TabIndex = 7;
+            this.cbomakhach.TextChanged += new System.EventHandler(this.cbomakhach_TextChanged);
             // 
             // cbomanhanvien
             // 
@@ -497,48 +530,15 @@
             this.lblText.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblText.Location = new System.Drawing.Point(313, -5);
             this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(464, 48);
+            this.lblText.Size = new System.Drawing.Size(465, 48);
             this.lblText.TabIndex = 3;
-            this.lblText.Text = "Hóa đơn bán hàng We Run";
+            this.lblText.Text = "Hóa đơn bán hàng AJUMA";
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // txttensanpham
-            // 
-            this.txttensanpham.Location = new System.Drawing.Point(536, 42);
-            this.txttensanpham.Name = "txttensanpham";
-            this.txttensanpham.Size = new System.Drawing.Size(100, 22);
-            this.txttensanpham.TabIndex = 16;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(413, 47);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 16);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Tên sản phẩm";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(413, 84);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(91, 16);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "Khuyến mại %";
-            // 
-            // txtkhuyenmai
-            // 
-            this.txtkhuyenmai.Location = new System.Drawing.Point(536, 78);
-            this.txtkhuyenmai.Name = "txtkhuyenmai";
-            this.txtkhuyenmai.Size = new System.Drawing.Size(100, 22);
-            this.txtkhuyenmai.TabIndex = 17;
-            this.txtkhuyenmai.TextChanged += new System.EventHandler(this.txtkhuyenmai_TextChanged);
             // 
             // FrmHoaDonBan
             // 
@@ -579,11 +579,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupThongtinchung;
-        private System.Windows.Forms.TextBox txtngayban;
+        private System.Windows.Forms.TextBox txtngaydathang;
         private System.Windows.Forms.TextBox txtdiachikhachhang;
         private System.Windows.Forms.TextBox txttennhanvien;
-        public System.Windows.Forms.TextBox txtmahoadonban;
-        private System.Windows.Forms.ComboBox cbomakhachhang;
+        public System.Windows.Forms.TextBox txtmadondathang;
+        private System.Windows.Forms.ComboBox cbomakhach;
         private System.Windows.Forms.ComboBox cbomanhanvien;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -599,7 +599,7 @@
         private System.Windows.Forms.Button btnluu;
         private System.Windows.Forms.Button btnthemmoi;
         private System.Windows.Forms.Button btntimkiem;
-        private System.Windows.Forms.ComboBox cbomahoadonban;
+        private System.Windows.Forms.ComboBox cbomadondathang;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnin;

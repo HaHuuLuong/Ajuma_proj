@@ -21,7 +21,7 @@ namespace Ajuma.Forms
         DataTable tblsp;
         private void FrmSanPham_Load(object sender, EventArgs e)
         {
-            txtMasanpham.Enabled = false;
+            txtmasanpham.Enabled = false;
             buttonluu.Enabled = false;
             buttonboqua.Enabled = false;
             Class.Functions.FillCombo("SELECT matheloai, tentheloai FROM TheLoai", comboBoxmaloai, "matheloai", "tentheloai");
@@ -42,7 +42,7 @@ namespace Ajuma.Forms
         public string sql = "SELECT masanpham, tensanpham, dongianhap, dongiaban, soluongkho,  anh, manhacungcap, matheloai, maalbum, trangthai, mota, phienban,  ngayphathanh, trongluong FROM SanPham ";
         private void Load_DataGridView()
         {
-             //where MaSanPham=N'" + txtMasanpham.Text + "' 
+             //where masanpham=N'" + txtmasanpham.Text + "' 
             tblsp = Class.Functions.GetDataToTable(sql);
             dtgvsp.DataSource = tblsp;
             dtgvsp.Columns[0].HeaderText = "Mã sản phẩm";
@@ -81,7 +81,7 @@ namespace Ajuma.Forms
         
         private void ResetValues()
         {
-            txtMasanpham.Text = "";
+            txtmasanpham.Text = "";
             comboBoxmaloai.Text = "";
             comboBoxmaalbum.Text = "";
            
@@ -102,7 +102,7 @@ namespace Ajuma.Forms
             if (buttonthem.Enabled == false)
             {
                 MessageBox.Show("Đang ở chế độ thêm mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtMasanpham.Focus();
+                txtmasanpham.Focus();
                 return;
             }
             if (tblsp.Rows.Count == 0)
@@ -110,7 +110,7 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            txtMasanpham.Text = dtgvsp.CurrentRow.Cells["masanpham"].Value.ToString();
+            txtmasanpham.Text = dtgvsp.CurrentRow.Cells["masanpham"].Value.ToString();
             ma = dtgvsp.CurrentRow.Cells["matheloai"].Value.ToString();
             comboBoxmaloai.Text = Class.Functions.GetFieldValues("select tentheloai from TheLoai where matheloai = N'" + ma + "'");
             ma = dtgvsp.CurrentRow.Cells["manhacungcap"].Value.ToString();
@@ -122,7 +122,7 @@ namespace Ajuma.Forms
             textBoxgianhap.Text = dtgvsp.CurrentRow.Cells["dongianhap"].Value.ToString();
             textBoxgiaban.Text = dtgvsp.CurrentRow.Cells["dongiaban"].Value.ToString();
             textBoxsoluong.Text = dtgvsp.CurrentRow.Cells["soluongkho"].Value.ToString();
-            textBoxhinhanh.Text = Class.Functions.GetFieldValues("SELECT anh FROM SanPham WHERE masanpham = N'" + txtMasanpham.Text + "'");
+            textBoxhinhanh.Text = Class.Functions.GetFieldValues("SELECT anh FROM SanPham WHERE masanpham = N'" + txtmasanpham.Text + "'");
             txtTrangthai.Text = dtgvsp.CurrentRow.Cells["trangthai"].Value.ToString();
             txtTrongluong.Text = dtgvsp.CurrentRow.Cells["trongluong"].Value.ToString();
             txtPhienban.Text = dtgvsp.CurrentRow.Cells["phienban"].Value.ToString();
@@ -146,7 +146,7 @@ namespace Ajuma.Forms
             buttonboqua.Enabled = true;
             buttonopen.Enabled = true;
             /*string str;
-            str = "SELECT ngayphathanh FROM SanPham WHERE  masanpham = N'" + txtMasanpham.Text + "'";
+            str = "SELECT ngayphathanh FROM SanPham WHERE  masanpham = N'" + txtmasanpham.Text + "'";
             txtNgayphathanh.Text = Functions.GetFieldValues(str);*/
         }
 
@@ -159,17 +159,17 @@ namespace Ajuma.Forms
             buttonthem.Enabled = false;
             buttonopen.Enabled = true;
             ResetValues();
-            txtMasanpham.Enabled = true;
-            txtMasanpham.Focus();
+            txtmasanpham.Enabled = true;
+            txtmasanpham.Focus();
         }
 
         private void buttonluu_Click(object sender, EventArgs e)
         {
             string sql;
-            if (txtMasanpham.Text.Trim().Length == 0)
+            if (txtmasanpham.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập mã sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMasanpham.Focus();
+                txtmasanpham.Focus();
                 return;
             }
             if (textBoxtensp.Text.Trim().Length == 0)
@@ -230,15 +230,15 @@ namespace Ajuma.Forms
                 return;
             }
 
-            sql = "SELECT masanpham FROM SanPham WHERE masanpham = N'" + txtMasanpham.Text.Trim() + "'";
+            sql = "SELECT masanpham FROM SanPham WHERE masanpham = N'" + txtmasanpham.Text.Trim() + "'";
             if (Class.Functions.CheckKey(sql))
             {
                 MessageBox.Show("Mã sản phẩm này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMasanpham.Focus();
-                txtMasanpham.Text = "";
+                txtmasanpham.Focus();
+                txtmasanpham.Text = "";
                 return;
             }
-            sql = "insert into SanPham values(N'" + txtMasanpham.Text.Trim() + "', N'" + textBoxtensp.Text.Trim() + "', N'" + Functions.ConvertDateTime(mskngaysinh.Text.Trim()) + "', N'" + txtPhienban.Text.Trim() + "', N'" + txtTrongluong.Text + "', N'" + textBoxgianhap.Text + "',  N'" + textBoxgiaban.Text + "',  N'" + textBoxsoluong.Text + "', N'" + txtTrangthai.Text + "', N'" + txtMota.Text + "',N'" + comboBoxmancc.SelectedValue + "', N'" + comboBoxmaloai.SelectedValue + "', N'" + comboBoxmaalbum.SelectedValue + "', N'" + textBoxhinhanh.Text.Trim() + "' )";
+            sql = "insert into SanPham values(N'" + txtmasanpham.Text.Trim() + "', N'" + textBoxtensp.Text.Trim() + "', N'" + Functions.ConvertDateTime(mskngaysinh.Text.Trim()) + "', N'" + txtPhienban.Text.Trim() + "', N'" + txtTrongluong.Text + "', N'" + textBoxgianhap.Text + "',  N'" + textBoxgiaban.Text + "',  N'" + textBoxsoluong.Text + "', N'" + txtTrangthai.Text + "', N'" + txtMota.Text + "',N'" + comboBoxmancc.SelectedValue + "', N'" + comboBoxmaloai.SelectedValue + "', N'" + comboBoxmaalbum.SelectedValue + "', N'" + textBoxhinhanh.Text.Trim() + "' )";
             SqlCommand them = new SqlCommand(sql, Class.Functions.Conn);
             them.ExecuteNonQuery();
             MessageBox.Show("Thêm dữ liệu thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -249,7 +249,7 @@ namespace Ajuma.Forms
             buttonsua.Enabled = false;
             buttonboqua.Enabled = true;
             buttonluu.Enabled = false;
-            txtMasanpham.Enabled = false;
+            txtmasanpham.Enabled = false;
         }
 
         private void buttonopen_Click(object sender, EventArgs e)
@@ -274,7 +274,7 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (txtMasanpham.Text == "")
+            if (txtmasanpham.Text == "")
             {
                 MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -329,7 +329,7 @@ namespace Ajuma.Forms
                 return;
             }
 
-            sql = "UPDATE SanPham SET tensanpham=N'" + textBoxtensp.Text.Trim().ToString() + "', ngayphathanh=N'" + Functions.ConvertDateTime(mskngaysinh.Text) + "', phienban=N'" + txtPhienban.Text.Trim() + "', trongluong=N'" + txtTrongluong.Text.Trim() + "', dongianhap =N'" + textBoxgianhap.Text.Trim() + "', dongiaban=N'" + textBoxgiaban.Text.Trim() + "', soluongkho=N'" + textBoxsoluong.Text.Trim() + "', trangthai=N'" + txtTrangthai.Text.Trim() + "', mota=N'" + txtMota.Text.Trim() + "', manhacungcap=N'" + comboBoxmancc.SelectedValue + "', matheloai=N'" + comboBoxmaloai.SelectedValue + "', maalbum=N'" + comboBoxmaalbum.SelectedValue + "', anh=N'" + textBoxhinhanh.Text.Trim() + "' WHERE masanpham=N'" + txtMasanpham.Text + "'";
+            sql = "UPDATE SanPham SET tensanpham=N'" + textBoxtensp.Text.Trim().ToString() + "', ngayphathanh=N'" + Functions.ConvertDateTime(mskngaysinh.Text) + "', phienban=N'" + txtPhienban.Text.Trim() + "', trongluong=N'" + txtTrongluong.Text.Trim() + "', dongianhap =N'" + textBoxgianhap.Text.Trim() + "', dongiaban=N'" + textBoxgiaban.Text.Trim() + "', soluongkho=N'" + textBoxsoluong.Text.Trim() + "', trangthai=N'" + txtTrangthai.Text.Trim() + "', mota=N'" + txtMota.Text.Trim() + "', manhacungcap=N'" + comboBoxmancc.SelectedValue + "', matheloai=N'" + comboBoxmaloai.SelectedValue + "', maalbum=N'" + comboBoxmaalbum.SelectedValue + "', anh=N'" + textBoxhinhanh.Text.Trim() + "' WHERE masanpham=N'" + txtmasanpham.Text + "'";
             Class.Functions.RunSql(sql);
             MessageBox.Show("Đã sửa dữ liệu");
             Load_DataGridView();
@@ -347,7 +347,7 @@ namespace Ajuma.Forms
             buttonxoa.Enabled = true;
             buttonsua.Enabled = true;
             buttonluu.Enabled = false;
-            txtMasanpham.Enabled = false;
+            txtmasanpham.Enabled = false;
             buttonopen.Enabled = false;
         }
 
@@ -359,14 +359,14 @@ namespace Ajuma.Forms
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (txtMasanpham.Text == "")
+            if (txtmasanpham.Text == "")
             {
                 MessageBox.Show("Bạn chưa chọn bản ghi nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                sql = "DELETE tblSanPham WHERE MaSanPham = N'" + txtMasanpham.Text + "'";
+                sql = "DELETE SanPham WHERE masanpham = N'" + txtmasanpham.Text + "'";
                 Class.Functions.RunSqlDel(sql);
                 MessageBox.Show("Đã xóa dữ liệu");
                 Load_DataGridView();

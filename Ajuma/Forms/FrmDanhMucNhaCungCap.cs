@@ -161,7 +161,7 @@ namespace Ajuma.Forms
                 msksđt.Focus();
                 return;
             }
-            sql = "UPDATE NhaCungCap SET  tennhacungcap=N'" + txttenncc.Text.Trim().ToString() + "', sodienthoai='" + msksđt.Text.ToString() + "', linkweb=N'" + txtdiachi.Text.Trim().ToString() + "' WHERE Manhacungcap = N'" + txtmancc.Text + "'";
+            sql = "UPDATE NhaCungCap SET  tennhacungcap=N'" + txttenncc.Text.Trim().ToString() + "', sodienthoai='" + msksđt.Text.ToString() + "', linkweb=N'" + txtdiachi.Text.Trim().ToString() + "' WHERE manhacungcap = N'" + txtmancc.Text + "'";
             Functions.RunSql(sql);
             Load_DataGridView();
             ResetValues();

@@ -28,7 +28,7 @@ namespace Ajuma.Forms
             txttongtien.Text = "0";
             resetvalues();
             dgbchdnhap.DataSource = null;
-            Class.Functions.FillCombo("select MaNhaCungCap,TenNhaCungCap from tblNhaCungCap", cbonhacc, "MaNhaCungCap", "TenNhaCungCap");
+            Class.Functions.FillCombo("select manhacungcap,tennhacungcap from NhaCungCap", cbonhacc, "manhacungcap", "tennhacungcap");
             cbonhacc.SelectedIndex = -1;
             Load_dghoadonnhap();
             //
@@ -50,7 +50,7 @@ namespace Ajuma.Forms
         private void Load_dghoadonnhap()
         {
             string sql;
-            sql = "SELECT MaHoaDonNhap, NgayNhap, MaNhanVien, MaNhaCungCap, TongTien FROM tblHoaDonNhap";
+            sql = "SELECT madonnhaphang, ngaydat, manhanvien, manhacungcap, tongtien FROM DonNhapHang";
             tblhdn = Class.Functions.GetDataToTable(sql);
             dgbchdnhap.DataSource = tblhdn;
             dgbchdnhap.Columns[0].HeaderText = "Mã Hóa Đơn";
@@ -77,12 +77,12 @@ namespace Ajuma.Forms
                 cbonhacc.Focus();
                 return;
             }
-            sql = " Select * from  tblHoaDonNhap WHERE 1=1";
+            sql = " Select * from  DonNhapHang WHERE 1=1";
 
-            //sql = "SELECT ngayban FROM tblhoadonnhap WHERE manhacungcap = SELECT manhacungcap FROM tblnhacungcap WHERE tennhacungcap= N'" + cbonhacc.Text + "' ";
+            //sql = "SELECT ngaydathang FROM DonNhapHang WHERE manhacungcap = SELECT manhacungcap FROM NhaCungCap WHERE tennhacungcap= N'" + cbonhacc.Text + "' ";
             if (cbonhacc.Text != "")
 
-                sql = sql + "AND MaNhaCungCap = '" + cbonhacc.SelectedValue + "'";
+                sql = sql + "AND manhacungcap = '" + cbonhacc.SelectedValue + "'";
 
             tblhdn = Class.Functions.GetDataToTable(sql);
             if (tblhdn.Rows.Count == 0)
@@ -95,7 +95,7 @@ namespace Ajuma.Forms
                 MessageBox.Show("Có " + tblhdn.Rows.Count + " bản ghi thỏa mãn điều kiện!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 dgbchdnhap.DataSource = tblhdn;
 
-                tongtien = Convert.ToDouble(Class.Functions.GetFieldValues("SELECT SUM(TongTien) FROM tblHoaDonNhap WHERE MaNhaCungCap= '" + cbonhacc.SelectedValue + "'"));
+                tongtien = Convert.ToDouble(Class.Functions.GetFieldValues("SELECT SUM(tongtien) FROM DonNhapHang WHERE manhacungcap= '" + cbonhacc.SelectedValue + "'"));
                 txttongtien.Text = tongtien.ToString();
                 btndong.Enabled = true;
                 btnin.Enabled = true;
@@ -129,7 +129,7 @@ namespace Ajuma.Forms
             exRange.Range["B1:B1"].ColumnWidth = 15;
             exRange.Range["A1:B1"].MergeCells = true;
             exRange.Range["A1:B1"].HorizontalAlignment = COMExel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A1:B1"].Value = "We Run Shoes";
+            exRange.Range["A1:B1"].Value = "Shop AJUMA";
 
             exRange.Range["A2:B2"].MergeCells = true;
             exRange.Range["A2:B2"].HorizontalAlignment = COMExel.XlHAlign.xlHAlignCenter;
@@ -150,7 +150,7 @@ namespace Ajuma.Forms
             exRange.Range["C2:E2"].Value = "HÓA ĐƠN NHẬP";
             // Biểu diễn thông tin chung của hóa đơn bán
 
-            sql = "SELECT MaNhaCungCap, TenNhaCungCap, DiaChi, SoDienThoai FROM tblNhaCungCap  WHERE MaNhaCungCap =N'" + cbonhacc.SelectedValue + "'";
+            sql = "SELECT manhacungcap, tennhacungcap, linkweb, sodienthoai FROM NhaCungCap  WHERE manhacungcap =N'" + cbonhacc.SelectedValue + "'";
             tblThongtinNCC = Class.Functions.GetDataToTable(sql);
             exRange.Range["B6:C9"].Font.Size = 12;
             exRange.Range["B6:C9"].Font.Name = "Times new roman";
@@ -160,7 +160,7 @@ namespace Ajuma.Forms
             exRange.Range["B7:B7"].Value = "TÊN NHÀ CUNG CÂP:";
             exRange.Range["C7:E7"].MergeCells = true;
             exRange.Range["C7:E7"].Value = tblThongtinNCC.Rows[0][1].ToString();
-            exRange.Range["B8:B8"].Value = "ĐỊA CHỈ:";
+            exRange.Range["B8:B8"].Value = "WEB:";
             exRange.Range["C8:E8"].MergeCells = true;
             exRange.Range["C8:E8"].Value = tblThongtinNCC.Rows[0][2].ToString();
             exRange.Range["B9:B9"].Value = "ĐIỆN THOẠI:";
@@ -168,7 +168,7 @@ namespace Ajuma.Forms
             exRange.Range["C9:E9"].Value = tblThongtinNCC.Rows[0][3].ToString();
 
             //Lấy thông tin hóa đơn
-            sql = "SELECT  MaHoaDonNhap,NgayNhap,MaNhanVien,MaNhaCungCap,TongTien FROM tblHoaDonNhap  WHERE MaNhaCungCap =N'" + cbonhacc.SelectedValue + "'";
+            sql = "SELECT  madonnhaphang,ngaydat,manhanvien,manhacungcap,tongtien FROM DonNhapHang  WHERE manhacungcap =N'" + cbonhacc.SelectedValue + "'";
             tblThongtinHD = Class.Functions.GetDataToTable(sql);
             exRange.Range["A11:F11"].Font.Bold = true;
             exRange.Range["A11:F11"].HorizontalAlignment = COMExel.XlHAlign.xlHAlignCenter;
