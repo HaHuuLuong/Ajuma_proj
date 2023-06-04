@@ -30,7 +30,7 @@ namespace Ajuma
             Application.SetCompatibleTextRenderingDefault(false);
             //SetProcessDpiAwareness((int)DpiAwareness.PerMonitorAware);
             //Application.Run(new Forms.FrmLogin());
-            Application.Run(new FrmMenu());
+            Application.Run(new Forms.FrmLogin());
             
         }
     }

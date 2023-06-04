@@ -44,7 +44,7 @@ namespace Ajuma.Forms
         private void Load_DataGridView()
         {
             string sql;
-            sql = "SELECT a.manhanvien, a.tennhanvien, a.gioitinh, a.ngaysinh, a.sdt, a.email, a.linkfacebook, a.diachi, a.machucvu FROM NhanVien AS a JOIN ChucVu AS b ON a.machucvu = b.machucvu";
+            sql = "SELECT a.manhanvien, a.tennhanvien, a.gioitinh, a.ngaysinh, a.sdt, a.email, a.linkfacebook, a.diachi, a.machucvu, a.maTaiKhoan FROM NhanVien AS a JOIN ChucVu AS b ON a.machucvu = b.machucvu";
             tblNV = Functions.GetDataToTable(sql);
             dataGridView.DataSource = tblNV;
             dataGridView.Columns[0].HeaderText = "Mã nhân viên";
@@ -56,6 +56,7 @@ namespace Ajuma.Forms
             dataGridView.Columns[6].HeaderText = "Facebook";
             dataGridView.Columns[7].HeaderText = "Địa chỉ";
             dataGridView.Columns[8].HeaderText = "Mã chức vụ";
+            dataGridView.Columns[9].HeaderText = "Loại tài khoản";
         }
 
         private void dataGridView_Click(object sender, EventArgs e)

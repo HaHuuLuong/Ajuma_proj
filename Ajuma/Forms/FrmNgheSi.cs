@@ -120,7 +120,7 @@ namespace Ajuma.Forms
             }
 
             sql = "SELECT manghesi FROM NgheSi WHERE manghesi=N'" + txtMaNgheSi.Text.Trim() + "'";
-            if (Class.Functions.CheckKey(sql))
+            if (!Class.Functions.CheckKey(sql))
             {
                 MessageBox.Show("Mã nghệ sĩ này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMaNgheSi.Focus();

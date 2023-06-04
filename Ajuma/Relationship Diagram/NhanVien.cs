@@ -30,11 +30,13 @@ namespace Ajuma.Relationship_Diagram
         public string linkfacebook { get; set; }
         public string diachi { get; set; }
         public string machucvu { get; set; }
+        public string maTaiKhoan { get; set; }
     
         public virtual ChucVu ChucVu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonDatHang> DonDatHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonNhapHang> DonNhapHangs { get; set; }
+        public virtual TaiKhoan TaiKhoan { get; set; }
     }
 }
