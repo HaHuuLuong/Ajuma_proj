@@ -63,7 +63,8 @@ namespace Ajuma.Forms
             txtAnh.Text = DataGridView.CurrentRow.Cells["anh"].Value.ToString();
             if (txtAnh.Text.Trim() == "")
             {
-                picAnh.Image = Image.FromFile("D:/Github/Ajuma_proj/Ajuma/Images/no_image.png");
+                picAnh.Image = Ajuma.Properties.Resources.no_image;
+   
             }
             else
             {
@@ -120,7 +121,7 @@ namespace Ajuma.Forms
             }
 
             sql = "SELECT manghesi FROM NgheSi WHERE manghesi=N'" + txtMaNgheSi.Text.Trim() + "'";
-            if (!Class.Functions.CheckKey(sql))
+            if (Class.Functions.CheckKey(sql))
             {
                 MessageBox.Show("Mã nghệ sĩ này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMaNgheSi.Focus();
