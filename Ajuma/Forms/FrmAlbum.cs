@@ -71,7 +71,7 @@ namespace Ajuma.Forms
             txtAnh.Text = DataGridView.CurrentRow.Cells["anh"].Value.ToString();
             if (txtAnh.Text.Trim() == "")
             {
-                picAnh.Image = Ajuma.Properties.Resources.no_image;
+                picAnh.Image = Image.FromFile("D:/Github/Ajuma_proj/Ajuma/Images/no_image.png");
             }
             else
             {
@@ -139,7 +139,7 @@ namespace Ajuma.Forms
                 txtMaAlbum.Text = "";
                 return;
             }
-            string sql_convert = "SELECT manghesi FROM NgheSi WHERE tennghesi = N'"+cboNgheSi.Text+"'";
+            string sql_convert = "SELECT manghesi FROM NgheSi WHERE tennghesi = '"+cboNgheSi.Text+"'";
             sql = "INSERT INTO Album(maalbum, tenalbum, mota, anh, manghesi) VALUES(N'" + txtMaAlbum.Text + "',N'" + txtTenAlbum.Text + "',N'" + txtMoTa.Text + "',N'" + txtAnh.Text + "',N'" + Functions.GetFieldValues(sql_convert) + "')";
             Functions.RunSql(sql);
             Load_DataGridView();
@@ -192,7 +192,7 @@ namespace Ajuma.Forms
                 txtTenAlbum.Focus();
                 return;
             }
-            string sql_convert = "SELECT manghesi FROM NgheSi WHERE tennghesi = N'" + cboNgheSi.Text.Trim() + "'";
+            string sql_convert = "SELECT manghesi FROM NgheSi WHERE tennghesi = '" + cboNgheSi.Text + "'";
             sql = "UPDATE Album SET tenalbum=N'" + txtTenAlbum.Text.ToString() + "', mota=N'"+txtMoTa.Text+"', anh=N'"+txtAnh.Text+"', manghesi=N'"+Functions.GetFieldValues(sql_convert)+"' WHERE maalbum=N'" + txtMaAlbum.Text + "'";
             Functions.RunSql(sql);
             Load_DataGridView();

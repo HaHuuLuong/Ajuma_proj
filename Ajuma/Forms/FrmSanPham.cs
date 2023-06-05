@@ -92,11 +92,6 @@ namespace Ajuma.Forms
             textBoxsoluong.Text = "";
             textBoxhinhanh.Text = "";
             pictureBox1.Image = null;
-            txtTrangthai.Text = "";
-            txtPhienban.Text = "";
-            txtTrongluong.Text = "";
-            mskngaysinh.Clear();
-            txtMota.Text = "";
             //txtNgayphathanh.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
         }
@@ -118,11 +113,11 @@ namespace Ajuma.Forms
             txtmasanpham.Text = dtgvsp.CurrentRow.Cells["masanpham"].Value.ToString();
             ma = dtgvsp.CurrentRow.Cells["matheloai"].Value.ToString();
             comboBoxmaloai.Text = Class.Functions.GetFieldValues("select tentheloai from TheLoai where matheloai = N'" + ma + "'");
-            ma = dtgvsp.CurrentRow.Cells["maalbum"].Value.ToString();
-            comboBoxmaalbum.Text = Class.Functions.GetFieldValues("select tenalbum from Album where maalbum = N'" + ma + "'");
-          
             ma = dtgvsp.CurrentRow.Cells["manhacungcap"].Value.ToString();
-            comboBoxmancc.Text = Class.Functions.GetFieldValues("select tennhacungcap from NhaCungCap where manhacungcap = N'" + ma + "'");
+            comboBoxmaalbum.Text = Class.Functions.GetFieldValues("select tennhacungcap from NhaCungCap where manhacungcap = N'" + ma + "'");
+          
+            ma = dtgvsp.CurrentRow.Cells["maalbum"].Value.ToString();
+            comboBoxmancc.Text = Class.Functions.GetFieldValues("select tenalbum from Album where maalbum = N'" + ma + "'");
             textBoxtensp.Text = dtgvsp.CurrentRow.Cells["tensanpham"].Value.ToString();
             textBoxgianhap.Text = dtgvsp.CurrentRow.Cells["dongianhap"].Value.ToString();
             textBoxgiaban.Text = dtgvsp.CurrentRow.Cells["dongiaban"].Value.ToString();
@@ -201,7 +196,12 @@ namespace Ajuma.Forms
                 textBoxsoluong.Focus();
                 return;
             }
-
+            if (textBoxhinhanh.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn phải chọn ảnh minh họa cho sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxhinhanh.Focus();
+                return;
+            }
             if (comboBoxmaloai.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập mã the loại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -229,6 +229,7 @@ namespace Ajuma.Forms
                 mskngaysinh.Focus();
                 return;
             }
+
             sql = "SELECT masanpham FROM SanPham WHERE masanpham = N'" + txtmasanpham.Text.Trim() + "'";
             if (Class.Functions.CheckKey(sql))
             {
@@ -237,10 +238,7 @@ namespace Ajuma.Forms
                 txtmasanpham.Text = "";
                 return;
             }
-            string sql1 = "SELECT manhacungcap FROM NhaCungCap WHERE tennhacungcap = N'" + comboBoxmancc.Text + "'";
-            string sql2 = "SELECT matheloai FROM TheLoai WHERE tentheloai = N'" + comboBoxmaloai.Text + "'";
-            string sql3 = "SELECT maalbum FROM Album WHERE tenalbum = N'" + comboBoxmaalbum.Text + "'";
-            sql = "insert into SanPham values(N'" + txtmasanpham.Text.Trim() + "', N'" + textBoxtensp.Text.Trim() + "', N'" + Functions.ConvertDateTime(mskngaysinh.Text.Trim()) + "', N'" + txtPhienban.Text.Trim() + "', N'" + txtTrongluong.Text + "', N'" + textBoxgianhap.Text + "',  N'" + textBoxgiaban.Text + "',  N'" + textBoxsoluong.Text + "', N'" + txtTrangthai.Text + "', N'" + txtMota.Text + "',N'" + Functions.GetFieldValues(sql1).Trim() + "', N'" + Functions.GetFieldValues(sql2).Trim() + "', N'" + Functions.GetFieldValues(sql3).Trim() + "', N'" + textBoxhinhanh.Text.Trim() + "' )";
+            sql = "insert into SanPham values(N'" + txtmasanpham.Text.Trim() + "', N'" + textBoxtensp.Text.Trim() + "', N'" + Functions.ConvertDateTime(mskngaysinh.Text.Trim()) + "', N'" + txtPhienban.Text.Trim() + "', N'" + txtTrongluong.Text + "', N'" + textBoxgianhap.Text + "',  N'" + textBoxgiaban.Text + "',  N'" + textBoxsoluong.Text + "', N'" + txtTrangthai.Text + "', N'" + txtMota.Text + "',N'" + comboBoxmancc.SelectedValue + "', N'" + comboBoxmaloai.SelectedValue + "', N'" + comboBoxmaalbum.SelectedValue + "', N'" + textBoxhinhanh.Text.Trim() + "' )";
             SqlCommand them = new SqlCommand(sql, Class.Functions.Conn);
             them.ExecuteNonQuery();
             MessageBox.Show("Thêm dữ liệu thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -305,6 +303,12 @@ namespace Ajuma.Forms
                 textBoxsoluong.Focus();
                 return;
             }
+            if (textBoxhinhanh.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn phải chọn ảnh minh họa cho sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxhinhanh.Focus();
+                return;
+            }
             if (comboBoxmaloai.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập mã loại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -324,10 +328,8 @@ namespace Ajuma.Forms
                 comboBoxmancc.Focus();
                 return;
             }
-            string sql1 = "SELECT manhacungcap FROM NhaCungCap WHERE tennhacungcap = N'" + comboBoxmancc.Text.Trim() + "'";
-            string sql2 = "SELECT matheloai FROM TheLoai WHERE tentheloai = N'" + comboBoxmaloai.Text.Trim() + "'";
-            string sql3 = "SELECT maalbum FROM Album WHERE tenalbum = N'" + comboBoxmaalbum.Text.Trim() + "'";
-            sql = "UPDATE SanPham SET tensanpham=N'" + textBoxtensp.Text.Trim().ToString() + "', ngayphathanh=N'" + mskngaysinh.Text + "', phienban=N'" + txtPhienban.Text.Trim() + "', trongluong=N'" + txtTrongluong.Text.Trim() + "', dongianhap =N'" + textBoxgianhap.Text.Trim() + "', dongiaban=N'" + textBoxgiaban.Text.Trim() + "', soluongkho=N'" + textBoxsoluong.Text.Trim() + "', trangthai=N'" + txtTrangthai.Text.Trim() + "', mota=N'" + txtMota.Text.Trim() + "', manhacungcap=N'" + Functions.GetFieldValues(sql1).Trim() + "', matheloai=N'" + Functions.GetFieldValues(sql2).Trim() + "', maalbum=N'" + Functions.GetFieldValues(sql3).Trim() + "', anh=N'" + textBoxhinhanh.Text.Trim() + "' WHERE masanpham=N'" + txtmasanpham.Text + "'";
+
+            sql = "UPDATE SanPham SET tensanpham=N'" + textBoxtensp.Text.Trim().ToString() + "', ngayphathanh=N'" + Functions.ConvertDateTime(mskngaysinh.Text) + "', phienban=N'" + txtPhienban.Text.Trim() + "', trongluong=N'" + txtTrongluong.Text.Trim() + "', dongianhap =N'" + textBoxgianhap.Text.Trim() + "', dongiaban=N'" + textBoxgiaban.Text.Trim() + "', soluongkho=N'" + textBoxsoluong.Text.Trim() + "', trangthai=N'" + txtTrangthai.Text.Trim() + "', mota=N'" + txtMota.Text.Trim() + "', manhacungcap=N'" + comboBoxmancc.SelectedValue + "', matheloai=N'" + comboBoxmaloai.SelectedValue + "', maalbum=N'" + comboBoxmaalbum.SelectedValue + "', anh=N'" + textBoxhinhanh.Text.Trim() + "' WHERE masanpham=N'" + txtmasanpham.Text + "'";
             Class.Functions.RunSql(sql);
             MessageBox.Show("Đã sửa dữ liệu");
             Load_DataGridView();
@@ -366,6 +368,7 @@ namespace Ajuma.Forms
             {
                 sql = "DELETE SanPham WHERE masanpham = N'" + txtmasanpham.Text + "'";
                 Class.Functions.RunSqlDel(sql);
+                MessageBox.Show("Đã xóa dữ liệu");
                 Load_DataGridView();
                 ResetValues();
             }

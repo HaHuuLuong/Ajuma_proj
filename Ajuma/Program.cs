@@ -29,8 +29,8 @@ namespace Ajuma
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //SetProcessDpiAwareness((int)DpiAwareness.PerMonitorAware);
-            //Application.Run(new Forms.FrmLogin());
             Application.Run(new Forms.FrmLogin());
+            //Application.Run(new FrmMenu());
             
         }
     }

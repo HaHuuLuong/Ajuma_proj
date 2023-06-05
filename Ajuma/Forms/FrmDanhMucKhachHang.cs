@@ -160,18 +160,6 @@ namespace Ajuma.Forms
                 MessageBox.Show("Bạn phải chọn địa chỉ Xã/Phường, Quận/Huyện và Tỉnh/Thành", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!mskNgaySinh.MaskFull)
-            {
-                MessageBox.Show("Bạn phải nhập ngày sinh!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                mskNgaySinh.Focus();
-                return;
-            }
-            if (!Functions.IsDate(mskNgaySinh.Text))
-            {
-                MessageBox.Show("Bạn nhập ngày sinh chưa đúng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                mskNgaySinh.Focus();
-                return;
-            }
             sql = "SELECT makhach FROM KhachHang WHERE makhach=N'" + txtMaKhach.Text.Trim() + "'";
             if (Functions.CheckKey(sql))
             {
@@ -231,7 +219,7 @@ namespace Ajuma.Forms
                 return;
             }
             string sql_convert = "SELECT c.maxaphuong FROM TinhThanh a JOIN QuanHuyen b ON a.matinhthanh = b.matinhthanh JOIN XaPhuong c ON b.maquanhuyen = c.maquanhuyen WHERE a.tentinhthanh = N'" + cboTinhThanh.Text + "' AND b.tenquanhuyen=N'" + cboQuanHuyen.Text + "' AND c.tenxaphuong = N'" + cboXaPhuong.Text + "'";
-            sql = "update KhachHang set tenkhach=N'" + txtTenKhach.Text.Trim().ToString() + "', sdt = N'"+mskSDT.Text+"',diachichitiet = N'" + txtDiaChiChiTiet.Text.Trim().ToString() + "', maxaphuong = N'"+Functions.GetFieldValues(sql_convert)+"', ngaysinh = N'"+mskNgaySinh.Text+"', linkfacebook = N'"+txtFacebook.Text+"' where makhach = N'" + txtMaKhach.Text + "'";
+            sql = "update KhachHang set tenkhach=N'" + txtTenKhach.Text.Trim().ToString() + "', sdt = N'"+mskSDT.Text+"',diachichitiet = N'" + txtDiaChiChiTiet.Text.Trim().ToString() + "', maxaphuong = N'"+Functions.GetFieldValues(sql_convert)+"', ngaysinh = N'"+Functions.ConvertDateTime(mskNgaySinh.Text)+"', linkfacebook = N'"+txtFacebook.Text+"' where makhach = N'" + txtMaKhach.Text + "'";
             Functions.RunSql(sql);
             Load_DataGridView();
             ResetValues();

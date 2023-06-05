@@ -54,8 +54,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtFacebook = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cboLTK = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -333,36 +331,12 @@
             this.txtFacebook.Size = new System.Drawing.Size(264, 22);
             this.txtFacebook.TabIndex = 53;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(326, 248);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(57, 17);
-            this.label11.TabIndex = 54;
-            this.label11.Text = "Loại TK";
-            // 
-            // cboLTK
-            // 
-            this.cboLTK.FormattingEnabled = true;
-            this.cboLTK.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.cboLTK.Location = new System.Drawing.Point(431, 245);
-            this.cboLTK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cboLTK.Name = "cboLTK";
-            this.cboLTK.Size = new System.Drawing.Size(54, 24);
-            this.cboLTK.TabIndex = 55;
-            // 
             // FrmDanhMucNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(838, 548);
-            this.Controls.Add(this.cboLTK);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.txtFacebook);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtEmail);
@@ -426,7 +400,5 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtFacebook;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cboLTK;
     }
 }
