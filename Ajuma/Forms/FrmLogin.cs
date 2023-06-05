@@ -15,26 +15,21 @@ namespace Ajuma.Forms
         public FrmLogin()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            
-            txtTK.Text = Properties.Settings.Default.TenDangNhap;
-            txtMK.Text = Properties.Settings.Default.MatKhau;
+            txtTenDangNhap.Text = Properties.Settings.Default.TenDangNhap;
+            txtMatKhau.Text = Properties.Settings.Default.MatKhau;
             // Chạy animation Slogan
             text = lblText.Text;
             lblText.Text = "";
             timer1.Start();
-            timer2.Start();
         }
-
-
         private string text;
         private int len = 0;
         
-/*         public void DangNhap()
+        public void DangNhap()
         {
             string user = "Ajuma";
             string pass = "123";
@@ -82,95 +77,6 @@ namespace Ajuma.Forms
                 txtMatKhau.Text = "";
                 txtTenDangNhap.Focus();
             }
-        } */
-
-        public void DangNhap()
-        {
-            string userName, userPassword;
-
-            if (txtTK.Text.Trim().Length == 0 || txtMK.Text.Trim().Length == 0)
-            {
-                lblLoi.Text = "**Chưa nhập đầy đủ thông tin!**";
-                lblLoi.Visible = true;
-                return;
-            }
-
-            userName = txtTK.Text;
-            userPassword = txtMK.Text;
-
-            if (Class.Functions.Login(userName, userPassword))
-            {
-                string sql = "SELECT LoaiTK FROM TaiKhoan WHERE taiKhoan = N'" + userName + "'";
-                string sql1 = "SELECT TrangThai FROM TaiKhoan WHERE taiKhoan = N'" + userName + "'";
-                string flag = Class.Functions.GetFieldValues(sql);
-                string flag1 = Class.Functions.GetFieldValues(sql1);
-                switch (flag)
-                {
-                    case "QuanTri":
-                        {
-                            if (flag1 != "1")
-                            {
-                                MessageBox.Show("Chào Admin, chúc bạn một ngày làm việc hiệu quả!");
-                                FrmMenu f = new FrmMenu();
-                                f.StartPosition = FormStartPosition.CenterScreen;
-                                this.Hide();
-                                f.ShowDialog();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Tài khoản này đã bị vô hiệu hóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                txtTK.Text = "";
-                                txtMK.Text = "";
-                            }
-                            break;
-                        }
-                    case "QuanLy":
-                        {
-                            if (flag1 != "1")
-                            {
-                                MessageBox.Show("Chào Quản lý, chúc bạn một ngày làm việc hiệu quả!");
-                                FrmMenu_QL f = new FrmMenu_QL();
-                                f.StartPosition = FormStartPosition.CenterScreen;
-                                this.Hide();
-                                f.ShowDialog();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Tài khoản này đã bị vô hiệu hóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                txtTK.Text = "";
-                                txtMK.Text = "";
-                            }
-                            break;
-                        }
-                    case "NhanVien":
-                        {
-                            if (flag1 != "1")
-                            {
-                                MessageBox.Show("Chào Nhân viên, chúc bạn một ngày làm việc hiệu quả!");
-                                FrmMenu_NV f = new FrmMenu_NV();
-                                f.StartPosition = FormStartPosition.CenterScreen;
-                                this.Hide();
-                                f.ShowDialog();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Tài khoản này đã bị vô hiệu hóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                txtTK.Text = "";
-                                txtMK.Text = "";
-                            }
-                            break;
-                        }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Tài khoản/ Mật khẩu sai rồi, mời bạn nhập lại!");
-                txtTK.Clear();
-                txtMK.Clear();
-                lblLoi.Text = "";
-                txtTK.Focus();
-                return;
-            }    
         }
 
         private void btnlogin_Click(object sender, EventArgs e)
@@ -186,9 +92,9 @@ namespace Ajuma.Forms
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked==true)
-                txtMK.PasswordChar = '\0';
+                txtMatKhau.PasswordChar = '\0';
             else
-                txtMK.PasswordChar = '*';
+                txtMatKhau.PasswordChar = '*';
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -200,57 +106,6 @@ namespace Ajuma.Forms
             }    
            else
                 timer1.Stop();
-        }
-
-
-        private void lblText_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTenDangNhap_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnSave_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.facebook.com/luhoangve24/");
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            lblTime.Text = DateTime.Now.ToString();
         }
     }
 }

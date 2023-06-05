@@ -157,18 +157,6 @@
     <Compile Include="Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmMenu_NV.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmMenu_NV.Designer.cs">
-      <DependentUpon>FrmMenu_NV.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmMenu_QL.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmMenu_QL.Designer.cs">
-      <DependentUpon>FrmMenu_QL.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FrmNgheSi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,12 +187,6 @@
     <Compile Include="Forms\FrmSanPham.Designer.cs">
       <DependentUpon>FrmSanPham.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmTaiKhoan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmTaiKhoan.Designer.cs">
-      <DependentUpon>FrmTaiKhoan.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FrmTheLoai.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,25 +208,25 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relationship Diagram\Album.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\ChiTietDonDatHang.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\ChiTietDonNhapHang.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\ChucVu.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\DonDatHang.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\DonNhapHang.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\KhachHang.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -261,47 +243,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Relationship Diagram\Model3.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model3.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Relationship Diagram\Model3.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Relationship Diagram\Model3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model3.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Relationship Diagram\NgheSi.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\NhaCungCap.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\NhanVien.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\QuanHuyen.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\SanPham.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Relationship Diagram\TaiKhoan.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\TheLoai.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\TinhThanh.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Relationship Diagram\XaPhuong.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\FrmBaoCaoDoanhThu.resx">
       <DependentUpon>FrmBaoCaoDoanhThu.cs</DependentUpon>
@@ -336,12 +300,6 @@
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmMenu_NV.resx">
-      <DependentUpon>FrmMenu_NV.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmMenu_QL.resx">
-      <DependentUpon>FrmMenu_QL.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmNgheSi.resx">
       <DependentUpon>FrmNgheSi.cs</DependentUpon>
     </EmbeddedResource>
@@ -356,9 +314,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSanPham.resx">
       <DependentUpon>FrmSanPham.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmTaiKhoan.resx">
-      <DependentUpon>FrmTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmTheLoai.resx">
       <DependentUpon>FrmTheLoai.cs</DependentUpon>
@@ -447,13 +402,6 @@
     <None Include="Relationship Diagram\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
-    <EntityDeploy Include="Relationship Diagram\Model3.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model3.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Relationship Diagram\Model3.edmx.diagram">
-      <DependentUpon>Model3.edmx</DependentUpon>
-    </None>
     <None Include="Resources\Aha-Soft-Universal-Shop-Print.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -538,22 +486,18 @@
     <None Include="Resources\Iconsmind-Outline-Monitor-Analytics.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Ajuma_MỚI .mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ajuma_MỚI _log.ldf">
+      <DependentUpon>Ajuma_MỚI .mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\1.jpg" />
     <Content Include="Images\2.jpg" />
     <Content Include="Images\3.jpg" />
     <Content Include="Images\4.jpg" />
     <Content Include="Images\5.jpg" />
-    <Content Include="Relationship Diagram\Model3.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model3.edmx</DependentUpon>
-      <LastGenOutput>Model3.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Relationship Diagram\Model3.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model3.edmx</DependentUpon>
-      <LastGenOutput>Model3.cs</LastGenOutput>
-    </Content>
-    <None Include="Images\no_image.png" />
     <Content Include="Relationship Diagram\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

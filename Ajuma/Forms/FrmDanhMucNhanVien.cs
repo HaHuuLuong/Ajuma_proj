@@ -25,7 +25,6 @@ namespace Ajuma.Forms
             btnboqua.Enabled = false;
             Functions.FillCombo("SELECT machucvu, tenchucvu FROM ChucVu", cboChucVu, "machucvu", "tenchucvu");
             cboChucVu.SelectedIndex = -1;
-            cboLTK.SelectedIndex = -1;
             Load_DataGridView();
             ResetValues();
         }
@@ -40,13 +39,12 @@ namespace Ajuma.Forms
             txtFacebook.Clear();
             txtdiachi.Text = "";
             cboChucVu.Text = "";
-            cboLTK.SelectedIndex = -1;
         }
         DataTable tblNV;
         private void Load_DataGridView()
         {
             string sql;
-            sql = "SELECT a.manhanvien, a.tennhanvien, a.gioitinh, a.ngaysinh, a.sdt, a.email, a.linkfacebook, a.diachi, a.machucvu, a.maTaiKhoan FROM NhanVien AS a JOIN ChucVu AS b ON a.machucvu = b.machucvu";
+            sql = "SELECT a.manhanvien, a.tennhanvien, a.gioitinh, a.ngaysinh, a.sdt, a.email, a.linkfacebook, a.diachi, a.machucvu FROM NhanVien AS a JOIN ChucVu AS b ON a.machucvu = b.machucvu";
             tblNV = Functions.GetDataToTable(sql);
             dataGridView.DataSource = tblNV;
             dataGridView.Columns[0].HeaderText = "Mã nhân viên";
@@ -58,7 +56,6 @@ namespace Ajuma.Forms
             dataGridView.Columns[6].HeaderText = "Facebook";
             dataGridView.Columns[7].HeaderText = "Địa chỉ";
             dataGridView.Columns[8].HeaderText = "Mã chức vụ";
-            dataGridView.Columns[9].HeaderText = "Loại tài khoản";
         }
 
         private void dataGridView_Click(object sender, EventArgs e)
@@ -87,7 +84,6 @@ namespace Ajuma.Forms
             txtEmail.Text = dataGridView.CurrentRow.Cells["email"].Value.ToString();
             txtFacebook.Text = dataGridView.CurrentRow.Cells["linkfacebook"].Value.ToString();
             txtdiachi.Text = dataGridView.CurrentRow.Cells["diachi"].Value.ToString();
-            cboLTK.Text = dataGridView.CurrentRow.Cells["maTaiKhoan"].Value.ToString();
 
             string ma;
             ma = dataGridView.CurrentRow.Cells["machucvu"].Value.ToString();
@@ -165,12 +161,6 @@ namespace Ajuma.Forms
                 return;
             }
 
-            if (cboLTK.SelectedIndex == -1)
-            {
-                MessageBox.Show("Bạn phải chọn loại tài khoản", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cboLTK.Focus();
-                return;
-            }
             sql = "SELECT manhanvien FROM NhanVien WHERE manhanvien=N'" + txtmanhanvien.Text.Trim() + "'";
             if (Functions.CheckKey(sql))
             {
@@ -180,8 +170,8 @@ namespace Ajuma.Forms
                 return;
             }
             string tenchucvu = cboChucVu.Text.Trim();
-            string sql_convert = "SELECT machucvu FROM ChucVu WHERE tenchucvu = N'" + tenchucvu.Trim() + "'";
-            sql = "INSERT INTO NhanVien VALUES(N'" + txtmanhanvien.Text.Trim() + "', N'" + txttennhanvien.Text.Trim() + "', N'" + gt + "', '" + Functions.ConvertDateTime(mskngaysinh.Text.Trim()) + "', N'" + msksđt.Text + "', N'" + txtEmail.Text.Trim() + "', N'" + txtFacebook.Text.Trim() + "', N'" + txtdiachi.Text.Trim() + "',  N'" + Functions.GetFieldValues(sql_convert) + "', N'"+cboLTK.Text+"')";
+            string sql_convert = "SELECT machucvu FROM ChucVu WHERE tenchucvu = N'" + tenchucvu + "'";
+            sql = "INSERT INTO NhanVien VALUES(N'" + txtmanhanvien.Text.Trim() + "', N'" + txttennhanvien.Text.Trim() + "', N'" + gt + "', '" + Functions.ConvertDateTime(mskngaysinh.Text.Trim()) + "', N'" + msksđt.Text + "', N'" + txtEmail.Text.Trim() + "', N'" + txtFacebook.Text.Trim() + "', N'" + txtdiachi.Text.Trim() + "',  N'" + Functions.GetFieldValues(sql_convert) + "')";
             Functions.RunSql(sql);
             Load_DataGridView();
             ResetValues();
@@ -228,6 +218,15 @@ namespace Ajuma.Forms
                 mskngaysinh.Focus();
                 return;
             }
+
+
+            if (!Functions.IsDate(mskngaysinh.Text))
+            {
+                MessageBox.Show("Bạn phải nhập lại ngày sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                mskngaysinh.Text = "";
+                mskngaysinh.Focus();
+                return;
+            }
             if (cboChucVu.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải chọn chức vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -244,7 +243,7 @@ namespace Ajuma.Forms
             string tenchucvu = cboChucVu.Text.Trim();
             string sql_convert = "SELECT machucvu FROM ChucVu WHERE tenchucvu = N'" + tenchucvu + "'";
 
-            sql = "UPDATE NhanVien SET tennhanvien=N'" + txttennhanvien.Text.Trim().ToString() + "', gioitinh=N'" + gt + "', ngaysinh=N'" + mskngaysinh.Text + "', sdt =  N'" + msksđt.Text + "', email = N'" + txtEmail.Text + "', linkfacebook = N'" + txtFacebook.Text + "', diachi=N'" + txtdiachi.Text.Trim().ToString() + "',   machucvu = N'" + Functions.GetFieldValues(sql_convert) + "', maTaiKhoan = N'"+cboLTK.Text+"'  WHERE manhanvien=N'" + txtmanhanvien.Text + "'";
+            sql = "UPDATE NhanVien SET tennhanvien=N'" + txttennhanvien.Text.Trim().ToString() + "', gioitinh=N'" + gt + "', ngaysinh=N'" + Functions.ConvertDateTime(mskngaysinh.Text) + "', sdt =  N'" + msksđt.Text + "', email = N'" + txtEmail.Text + "', linkfacebook = N'" + txtFacebook.Text + "', diachi=N'" + txtdiachi.Text.Trim().ToString() + "',   machucvu = N'" + Functions.GetFieldValues(sql_convert) + "'  WHERE manhanvien=N'" + txtmanhanvien.Text + "'";
             //MessageBox.Show(sql);
             Functions.RunSql(sql);
             Load_DataGridView();
