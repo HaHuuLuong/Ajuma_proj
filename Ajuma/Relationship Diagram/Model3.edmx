@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Album">
           <Key>
             <PropertyRef Name="maalbum" />
@@ -84,7 +84,7 @@
           </Key>
           <Property Name="makhach" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="tenkhach" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="sdt" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="sdt" Type="nvarchar" MaxLength="20" />
           <Property Name="diachichitiet" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="maxaphuong" Type="int" />
           <Property Name="ngaysinh" Type="date" />
@@ -105,7 +105,7 @@
           </Key>
           <Property Name="manhacungcap" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="tennhacungcap" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="sodienthoai" Type="nvarchar" MaxLength="10" />
+          <Property Name="sodienthoai" Type="nvarchar" MaxLength="20" />
           <Property Name="linkweb" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="NhanVien">
@@ -116,12 +116,12 @@
           <Property Name="tennhanvien" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="gioitinh" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ngaysinh" Type="date" />
-          <Property Name="sdt" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="sdt" Type="nvarchar" MaxLength="20" />
           <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="linkfacebook" Type="nvarchar" MaxLength="200" />
           <Property Name="diachi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="machucvu" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="maTaiKhoan" Type="nvarchar" MaxLength="20" />
+          <Property Name="maTaiKhoan" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="QuanHuyen">
           <Key>
@@ -158,6 +158,7 @@
           <Property Name="taiKhoan" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="matKhau" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="LoaiTK" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="trangThai" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TheLoai">
           <Key>
@@ -374,7 +375,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NhanVien_ToTaiKhoan">
-          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TaiKhoan">
@@ -385,7 +386,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ModelStoreContainer">
+        <EntityContainer Name="Model1StoreContainer">
           <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietDonDatHang" EntityType="Self.ChiTietDonDatHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietDonNhapHang" EntityType="Self.ChiTietDonNhapHang" Schema="dbo" store:Type="Tables" />
@@ -475,7 +476,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Album">
           <Key>
             <PropertyRef Name="maalbum" />
@@ -568,7 +569,7 @@
           </Key>
           <Property Name="makhach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="tenkhach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="sdt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="diachichitiet" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="maxaphuong" Type="Int32" />
           <Property Name="ngaysinh" Type="DateTime" Precision="0" />
@@ -592,7 +593,7 @@
           </Key>
           <Property Name="manhacungcap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="tennhacungcap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="sodienthoai" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="sodienthoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="linkweb" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DonNhapHangs" Relationship="Self.FK__DonNhapHa__manha__1BC821DD" FromRole="NhaCungCap" ToRole="DonNhapHang" />
           <NavigationProperty Name="SanPhams" Relationship="Self.FK__SanPham__manhacu__5CD6CB2B" FromRole="NhaCungCap" ToRole="SanPham" />
@@ -605,12 +606,12 @@
           <Property Name="tennhanvien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="gioitinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ngaysinh" Type="DateTime" Precision="0" />
-          <Property Name="sdt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="linkfacebook" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="machucvu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="maTaiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="maTaiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ChucVu" Relationship="Self.FK__NhanVien__machuc__3E52440B" FromRole="NhanVien" ToRole="ChucVu" />
           <NavigationProperty Name="DonDatHangs" Relationship="Self.FK__DonDatHan__manha__4316F928" FromRole="NhanVien" ToRole="DonDatHang" />
           <NavigationProperty Name="DonNhapHangs" Relationship="Self.FK__DonNhapHa__manha__1AD3FDA4" FromRole="NhanVien" ToRole="DonNhapHang" />
@@ -655,9 +656,10 @@
             <PropertyRef Name="IdTaiKhoan" />
           </Key>
           <Property Name="IdTaiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="taiKhoan1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="taiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="matKhau" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LoaiTK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="trangThai" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NhanViens" Relationship="Self.FK_NhanVien_ToTaiKhoan" FromRole="TaiKhoan" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="TheLoai">
@@ -843,7 +845,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NhanVien_ToTaiKhoan">
-          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TaiKhoan">
@@ -981,9 +983,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Albums">
-            <EntityTypeMapping TypeName="Model.Album">
+            <EntityTypeMapping TypeName="Model1.Album">
               <MappingFragment StoreEntitySet="Album">
                 <ScalarProperty Name="maalbum" ColumnName="maalbum" />
                 <ScalarProperty Name="tenalbum" ColumnName="tenalbum" />
@@ -994,7 +996,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietDonDatHangs">
-            <EntityTypeMapping TypeName="Model.ChiTietDonDatHang">
+            <EntityTypeMapping TypeName="Model1.ChiTietDonDatHang">
               <MappingFragment StoreEntitySet="ChiTietDonDatHang">
                 <ScalarProperty Name="madondathang" ColumnName="madondathang" />
                 <ScalarProperty Name="masanpham" ColumnName="masanpham" />
@@ -1007,7 +1009,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietDonNhapHangs">
-            <EntityTypeMapping TypeName="Model.ChiTietDonNhapHang">
+            <EntityTypeMapping TypeName="Model1.ChiTietDonNhapHang">
               <MappingFragment StoreEntitySet="ChiTietDonNhapHang">
                 <ScalarProperty Name="madonnhaphang" ColumnName="madonnhaphang" />
                 <ScalarProperty Name="masanpham" ColumnName="masanpham" />
@@ -1020,7 +1022,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChucVus">
-            <EntityTypeMapping TypeName="Model.ChucVu">
+            <EntityTypeMapping TypeName="Model1.ChucVu">
               <MappingFragment StoreEntitySet="ChucVu">
                 <ScalarProperty Name="machucvu" ColumnName="machucvu" />
                 <ScalarProperty Name="tenchucvu" ColumnName="tenchucvu" />
@@ -1028,7 +1030,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DonDatHangs">
-            <EntityTypeMapping TypeName="Model.DonDatHang">
+            <EntityTypeMapping TypeName="Model1.DonDatHang">
               <MappingFragment StoreEntitySet="DonDatHang">
                 <ScalarProperty Name="madondathang" ColumnName="madondathang" />
                 <ScalarProperty Name="ngaydathang" ColumnName="ngaydathang" />
@@ -1047,7 +1049,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DonNhapHangs">
-            <EntityTypeMapping TypeName="Model.DonNhapHang">
+            <EntityTypeMapping TypeName="Model1.DonNhapHang">
               <MappingFragment StoreEntitySet="DonNhapHang">
                 <ScalarProperty Name="madonnhaphang" ColumnName="madonnhaphang" />
                 <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
@@ -1060,7 +1062,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KhachHangs">
-            <EntityTypeMapping TypeName="Model.KhachHang">
+            <EntityTypeMapping TypeName="Model1.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
                 <ScalarProperty Name="makhach" ColumnName="makhach" />
                 <ScalarProperty Name="tenkhach" ColumnName="tenkhach" />
@@ -1073,7 +1075,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NgheSis">
-            <EntityTypeMapping TypeName="Model.NgheSi">
+            <EntityTypeMapping TypeName="Model1.NgheSi">
               <MappingFragment StoreEntitySet="NgheSi">
                 <ScalarProperty Name="manghesi" ColumnName="manghesi" />
                 <ScalarProperty Name="tennghesi" ColumnName="tennghesi" />
@@ -1083,7 +1085,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhaCungCaps">
-            <EntityTypeMapping TypeName="Model.NhaCungCap">
+            <EntityTypeMapping TypeName="Model1.NhaCungCap">
               <MappingFragment StoreEntitySet="NhaCungCap">
                 <ScalarProperty Name="manhacungcap" ColumnName="manhacungcap" />
                 <ScalarProperty Name="tennhacungcap" ColumnName="tennhacungcap" />
@@ -1093,7 +1095,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhanViens">
-            <EntityTypeMapping TypeName="Model.NhanVien">
+            <EntityTypeMapping TypeName="Model1.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
                 <ScalarProperty Name="manhanvien" ColumnName="manhanvien" />
                 <ScalarProperty Name="tennhanvien" ColumnName="tennhanvien" />
@@ -1109,7 +1111,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="QuanHuyens">
-            <EntityTypeMapping TypeName="Model.QuanHuyen">
+            <EntityTypeMapping TypeName="Model1.QuanHuyen">
               <MappingFragment StoreEntitySet="QuanHuyen">
                 <ScalarProperty Name="maquanhuyen" ColumnName="maquanhuyen" />
                 <ScalarProperty Name="matinhthanh" ColumnName="matinhthanh" />
@@ -1118,7 +1120,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SanPhams">
-            <EntityTypeMapping TypeName="Model.SanPham">
+            <EntityTypeMapping TypeName="Model1.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
                 <ScalarProperty Name="masanpham" ColumnName="masanpham" />
                 <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
@@ -1138,17 +1140,18 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TaiKhoans">
-            <EntityTypeMapping TypeName="Model.TaiKhoan">
+            <EntityTypeMapping TypeName="Model1.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
                 <ScalarProperty Name="IdTaiKhoan" ColumnName="IdTaiKhoan" />
-                <ScalarProperty Name="taiKhoan1" ColumnName="taiKhoan" />
+                <ScalarProperty Name="taiKhoan" ColumnName="taiKhoan" />
                 <ScalarProperty Name="matKhau" ColumnName="matKhau" />
                 <ScalarProperty Name="LoaiTK" ColumnName="LoaiTK" />
+                <ScalarProperty Name="trangThai" ColumnName="trangThai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TheLoais">
-            <EntityTypeMapping TypeName="Model.TheLoai">
+            <EntityTypeMapping TypeName="Model1.TheLoai">
               <MappingFragment StoreEntitySet="TheLoai">
                 <ScalarProperty Name="matheloai" ColumnName="matheloai" />
                 <ScalarProperty Name="tentheloai" ColumnName="tentheloai" />
@@ -1156,7 +1159,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TinhThanhs">
-            <EntityTypeMapping TypeName="Model.TinhThanh">
+            <EntityTypeMapping TypeName="Model1.TinhThanh">
               <MappingFragment StoreEntitySet="TinhThanh">
                 <ScalarProperty Name="matinhthanh" ColumnName="matinhthanh" />
                 <ScalarProperty Name="tentinhthanh" ColumnName="tentinhthanh" />
@@ -1164,7 +1167,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="XaPhuongs">
-            <EntityTypeMapping TypeName="Model.XaPhuong">
+            <EntityTypeMapping TypeName="Model1.XaPhuong">
               <MappingFragment StoreEntitySet="XaPhuong">
                 <ScalarProperty Name="maxaphuong" ColumnName="maxaphuong" />
                 <ScalarProperty Name="maquanhuyen" ColumnName="maquanhuyen" />

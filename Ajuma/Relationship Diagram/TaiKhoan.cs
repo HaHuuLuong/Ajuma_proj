@@ -21,9 +21,10 @@ namespace Ajuma.Relationship_Diagram
         }
     
         public string IdTaiKhoan { get; set; }
-        public string taiKhoan1 { get; set; }
+        public string taiKhoan { get; set; }
         public string matKhau { get; set; }
         public string LoaiTK { get; set; }
+        public int trangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NhanVien> NhanViens { get; set; }
