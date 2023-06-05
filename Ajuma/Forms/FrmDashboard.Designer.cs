@@ -38,26 +38,51 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.ajuma_MỚI_DataSet1 = new Ajuma.Ajuma_MỚI_DataSet1();
             this.sanPhamBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sanPhamTableAdapter = new Ajuma.Ajuma_MỚI_DataSet1TableAdapters.SanPhamTableAdapter();
-            this.ajuma_MỚI_DataSet2 = new Ajuma.Ajuma_MỚI_DataSet2();
+            this.ajuma_MỚI_DataSet1 = new Ajuma.Ajuma_MỚI_DataSet1();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.donDatHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ajuma_MỚI_DataSet2 = new Ajuma.Ajuma_MỚI_DataSet2();
+            this.sanPhamTableAdapter = new Ajuma.Ajuma_MỚI_DataSet1TableAdapters.SanPhamTableAdapter();
             this.donDatHangTableAdapter = new Ajuma.Ajuma_MỚI_DataSet2TableAdapters.DonDatHangTableAdapter();
+            this.ajuma_MỚI_DataSet3 = new Ajuma.Ajuma_MỚI_DataSet3();
+            this.khachHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.khachHangTableAdapter = new Ajuma.Ajuma_MỚI_DataSet3TableAdapters.KhachHangTableAdapter();
+            this.ajuma_MỚI_DataSet4 = new Ajuma.Ajuma_MỚI_DataSet4();
+            this.donDatHangBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.donDatHangTableAdapter1 = new Ajuma.Ajuma_MỚI_DataSet4TableAdapters.DonDatHangTableAdapter();
+            this.ajuma_MỚI_DataSet5 = new Ajuma.Ajuma_MỚI_DataSet5();
+            this.sanPhamBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.sanPhamTableAdapter1 = new Ajuma.Ajuma_MỚI_DataSet5TableAdapters.SanPhamTableAdapter();
+            this.ajuma_MỚI_Vux_DataSet = new Ajuma.Ajuma_MỚI_Vux_DataSet();
+            this.donDatHangBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.donDatHangTableAdapter2 = new Ajuma.Ajuma_MỚI_Vux_DataSetTableAdapters.DonDatHangTableAdapter();
+            this.ajuma_MỚI_Vux_DataSet1 = new Ajuma.Ajuma_MỚI_Vux_DataSet1();
+            this.sanPhamBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.sanPhamTableAdapter2 = new Ajuma.Ajuma_MỚI_Vux_DataSet1TableAdapters.SanPhamTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donDatHangBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.khachHangBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donDatHangBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_Vux_DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donDatHangBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_Vux_DataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
             // 
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.DataSource = this.sanPhamBindingSource;
+            this.chart1.DataSource = this.sanPhamBindingSource2;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(12, 30);
@@ -79,11 +104,21 @@
             title1.Text = "Thống kê số lượng sản phẩm trong kho";
             this.chart1.Titles.Add(title1);
             // 
+            // sanPhamBindingSource
+            // 
+            this.sanPhamBindingSource.DataMember = "SanPham";
+            this.sanPhamBindingSource.DataSource = this.ajuma_MỚI_DataSet1;
+            // 
+            // ajuma_MỚI_DataSet1
+            // 
+            this.ajuma_MỚI_DataSet1.DataSetName = "Ajuma_MỚI_DataSet1";
+            this.ajuma_MỚI_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // chart2
             // 
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
-            this.chart2.DataSource = this.donDatHangBindingSource;
+            this.chart2.DataSource = this.donDatHangBindingSource2;
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(545, 30);
@@ -106,33 +141,93 @@
             title2.Text = "Thống kê tổng tiền khách hàng mua";
             this.chart2.Titles.Add(title2);
             // 
-            // ajuma_MỚI_DataSet1
+            // donDatHangBindingSource
             // 
-            this.ajuma_MỚI_DataSet1.DataSetName = "Ajuma_MỚI_DataSet1";
-            this.ajuma_MỚI_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sanPhamBindingSource
-            // 
-            this.sanPhamBindingSource.DataMember = "SanPham";
-            this.sanPhamBindingSource.DataSource = this.ajuma_MỚI_DataSet1;
-            // 
-            // sanPhamTableAdapter
-            // 
-            this.sanPhamTableAdapter.ClearBeforeFill = true;
+            this.donDatHangBindingSource.DataMember = "DonDatHang";
+            this.donDatHangBindingSource.DataSource = this.ajuma_MỚI_DataSet2;
             // 
             // ajuma_MỚI_DataSet2
             // 
             this.ajuma_MỚI_DataSet2.DataSetName = "Ajuma_MỚI_DataSet2";
             this.ajuma_MỚI_DataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // donDatHangBindingSource
+            // sanPhamTableAdapter
             // 
-            this.donDatHangBindingSource.DataMember = "DonDatHang";
-            this.donDatHangBindingSource.DataSource = this.ajuma_MỚI_DataSet2;
+            this.sanPhamTableAdapter.ClearBeforeFill = true;
             // 
             // donDatHangTableAdapter
             // 
             this.donDatHangTableAdapter.ClearBeforeFill = true;
+            // 
+            // ajuma_MỚI_DataSet3
+            // 
+            this.ajuma_MỚI_DataSet3.DataSetName = "Ajuma_MỚI_DataSet3";
+            this.ajuma_MỚI_DataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // khachHangBindingSource
+            // 
+            this.khachHangBindingSource.DataMember = "KhachHang";
+            this.khachHangBindingSource.DataSource = this.ajuma_MỚI_DataSet3;
+            // 
+            // khachHangTableAdapter
+            // 
+            this.khachHangTableAdapter.ClearBeforeFill = true;
+            // 
+            // ajuma_MỚI_DataSet4
+            // 
+            this.ajuma_MỚI_DataSet4.DataSetName = "Ajuma_MỚI_DataSet4";
+            this.ajuma_MỚI_DataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // donDatHangBindingSource1
+            // 
+            this.donDatHangBindingSource1.DataMember = "DonDatHang";
+            this.donDatHangBindingSource1.DataSource = this.ajuma_MỚI_DataSet4;
+            // 
+            // donDatHangTableAdapter1
+            // 
+            this.donDatHangTableAdapter1.ClearBeforeFill = true;
+            // 
+            // ajuma_MỚI_DataSet5
+            // 
+            this.ajuma_MỚI_DataSet5.DataSetName = "Ajuma_MỚI_DataSet5";
+            this.ajuma_MỚI_DataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sanPhamBindingSource1
+            // 
+            this.sanPhamBindingSource1.DataMember = "SanPham";
+            this.sanPhamBindingSource1.DataSource = this.ajuma_MỚI_DataSet5;
+            // 
+            // sanPhamTableAdapter1
+            // 
+            this.sanPhamTableAdapter1.ClearBeforeFill = true;
+            // 
+            // ajuma_MỚI_Vux_DataSet
+            // 
+            this.ajuma_MỚI_Vux_DataSet.DataSetName = "Ajuma_MỚI_Vux_DataSet";
+            this.ajuma_MỚI_Vux_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // donDatHangBindingSource2
+            // 
+            this.donDatHangBindingSource2.DataMember = "DonDatHang";
+            this.donDatHangBindingSource2.DataSource = this.ajuma_MỚI_Vux_DataSet;
+            // 
+            // donDatHangTableAdapter2
+            // 
+            this.donDatHangTableAdapter2.ClearBeforeFill = true;
+            // 
+            // ajuma_MỚI_Vux_DataSet1
+            // 
+            this.ajuma_MỚI_Vux_DataSet1.DataSetName = "Ajuma_MỚI_Vux_DataSet1";
+            this.ajuma_MỚI_Vux_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sanPhamBindingSource2
+            // 
+            this.sanPhamBindingSource2.DataMember = "SanPham";
+            this.sanPhamBindingSource2.DataSource = this.ajuma_MỚI_Vux_DataSet1;
+            // 
+            // sanPhamTableAdapter2
+            // 
+            this.sanPhamTableAdapter2.ClearBeforeFill = true;
             // 
             // FrmDashboard
             // 
@@ -145,11 +240,21 @@
             this.Text = "FrmDashboard";
             this.Load += new System.EventHandler(this.FrmDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donDatHangBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.khachHangBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donDatHangBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_DataSet5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_Vux_DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donDatHangBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ajuma_MỚI_Vux_DataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -164,5 +269,20 @@
         private Ajuma_MỚI_DataSet2 ajuma_MỚI_DataSet2;
         private System.Windows.Forms.BindingSource donDatHangBindingSource;
         private Ajuma_MỚI_DataSet2TableAdapters.DonDatHangTableAdapter donDatHangTableAdapter;
+        private Ajuma_MỚI_DataSet3 ajuma_MỚI_DataSet3;
+        private System.Windows.Forms.BindingSource khachHangBindingSource;
+        private Ajuma_MỚI_DataSet3TableAdapters.KhachHangTableAdapter khachHangTableAdapter;
+        private Ajuma_MỚI_DataSet4 ajuma_MỚI_DataSet4;
+        private System.Windows.Forms.BindingSource donDatHangBindingSource1;
+        private Ajuma_MỚI_DataSet4TableAdapters.DonDatHangTableAdapter donDatHangTableAdapter1;
+        private Ajuma_MỚI_DataSet5 ajuma_MỚI_DataSet5;
+        private System.Windows.Forms.BindingSource sanPhamBindingSource1;
+        private Ajuma_MỚI_DataSet5TableAdapters.SanPhamTableAdapter sanPhamTableAdapter1;
+        private Ajuma_MỚI_Vux_DataSet ajuma_MỚI_Vux_DataSet;
+        private System.Windows.Forms.BindingSource donDatHangBindingSource2;
+        private Ajuma_MỚI_Vux_DataSetTableAdapters.DonDatHangTableAdapter donDatHangTableAdapter2;
+        private Ajuma_MỚI_Vux_DataSet1 ajuma_MỚI_Vux_DataSet1;
+        private System.Windows.Forms.BindingSource sanPhamBindingSource2;
+        private Ajuma_MỚI_Vux_DataSet1TableAdapters.SanPhamTableAdapter sanPhamTableAdapter2;
     }
 }

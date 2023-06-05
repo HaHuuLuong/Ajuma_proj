@@ -57,7 +57,7 @@ namespace Ajuma.Forms
                 return;
             }
             sql = "SELECT a.madonnhaphang, a.masanpham, b.manhacungcap," +
-                " b.ngaydat, a.soluongdat, a.dongia ,a.khuyenmai, a.thanhtien " +
+                " b.ngaydat, a.soluongdat, a.dongia ,a.soluongnhan, a.thanhtien, a.trangthai " +
                 "FROM ChiTietDonNhapHang AS a JOIN DonNhapHang AS b ON a.madonnhaphang = b.madonnhaphang " +
                 "WHERE 1=1";
 
@@ -104,8 +104,9 @@ namespace Ajuma.Forms
             DataGridView.Columns[3].HeaderText = "Ngày nhập";
             DataGridView.Columns[4].HeaderText = "Số lượng";
             DataGridView.Columns[5].HeaderText = "Đơn giá";
-            DataGridView.Columns[6].HeaderText = "Khuyến mãi";
+            DataGridView.Columns[6].HeaderText = "Số lượnng nhận";
             DataGridView.Columns[7].HeaderText = "Thành tiền";
+            DataGridView.Columns[8].HeaderText = "Trạng thái";
             DataGridView.Columns[0].Width = 100;
             DataGridView.Columns[1].Width = 100;
             DataGridView.Columns[2].Width = 80;
@@ -114,6 +115,7 @@ namespace Ajuma.Forms
             DataGridView.Columns[5].Width = 80;
             DataGridView.Columns[6].Width = 80;
             DataGridView.Columns[7].Width = 80;
+            DataGridView.Columns[8].Width = 80;
             DataGridView.AllowUserToAddRows = false;
             DataGridView.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
@@ -145,7 +147,8 @@ namespace Ajuma.Forms
                 return;
             }
             txtdongia.Text = DataGridView.CurrentRow.Cells["dongia"].Value.ToString();
-            txtkhuyenmai.Text = DataGridView.CurrentRow.Cells["khuyenmai"].Value.ToString();
+            txtTrangthai.Text = DataGridView.CurrentRow.Cells["trangthai"].Value.ToString();
+            txtkhuyenmai.Text = DataGridView.CurrentRow.Cells["soluongnhan"].Value.ToString();
             txtsoluong.Text = DataGridView.CurrentRow.Cells["soluongdat"].Value.ToString();
             txttongtien.Text = tongtien().ToString();
             txtngaynhap.Text = DataGridView.CurrentRow.Cells["ngaydat"].Value.ToString();

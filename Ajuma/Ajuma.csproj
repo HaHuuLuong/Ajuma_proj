@@ -90,6 +90,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Ajuma_MỚI_DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Ajuma_MỚI_DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ajuma_MỚI_DataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_DataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ajuma_MỚI_DataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_DataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ajuma_MỚI_Vux_DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ajuma_MỚI_Vux_DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Class\Functions.cs" />
     <Compile Include="Forms\FrmBaoCaoDoanhThu.cs">
       <SubType>Form</SubType>
@@ -407,6 +432,61 @@
     <None Include="Ajuma_MỚI_DataSet2.xss">
       <DependentUpon>Ajuma_MỚI_DataSet2.xsd</DependentUpon>
     </None>
+    <None Include="Ajuma_MỚI_DataSet3.xsc">
+      <DependentUpon>Ajuma_MỚI_DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_DataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_DataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_DataSet3.xss">
+      <DependentUpon>Ajuma_MỚI_DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_DataSet4.xsc">
+      <DependentUpon>Ajuma_MỚI_DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_DataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_DataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_DataSet4.xss">
+      <DependentUpon>Ajuma_MỚI_DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_DataSet5.xsc">
+      <DependentUpon>Ajuma_MỚI_DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_DataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_DataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_DataSet5.xss">
+      <DependentUpon>Ajuma_MỚI_DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet.xsc">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_Vux_DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet.xss">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet1.xsc">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_Vux_DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet1.xss">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -538,6 +618,13 @@
     <None Include="Resources\Iconsmind-Outline-Monitor-Analytics.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Ajuma_MỚI_Vux .mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ajuma_MỚI_Vux _log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Ajuma_MỚI_Vux .mdf</DependentUpon>
+    </Content>
     <Content Include="Images\1.jpg" />
     <Content Include="Images\2.jpg" />
     <Content Include="Images\3.jpg" />
