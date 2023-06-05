@@ -196,5 +196,27 @@ namespace Ajuma
             f.Show();
 
         }
+
+        private void mnuBaocao_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuDanhmuc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tảiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FrmTaiKhoan f = new FrmTaiKhoan();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
     }
 }
