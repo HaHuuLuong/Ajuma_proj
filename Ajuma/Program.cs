@@ -31,7 +31,8 @@ namespace Ajuma
             //SetProcessDpiAwareness((int)DpiAwareness.PerMonitorAware);
             //Application.Run(new Forms.FrmLogin());
             Application.Run(new Forms.FrmLogin());
-            
+            //Application.Run(new Forms.Sendcode());
+
         }
     }
 }

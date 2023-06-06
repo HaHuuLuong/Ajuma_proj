@@ -118,7 +118,7 @@
             // btnin
             // 
             this.btnin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnin.Image = global::Ajuma.Properties.Resources.Aha_Soft_Universal_Shop_Print;
+            //this.btnin.Image = global::Ajuma.Properties.Resources.Aha-Soft-Universal-Shop-Print;
             this.btnin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnin.Location = new System.Drawing.Point(296, 314);
             this.btnin.Margin = new System.Windows.Forms.Padding(4);
@@ -132,7 +132,7 @@
             // 
             // btntimkiem
             // 
-            this.btntimkiem.Image = global::Ajuma.Properties.Resources.Icojam_Blue_Bits_Application_search;
+           // this.btntimkiem.Image = global::Ajuma.Properties.Resources.Icojam_Blue_Bits_Application_search;
             this.btntimkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btntimkiem.Location = new System.Drawing.Point(633, 362);
             this.btntimkiem.Name = "btntimkiem";
@@ -166,7 +166,7 @@
             // btnboqua
             // 
             this.btnboqua.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnboqua.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Pretty_Office_8_Skip_forward;
+           // this.btnboqua.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Pretty_Office_8_Skip_forward;
             this.btnboqua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnboqua.Location = new System.Drawing.Point(585, 314);
             this.btnboqua.Name = "btnboqua";
@@ -179,7 +179,7 @@
             // 
             // btnsua
             // 
-            this.btnsua.Image = global::Ajuma.Properties.Resources.Bokehlicia_Captiva_Edit_tomboy;
+           // this.btnsua.Image = global::Ajuma.Properties.Resources.Bokehlicia_Captiva_Edit_tomboy;
             this.btnsua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnsua.Location = new System.Drawing.Point(471, 314);
             this.btnsua.Name = "btnsua";
@@ -192,7 +192,7 @@
             // 
             // btndong
             // 
-            this.btndong.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Flatastic_9_Login;
+           // this.btndong.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Flatastic_9_Login;
             this.btndong.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btndong.Location = new System.Drawing.Point(908, 314);
             this.btndong.Name = "btndong";
@@ -207,7 +207,7 @@
             // 
             this.btnhuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnhuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnhuy.Image = global::Ajuma.Properties.Resources.Hopstarter_Soft_Scraps_File_Delete;
+            //this.btnhuy.Image = global::Ajuma.Properties.Resources.Hopstarter_Soft_Scraps_File_Delete;
             this.btnhuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnhuy.Location = new System.Drawing.Point(740, 314);
             this.btnhuy.Name = "btnhuy";
@@ -221,7 +221,7 @@
             // btnluu
             // 
             this.btnluu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnluu.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Pretty_Office_7_Save;
+           // this.btnluu.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Pretty_Office_7_Save;
             this.btnluu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnluu.Location = new System.Drawing.Point(185, 314);
             this.btnluu.Name = "btnluu";
@@ -235,7 +235,7 @@
             // btnthemmoi
             // 
             this.btnthemmoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnthemmoi.Image = global::Ajuma.Properties.Resources.Hopstarter_Soft_Scraps_Folder_Add1;
+            //this.btnthemmoi.Image = global::Ajuma.Properties.Resources.Hopstarter_Soft_Scraps_Folder_Add1;
             this.btnthemmoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnthemmoi.Location = new System.Drawing.Point(21, 314);
             this.btnthemmoi.Name = "btnthemmoi";

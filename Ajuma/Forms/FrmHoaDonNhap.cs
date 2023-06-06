@@ -576,5 +576,10 @@ namespace Ajuma.Forms
             ResetValuesHang();
             ResetValues();
         }
+
+        private void grbchitiethd_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

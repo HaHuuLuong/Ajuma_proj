@@ -51,6 +51,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.Forgotpass = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -109,7 +110,7 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(17, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 27);
+            this.label2.Size = new System.Drawing.Size(0, 26);
             this.label2.TabIndex = 8;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
@@ -123,6 +124,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Forgotpass);
             this.panel1.Controls.Add(this.lblLoi);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
@@ -160,7 +162,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(22, 110);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 26);
+            this.label3.Size = new System.Drawing.Size(111, 25);
             this.label3.TabIndex = 18;
             this.label3.Text = "Mật khẩu";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -173,7 +175,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(22, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 26);
+            this.label4.Size = new System.Drawing.Size(112, 25);
             this.label4.TabIndex = 17;
             this.label4.Text = "Tài khoản";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -183,7 +185,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.BackColor = System.Drawing.Color.Transparent;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(284, 154);
+            this.checkBox1.Location = new System.Drawing.Point(309, 154);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(152, 24);
@@ -308,11 +310,23 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // Forgotpass
+            // 
+            this.Forgotpass.BackColor = System.Drawing.Color.Transparent;
+            this.Forgotpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Forgotpass.Location = new System.Drawing.Point(123, 154);
+            this.Forgotpass.Name = "Forgotpass";
+            this.Forgotpass.Size = new System.Drawing.Size(146, 24);
+            this.Forgotpass.TabIndex = 20;
+            this.Forgotpass.Text = "Quên mật khẩu";
+            this.Forgotpass.UseVisualStyleBackColor = false;
+            this.Forgotpass.Click += new System.EventHandler(this.Forgotpass_Click);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Ajuma.Properties.Resources.Thêm_tiêu_đề_phụ__1_;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(860, 490);
             this.Controls.Add(this.panel2);
@@ -356,5 +370,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label lblLoi;
+        private System.Windows.Forms.Button Forgotpass;
     }
 }

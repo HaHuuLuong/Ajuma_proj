@@ -107,7 +107,7 @@
             // 
             // btndong
             // 
-            this.btndong.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Flatastic_9_Login;
+//            this.btndong.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Flatastic_9_Login;
             this.btndong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btndong.Location = new System.Drawing.Point(629, 440);
             this.btndong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -121,7 +121,7 @@
             // 
             // btnboqua
             // 
-            this.btnboqua.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Pretty_Office_8_Skip_forward;
+//            this.btnboqua.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Pretty_Office_8_Skip_forward;
             this.btnboqua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnboqua.Location = new System.Drawing.Point(507, 440);
             this.btnboqua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -135,7 +135,7 @@
             // 
             // btnluu
             // 
-            this.btnluu.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Pretty_Office_7_Save;
+//            this.btnluu.Image = global::Ajuma.Properties.Resources.Custom_Icon_Design_Pretty_Office_7_Save;
             this.btnluu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnluu.Location = new System.Drawing.Point(404, 440);
             this.btnluu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -149,7 +149,7 @@
             // 
             // btnxoa
             // 
-            this.btnxoa.Image = global::Ajuma.Properties.Resources.Hopstarter_Soft_Scraps_File_Delete;
+//            this.btnxoa.Image = global::Ajuma.Properties.Resources.Hopstarter_Soft_Scraps_File_Delete;
             this.btnxoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnxoa.Location = new System.Drawing.Point(300, 440);
             this.btnxoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -163,7 +163,7 @@
             // 
             // btnsua
             // 
-            this.btnsua.Image = global::Ajuma.Properties.Resources.Bokehlicia_Captiva_Edit_tomboy1;
+//            this.btnsua.Image = global::Ajuma.Properties.Resources.Bokehlicia_Captiva_Edit_tomboy1;
             this.btnsua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnsua.Location = new System.Drawing.Point(195, 440);
             this.btnsua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -177,7 +177,7 @@
             // 
             // btnthem
             // 
-            this.btnthem.Image = global::Ajuma.Properties.Resources.Hopstarter_Soft_Scraps_Folder_Add;
+//            this.btnthem.Image = global::Ajuma.Properties.Resources.Hopstarter_Soft_Scraps_Folder_Add;
             this.btnthem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnthem.Location = new System.Drawing.Point(88, 440);
             this.btnthem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

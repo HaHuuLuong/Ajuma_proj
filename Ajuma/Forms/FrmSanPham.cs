@@ -96,6 +96,7 @@ namespace Ajuma.Forms
             txtPhienban.Text = "";
             txtTrongluong.Text = "";
             mskngaysinh.Clear();
+            //txtNgayphathanh.Text = "";
             txtMota.Text = "";
             //txtNgayphathanh.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
@@ -133,6 +134,7 @@ namespace Ajuma.Forms
             txtPhienban.Text = dtgvsp.CurrentRow.Cells["phienban"].Value.ToString();
             txtMota.Text = dtgvsp.CurrentRow.Cells["mota"].Value.ToString();
             mskngaysinh.Text = dtgvsp.CurrentRow.Cells["ngayphathanh"].Value.ToString();
+            //txtNgayphathanh.Text = dtgvsp.CurrentRow.Cells["ngayphathanh"].Value.ToString();
 
 
             //picAnh.Image = Image.FromFile(txtHinhanh.Text);
@@ -422,6 +424,21 @@ namespace Ajuma.Forms
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxhinhanh_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtgvsp_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

@@ -252,5 +252,12 @@ namespace Ajuma.Forms
         {
             lblTime.Text = DateTime.Now.ToString();
         }
+
+        private void Forgotpass_Click(object sender, EventArgs e)
+        {
+            Sendcode sd = new Sendcode();
+            this.Hide();
+            sd.Show();
+        }
     }
 }
