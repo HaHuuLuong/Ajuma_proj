@@ -63,7 +63,7 @@ namespace Ajuma.Forms
             txtAnh.Text = DataGridView.CurrentRow.Cells["anh"].Value.ToString();
             if (txtAnh.Text.Trim() == "")
             {
-                picAnh.Image = Ajuma.Properties.Resources.no_image;
+                //picAnh.Image = Ajuma.Properties.Resources.no_image;
    
             }
             else

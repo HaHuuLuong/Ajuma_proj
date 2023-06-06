@@ -107,6 +107,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "Resetpassword";
             this.Text = "Resetpassword";
+            this.Load += new System.EventHandler(this.Resetpassword_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
