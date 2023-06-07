@@ -69,5 +69,10 @@ namespace Ajuma.Forms
                 MessageBox.Show("Error");
             }    
         }
+
+        private void Sendcode_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

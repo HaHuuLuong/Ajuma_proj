@@ -72,6 +72,8 @@
             this.btnthemhd = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.btnBoQua = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtSoluongnhan = new System.Windows.Forms.TextBox();
             this.grbchitiethd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.grbthongtinphieu.SuspendLayout();
@@ -128,6 +130,8 @@
             // grbchitiethd
             // 
             this.grbchitiethd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.grbchitiethd.Controls.Add(this.label18);
+            this.grbchitiethd.Controls.Add(this.txtSoluongnhan);
             this.grbchitiethd.Controls.Add(this.label13);
             this.grbchitiethd.Controls.Add(this.txtTrangThai);
             this.grbchitiethd.Controls.Add(this.txtmahdnhap1);
@@ -148,7 +152,7 @@
             this.grbchitiethd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grbchitiethd.Name = "grbchitiethd";
             this.grbchitiethd.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.grbchitiethd.Size = new System.Drawing.Size(922, 242);
+            this.grbchitiethd.Size = new System.Drawing.Size(961, 242);
             this.grbchitiethd.TabIndex = 52;
             this.grbchitiethd.TabStop = false;
             this.grbchitiethd.Text = "CHI TIẾT HÓA ĐƠN";
@@ -581,6 +585,25 @@
             this.btnBoQua.UseVisualStyleBackColor = false;
             this.btnBoQua.Click += new System.EventHandler(this.btnBoQua_Click);
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(820, 33);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(134, 18);
+            this.label18.TabIndex = 46;
+            this.label18.Text = "SỐ LƯỢNG NHẬN";
+            // 
+            // txtSoluongnhan
+            // 
+            this.txtSoluongnhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoluongnhan.Location = new System.Drawing.Point(834, 52);
+            this.txtSoluongnhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSoluongnhan.Name = "txtSoluongnhan";
+            this.txtSoluongnhan.Size = new System.Drawing.Size(90, 24);
+            this.txtSoluongnhan.TabIndex = 45;
+            // 
             // FrmHoaDonNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -659,5 +682,7 @@
         private System.Windows.Forms.TextBox txtTrangThai;
         private System.Windows.Forms.TextBox txtngaynhan;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtSoluongnhan;
     }
 }

@@ -156,9 +156,9 @@ namespace Ajuma.Forms
                     return;
                 }
 
-                sql = "INSERT INTO DonNhapHang(madonnhaphang, ngaydat, manhanvien, manhacungcap, tongtien) " +
+                sql = "INSERT INTO DonNhapHang(madonnhaphang, ngaydat, ngaynhan, manhanvien, manhacungcap, tongtien) " +
                     "VALUES (N'" + txtmahdnhap.Text.Trim() + "','" +
-                        Functions.ConvertDateTime(txtngaynhap.Text.Trim()) + "',N'" + cbomanhanvien.SelectedValue + "',N'" +
+                        Functions.ConvertDateTime(txtngaynhap.Text.Trim()) + "','" +  Functions.ConvertDateTime(txtngaynhan.Text.Trim()) + "',N'" + cbomanhanvien.SelectedValue + "',N'" +
                         cbomanhacungcap.SelectedValue + "'," + txttongtien.Text + ")";
                 Functions.RunSql(sql);
             }
@@ -196,13 +196,13 @@ namespace Ajuma.Forms
                 cbomasp.Focus();
                 return;
             }
-            sql = "INSERT INTO ChiTietDonNhapHang(madonnhaphang, masanpham, soluongdat, dongia, thanhtien) " +
-                "VALUES(N'" + txtmahdnhap.Text.Trim() + "', N'" + cbomasp.SelectedValue + "'," + txtsoluong.Text + "," + txtdongia.Text + "," + txtthanhtien.Text + ")"; // Bo Khuyen mai
+            sql = "INSERT INTO ChiTietDonNhapHang(madonnhaphang, masanpham, soluongdat, dongia, thanhtien, soluongnhan, trangthai) " +
+                "VALUES(N'" + txtmahdnhap.Text.Trim() + "', N'" + cbomasp.SelectedValue + "'," + txtsoluong.Text + "," + txtdongia.Text + "," + txtthanhtien.Text + "," + txtSoluongnhan.Text + ",'" + txtTrangThai.Text + "')"; // Bo Khuyen mai
             Functions.RunSql(sql);
             Load_DataGridView();
             // cap nhat lai so luong cho san pham
             sl = Convert.ToDouble(Functions.GetFieldValues(" SELECT soluongkho FROM SanPham WHERE masanpham = N'" + cbomasp.Text + "'"));
-            slmoi = sl + Convert.ToDouble(txtsoluong.Text);
+            slmoi = sl + Convert.ToDouble(txtSoluongnhan.Text);
             // MessageBox.Show(slmoi.ToString());
             sql = "UPDATE SanPham SET soluongkho =" + slmoi + " WHERE masanpham = N'" + cbomasp.Text + "'";
             Functions.RunSql(sql);
@@ -355,9 +355,9 @@ namespace Ajuma.Forms
             }
             cbomasp.Enabled = false;
             string sql;
-            sql = "UPDATE DonNhapHang SET ngaydat = N'" + Functions.ConvertDateTime(txtngaynhap.Text) + "', manhanvien = N'" + cbomanhanvien.SelectedValue.ToString() + "' WHERE madonnhaphang = N'" + txtmahdnhap.Text + "'";
+            sql = "UPDATE DonNhapHang SET ngaydat = N'" + txtngaynhap.Text + "', manhanvien = N'" + cbomanhanvien.SelectedValue.ToString() + "' WHERE madonnhaphang = N'" + txtmahdnhap.Text + "'";
             Functions.RunSql(sql);
-            double giamoi, giaban, soluong, khuyenmai, thanhtien, sl, slmoi;
+            double giamoi, giaban, soluong,thanhtien, sl, slmoi, soluongdat;
             //cap nhat lai gia nhap cho san pham
             giamoi = Convert.ToDouble(txtdongia.Text);
             sql = " UPDATE SanPham SET dongianhap =" + giamoi + " WHERE masanpham = N'" + cbomasp.Text + "'";
@@ -373,11 +373,14 @@ namespace Ajuma.Forms
             sql = "SELECT soluongdat FROM ChiTietDonNhapHang  WHERE masanpham=N'" + cbomasp.SelectedValue + "' AND madonnhaphang = N'" + txtmahdnhap.Text.Trim() + "'";
             soluongcu = Convert.ToDouble(Functions.GetFieldValues(sql));
             Functions.RunSql(sql);
-            soluong = Convert.ToDouble(txtsoluong.Text);
-            sql = " UPDATE ChiTietDonNhapHang  SET soluongdat =" + soluong + " WHERE masanpham=N'" + cbomasp.SelectedValue + "' AND madonnhaphang = N'" + txtmahdnhap.Text.Trim() + "'";
+            soluong = Convert.ToDouble(txtSoluongnhan.Text);
+            soluongdat = Convert.ToDouble(txtsoluong.Text);
+            sql = " UPDATE ChiTietDonNhapHang  SET soluongdat =" + soluongdat + " WHERE masanpham=N'" + cbomasp.SelectedValue + "' AND madonnhaphang = N'" + txtmahdnhap.Text.Trim() + "'";
+            Functions.RunSql(sql);
+            sql = " UPDATE ChiTietDonNhapHang  SET soluongnhan =" + soluong + " WHERE masanpham=N'" + cbomasp.SelectedValue + "' AND madonnhaphang = N'" + txtmahdnhap.Text.Trim() + "'";
             Functions.RunSql(sql);
             sl = Convert.ToDouble(Functions.GetFieldValues(" SELECT soluongkho FROM SanPham WHERE masanpham = N'" + cbomasp.Text + "'"));
-            slmoi = sl + Convert.ToDouble(txtsoluong.Text) - soluongcu;
+            slmoi = sl + Convert.ToDouble(txtSoluongnhan.Text) - soluongcu;
             sql = "UPDATE SanPham SET soluongkho =" + slmoi + " WHERE masanpham = N'" + cbomasp.Text + "'";
             Functions.RunSql(sql);
             //cap nhat lai khuyen mai chi chi tiet , san pham
@@ -447,6 +450,7 @@ namespace Ajuma.Forms
             //txtkhuyenmai.Text = DataGridView.CurrentRow.Cells["khuyenmai"].Value.ToString();
             txtthanhtien.Text = DataGridView.CurrentRow.Cells["thanhtien"].Value.ToString();
             txtTrangThai.Text = DataGridView.CurrentRow.Cells["trangthai"].Value.ToString();
+            txtSoluongnhan.Text = DataGridView.CurrentRow.Cells["soluongnhan"].Value.ToString();
             btnhuyhd.Enabled = true;
             btndong.Enabled = true;
         }
@@ -467,7 +471,7 @@ namespace Ajuma.Forms
                 dg = 0;
             else
                 dg = Convert.ToDouble(txtdongia.Text);
-            tt = (sl * dg)/ 100; //- sl*dg*gg
+            tt = (sl * dg); //- sl*dg*gg
             txtthanhtien.Text = tt.ToString();
         }
 
@@ -487,7 +491,7 @@ namespace Ajuma.Forms
                 dg = 0;
             else
                 dg = Convert.ToDouble(txtdongia.Text);
-            tt = sl * dg/ 100; //- sl * dg * gg
+            tt = sl * dg; //- sl * dg * gg
             txtthanhtien.Text = tt.ToString();
         }
 

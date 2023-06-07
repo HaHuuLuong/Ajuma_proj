@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtTK = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Forgotpass = new System.Windows.Forms.Button();
             this.lblLoi = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.Forgotpass = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -142,6 +142,18 @@
             this.panel1.Size = new System.Drawing.Size(545, 323);
             this.panel1.TabIndex = 16;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // Forgotpass
+            // 
+            this.Forgotpass.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.Forgotpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Forgotpass.Location = new System.Drawing.Point(123, 154);
+            this.Forgotpass.Name = "Forgotpass";
+            this.Forgotpass.Size = new System.Drawing.Size(146, 24);
+            this.Forgotpass.TabIndex = 20;
+            this.Forgotpass.Text = "Quên mật khẩu";
+            this.Forgotpass.UseVisualStyleBackColor = false;
+            this.Forgotpass.Click += new System.EventHandler(this.Forgotpass_Click);
             // 
             // lblLoi
             // 
@@ -310,23 +322,12 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // Forgotpass
-            // 
-            this.Forgotpass.BackColor = System.Drawing.Color.Transparent;
-            this.Forgotpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Forgotpass.Location = new System.Drawing.Point(123, 154);
-            this.Forgotpass.Name = "Forgotpass";
-            this.Forgotpass.Size = new System.Drawing.Size(146, 24);
-            this.Forgotpass.TabIndex = 20;
-            this.Forgotpass.Text = "Quên mật khẩu";
-            this.Forgotpass.UseVisualStyleBackColor = false;
-            this.Forgotpass.Click += new System.EventHandler(this.Forgotpass_Click);
-            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = global::Ajuma.Properties.Resources.Thêm_tiêu_đề_phụ__1_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(860, 490);
             this.Controls.Add(this.panel2);

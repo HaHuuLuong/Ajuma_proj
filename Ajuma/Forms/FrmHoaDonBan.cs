@@ -168,9 +168,10 @@ namespace Ajuma.Forms
             btnthemmoi.Enabled = false;
             cbomasanpham.Enabled = true;
             cbomakhach.Enabled = true;
-            ResetValues();
+            
             txtmadondathang.Text = Functions.CreateKey("HDB");
             Load_DataGridViewChitiet();
+            ResetValues();
         }
 
         private void btnluu_Click(object sender, EventArgs e)
