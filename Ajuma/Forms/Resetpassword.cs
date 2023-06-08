@@ -35,7 +35,7 @@ namespace Ajuma.Forms
             string password = textBox2.Text;
             if(textBox1.Text == password)
             {
-                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\Ajuma_proj\Ajuma\Ajuma\Database\Ajuma_MỚI_Vux .mdf"";Integrated Security=True;Connect Timeout=30");
+                SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = 'D:\Github\Ajuma_proj\Ajuma\DB\Ajuma_MỚI_Vux .mdf'; Integrated Security = True; Connect Timeout = 30");
 
                 //sql = "UPDATE TaiKhoan SET taiKhoan = N'" + txtTK + "', matKhau = N'" + password + "', LoaiTK = N'" + loaiTk + "' WHERE IDTaiKhoan = N'" + id + "'";
                 sql = "UPDATE TaiKhoan SET matKhau = N'" + password + "' WHERE IDTaiKhoan =  N'" + id + "'";

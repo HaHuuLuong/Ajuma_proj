@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "internship-project-2023",
+  "private_key_id": "f1c8c5e31f7373c05137ea9106c487e9ebbb0b0c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCO2OErFXXAH62+\nIKe1v9Sg8QZm+f+3ZAKTULDvKzqrotsGrklszjoGjrLA+wng3Uy2sZwiei+Bip/v\n42H9BXyNoNMgRR7IrLYb1e4zjRPBwfUIx1fXpPQaepsC6UE3dFTGrwfQxYc1ysJP\npYOSvSp4e4JC6n/oTeWRUQFQKGQQ/DwDNdNinAM5RRYiLCi3KznV4KawfK8DmWbq\nzyHM6Bq3OB7SeYrqlsPPUuMVvd8vNPeeU1ote73UUG+tR9Nmqa2WGgvw/bOEd0lU\n0S0Ny8rZkOKt4633Zt5Badt6K4osQJujfJr9nY37yR3tJXIhN1gP4VseNXwjNnU4\nT4dj/wepAgMBAAECggEAFBnEpZFhfmV2x1hFATg7LWJ9KiRnrWCvVBd4rk8A9IH4\nHBqOTnc+hwmxcaJho3jAgLzBYcCbyri9BL6UXUxWWH+W9eWEDWzwOz6BRFPHwe4P\nEusqGzgk+UzjXyd/e9Qs0cBzcxc4jYM4kIiT2SQxQ77td4kT8pZzhV1GuAbW/eSq\nobVGuaJL/auJDjMi1XRKjT3YKZEh27olo7hIU/yf/fTuEp7tYeirt5KwKUFTx5qt\nZH6UM4PaEsA4Sp7Ec00cfS2MZ4l8XQZfixbOLUB5OkAZsScl8h1LHhIo2LG41Pxd\nQD9nU+NK2zDyp1Itwr+kcmHRqv8x81rBNHwDr6nN+QKBgQDCfNW4BfZo6Q+cZx5R\nTRdOIQNqBfDcxrwVf3IheQhGR/ZxQZlaV2nq/J+WVY6nId1pfDdsB1uPtKohB5TE\nT5/m2L/JhNCzi3WtSyiV4AWHm/Qu+iuIBZ+UZ8BmKpsGZBqx04io7bCuRQvhDmWi\nClBHgC7Pd2VYBt4AB1+Wg6eh9wKBgQC8BtmSQlubF2z5izDmqnL4RFC74KREB1f6\nXl+4bCpWY67UDafWY18aN9hzHb+1DlQkDwLfJ/TUuHyHFlGl7y/6wNlpFuao2TqO\ngYPpn6BwzVCkWAiQuo7KgaDTx/hnnSSTBLvTxK3k61JPy3X/XcMOD/CdZSpHPT+8\ncZViT7o7XwKBgQDApdE5cMaNUtbA0TApzlgYbwEnw2y79CuYi95so6v7mgrWUulp\noI7tUoFt85/Tk+rzMzTe0Eb1CTtAbncBIfI9Q1RudB4ayzisiHdSRk6T7nopEmuO\nWCujYEYnrWpUIVKD9Qo4cwGBDinfK1im8tpkiOdVYGpFkL/UfXlE6XJiLwKBgFMj\nbDyhnsO63fKROzQjFeb0vgX01G1IGfyYkhaHrUi5luooh5fiJIEBRHHSK5wxE79F\n6+0kS7trP5Szp7KJSlvDvd4bxC3Qr3Wnit5YOKboAcpJKrBj7RNZsfUyrIGUGEHx\ni+OdSY65BpJF0ozxtneXULsnqkQJrw7x4i2wNxZdAoGBAIM3PW6qvzRy8tovgruf\nFIFGb5Du1F814XXZF7NaBG1FxezV5hCivbjEOyydsNIbQrGPbZVAPWJ5bRFkYoVi\nG0BDwEH2Q288dxAvtc+VOSkfRbqA3r0+C3+3RhBkvmFwKu2jLgTzEVpb+0vhf66k\njCmidT1cu6P5B5JcmT1Q0YwO\n-----END PRIVATE KEY-----\n",
+  "client_email": "service-acc@internship-project-2023.iam.gserviceaccount.com",
+  "client_id": "110524343756111586989",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service-acc%40internship-project-2023.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

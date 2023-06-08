@@ -57,6 +57,27 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Apis, Version=1.60.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.60.0\lib\net45\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.60.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.60.0\lib\net461\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.60.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.60.0\lib\net461\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.60.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.60.0\lib\net45\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.60.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.60.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Sheets.v4, Version=1.60.0.2979, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Sheets.v4.1.60.0.2979\lib\net45\Google.Apis.Sheets.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -114,6 +135,41 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Ajuma_MỚI_Vux_DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ajuma_MỚI_Vux_DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ajuma_MỚI_Vux_DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ajuma_MỚI_Vux_DataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ajuma_MỚI_Vux_DataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ajuma_MỚI_Vux_DataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ajuma_MỚI_Vux_DataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ajuma_MỚI_Vux_DataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet8.xsd</DependentUpon>
     </Compile>
     <Compile Include="Class\Functions.cs" />
     <Compile Include="Forms\FrmBaoCaoDoanhThu.cs">
@@ -247,6 +303,12 @@
     </Compile>
     <Compile Include="Forms\FrmTimKiemSanPham.Designer.cs">
       <DependentUpon>FrmTimKiemSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Load_SpreadSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Load_SpreadSheet.Designer.cs">
+      <DependentUpon>Load_SpreadSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Resetpassword.cs">
       <SubType>Form</SubType>
@@ -411,6 +473,9 @@
     <EmbeddedResource Include="Forms\FrmTimKiemSanPham.resx">
       <DependentUpon>FrmTimKiemSanPham.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Load_SpreadSheet.resx">
+      <DependentUpon>Load_SpreadSheet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Resetpassword.resx">
       <DependentUpon>Resetpassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -510,7 +575,86 @@
     <None Include="Ajuma_MỚI_Vux_DataSet1.xss">
       <DependentUpon>Ajuma_MỚI_Vux_DataSet1.xsd</DependentUpon>
     </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet2.xsc">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_Vux_DataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet2.xss">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet3.xsc">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_Vux_DataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet3.xss">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet4.xsc">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_Vux_DataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet4.xss">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet5.xsc">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_Vux_DataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet5.xss">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet6.xsc">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_Vux_DataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet6.xss">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet7.xsc">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_Vux_DataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet7.xss">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet8.xsc">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuma_MỚI_Vux_DataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ajuma_MỚI_Vux_DataSet8.xss">
+      <DependentUpon>Ajuma_MỚI_Vux_DataSet8.xsd</DependentUpon>
+    </None>
     <None Include="app.manifest" />
+    <None Include="client_secret_273516347664-rutpsgbhu4gi4lrh1b9f5bohurhii89p.apps.googleusercontent.com.json" />
+    <None Include="internship-project-2023-f1c8c5e31f73.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

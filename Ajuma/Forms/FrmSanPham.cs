@@ -142,7 +142,7 @@ namespace Ajuma.Forms
             if (textBoxhinhanh.Text != "")
             {
                 pictureBox1.Visible = true;
-                pictureBox1.Image = Image.FromFile(textBoxhinhanh.Text);
+                pictureBox1.Image = Ajuma.Properties.Resources.Thêm_tiêu_đề_phụ__1_;
             }
             else
             {

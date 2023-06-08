@@ -196,8 +196,8 @@ namespace Ajuma.Forms
                 cbomasp.Focus();
                 return;
             }
-            sql = "INSERT INTO ChiTietDonNhapHang(madonnhaphang, masanpham, soluongdat, dongia, thanhtien) " +
-                "VALUES(N'" + txtmahdnhap.Text.Trim() + "', N'" + cbomasp.SelectedValue + "'," + txtsoluong.Text + "," + txtdongia.Text + "," + txtthanhtien.Text + ")"; // Bo Khuyen mai
+            sql = "INSERT INTO ChiTietDonNhapHang(madonnhaphang, masanpham, soluongdat, dongia, thanhtien, trangthai) " +
+                "VALUES(N'" + txtmahdnhap.Text.Trim() + "', N'" + cbomasp.SelectedValue + "'," + txtsoluong.Text + "," + txtdongia.Text + "," + txtthanhtien.Text + ", '"+txtTrangThai.Text+"')"; // Bo Khuyen mai
             Functions.RunSql(sql);
             Load_DataGridView();
             // cap nhat lai so luong cho san pham
@@ -355,7 +355,7 @@ namespace Ajuma.Forms
             }
             cbomasp.Enabled = false;
             string sql;
-            sql = "UPDATE DonNhapHang SET ngaydat = N'" + Functions.ConvertDateTime(txtngaynhap.Text) + "', manhanvien = N'" + cbomanhanvien.SelectedValue.ToString() + "' WHERE madonnhaphang = N'" + txtmahdnhap.Text + "'";
+            sql = "UPDATE DonNhapHang SET ngaydat = N'" + txtngaynhap.Text + "', manhanvien = N'" + cbomanhanvien.SelectedValue.ToString() + "' WHERE madonnhaphang = N'" + txtmahdnhap.Text + "'";
             Functions.RunSql(sql);
             double giamoi, giaban, soluong, khuyenmai, thanhtien, sl, slmoi;
             //cap nhat lai gia nhap cho san pham

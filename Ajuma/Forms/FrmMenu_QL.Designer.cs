@@ -45,8 +45,9 @@ namespace Ajuma.Forms
             this.mnuBCSanPham = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBCHDNhap = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBCHDBan = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDangXuat = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThoat = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDangXuat = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +60,8 @@ namespace Ajuma.Forms
             this.tìmKiếmToolStripMenuItem,
             this.mnu,
             this.mnuThoat,
-            this.mnuDangXuat});
+            this.mnuDangXuat,
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(742, 28);
@@ -81,28 +83,28 @@ namespace Ajuma.Forms
             // mnuSanPham
             // 
             this.mnuSanPham.Name = "mnuSanPham";
-            this.mnuSanPham.Size = new System.Drawing.Size(224, 26);
+            this.mnuSanPham.Size = new System.Drawing.Size(158, 26);
             this.mnuSanPham.Text = "Sản phẩm";
             this.mnuSanPham.Click += new System.EventHandler(this.mnuSanPham_Click);
             // 
             // mnuTheLoai
             // 
             this.mnuTheLoai.Name = "mnuTheLoai";
-            this.mnuTheLoai.Size = new System.Drawing.Size(224, 26);
+            this.mnuTheLoai.Size = new System.Drawing.Size(158, 26);
             this.mnuTheLoai.Text = "Thể loại";
             this.mnuTheLoai.Click += new System.EventHandler(this.mnuTheLoai_Click);
             // 
             // mnuNgheSi
             // 
             this.mnuNgheSi.Name = "mnuNgheSi";
-            this.mnuNgheSi.Size = new System.Drawing.Size(224, 26);
+            this.mnuNgheSi.Size = new System.Drawing.Size(158, 26);
             this.mnuNgheSi.Text = "Nghệ sĩ";
             this.mnuNgheSi.Click += new System.EventHandler(this.mnuNgheSi_Click);
             // 
             // mnuAlbum
             // 
             this.mnuAlbum.Name = "mnuAlbum";
-            this.mnuAlbum.Size = new System.Drawing.Size(224, 26);
+            this.mnuAlbum.Size = new System.Drawing.Size(158, 26);
             this.mnuAlbum.Text = "Album";
             this.mnuAlbum.Click += new System.EventHandler(this.mnuAlbum_Click);
             // 
@@ -119,14 +121,14 @@ namespace Ajuma.Forms
             // mnuHDNhap
             // 
             this.mnuHDNhap.Name = "mnuHDNhap";
-            this.mnuHDNhap.Size = new System.Drawing.Size(224, 26);
+            this.mnuHDNhap.Size = new System.Drawing.Size(187, 26);
             this.mnuHDNhap.Text = "Hóa đơn nhập";
             this.mnuHDNhap.Click += new System.EventHandler(this.mnuHDNhap_Click);
             // 
             // mnuHDBan
             // 
             this.mnuHDBan.Name = "mnuHDBan";
-            this.mnuHDBan.Size = new System.Drawing.Size(224, 26);
+            this.mnuHDBan.Size = new System.Drawing.Size(187, 26);
             this.mnuHDBan.Text = "Hóa đơn bán";
             this.mnuHDBan.Click += new System.EventHandler(this.mnuHDBan_Click);
             // 
@@ -143,14 +145,14 @@ namespace Ajuma.Forms
             // mnuTKSanPham
             // 
             this.mnuTKSanPham.Name = "mnuTKSanPham";
-            this.mnuTKSanPham.Size = new System.Drawing.Size(224, 26);
+            this.mnuTKSanPham.Size = new System.Drawing.Size(187, 26);
             this.mnuTKSanPham.Text = "Sản phẩm";
             this.mnuTKSanPham.Click += new System.EventHandler(this.mnuTKSanPham_Click);
             // 
             // mnuTKHDNhap
             // 
             this.mnuTKHDNhap.Name = "mnuTKHDNhap";
-            this.mnuTKHDNhap.Size = new System.Drawing.Size(224, 26);
+            this.mnuTKHDNhap.Size = new System.Drawing.Size(187, 26);
             this.mnuTKHDNhap.Text = "Hóa đơn nhập";
             this.mnuTKHDNhap.Click += new System.EventHandler(this.mnuTKHDNhap_Click);
             // 
@@ -168,23 +170,30 @@ namespace Ajuma.Forms
             // mnuBCSanPham
             // 
             this.mnuBCSanPham.Name = "mnuBCSanPham";
-            this.mnuBCSanPham.Size = new System.Drawing.Size(224, 26);
+            this.mnuBCSanPham.Size = new System.Drawing.Size(187, 26);
             this.mnuBCSanPham.Text = "Sản phẩm";
             this.mnuBCSanPham.Click += new System.EventHandler(this.mnuBCSanPham_Click_1);
             // 
             // mnuBCHDNhap
             // 
             this.mnuBCHDNhap.Name = "mnuBCHDNhap";
-            this.mnuBCHDNhap.Size = new System.Drawing.Size(224, 26);
+            this.mnuBCHDNhap.Size = new System.Drawing.Size(187, 26);
             this.mnuBCHDNhap.Text = "Hóa đơn nhập";
             this.mnuBCHDNhap.Click += new System.EventHandler(this.mnuBCHDNhap_Click);
             // 
             // mnuBCHDBan
             // 
             this.mnuBCHDBan.Name = "mnuBCHDBan";
-            this.mnuBCHDBan.Size = new System.Drawing.Size(224, 26);
+            this.mnuBCHDBan.Size = new System.Drawing.Size(187, 26);
             this.mnuBCHDBan.Text = "Hóa đơn bán";
             this.mnuBCHDBan.Click += new System.EventHandler(this.mnuBCHDBan_Click);
+            // 
+            // mnuThoat
+            // 
+            this.mnuThoat.Name = "mnuThoat";
+            this.mnuThoat.Size = new System.Drawing.Size(61, 24);
+            this.mnuThoat.Text = "Thoát";
+            this.mnuThoat.Click += new System.EventHandler(this.mnuThoat_Click);
             // 
             // mnuDangXuat
             // 
@@ -193,12 +202,10 @@ namespace Ajuma.Forms
             this.mnuDangXuat.Text = "Đăng xuất";
             this.mnuDangXuat.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem1_Click);
             // 
-            // mnuThoat
+            // toolStripMenuItem1
             // 
-            this.mnuThoat.Name = "mnuThoat";
-            this.mnuThoat.Size = new System.Drawing.Size(61, 24);
-            this.mnuThoat.Text = "Thoát";
-            this.mnuThoat.Click += new System.EventHandler(this.mnuThoat_Click);
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(14, 24);
             // 
             // FrmMenu_QL
             // 
@@ -238,5 +245,6 @@ namespace Ajuma.Forms
         private System.Windows.Forms.ToolStripMenuItem mnuTKHDNhap;
         private System.Windows.Forms.ToolStripMenuItem mnuBCHDBan;
         private System.Windows.Forms.ToolStripMenuItem mnuThoat;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

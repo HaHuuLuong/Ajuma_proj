@@ -218,5 +218,12 @@ namespace Ajuma
             f.StartPosition = FormStartPosition.CenterScreen;
             f.Show();
         }
+
+        private void googleSheetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.Load_SpreadSheet f = new Load_SpreadSheet();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
     }
 }

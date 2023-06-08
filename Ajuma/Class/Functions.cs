@@ -19,7 +19,7 @@ namespace Ajuma.Class
         public static void Connect()
         {
             //Thiết lập giá trị cho chuỗi kết nối
-            connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\Ajuma_proj\Ajuma\Ajuma\Database\Ajuma_MỚI_Vux .mdf"";Integrated Security=True;Connect Timeout=30";
+            connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='D:\Github\Ajuma_proj\Ajuma\DB\Ajuma_MỚI_Vux .mdf';Integrated Security=True;Connect Timeout=30";
             //connString = "";
             Conn = new SqlConnection();                 //Cấp phát đối tượng
             Conn.ConnectionString = connString;         //Kết nối
@@ -308,7 +308,7 @@ namespace Ajuma.Class
             }
             catch (System.Exception E)
             {
-                MessageBox.Show("Nghiêm cấm sử dụng SQL Injection!!!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Nghiêm cấm sử dụng SQL Injection!!!" + "\n"+ E.Message, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
             if (tbl.Rows.Count > 0)
